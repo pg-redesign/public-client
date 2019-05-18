@@ -1,18 +1,9 @@
 import React, { Component, createRef } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import {
-	Ref,
-	Menu,
-	Image,
-	Button,
-	Sidebar,
-	Responsive,
-} from "semantic-ui-react";
+import { Ref, Menu, Sidebar, Responsive } from "semantic-ui-react";
 
-import logo from "../media/logo.jpg";
-
-const rootDiv = document.querySelector("#root");
+import Logo from "./Logo";
+import NavMenuLink from "./NavMenuLink";
 
 const propTypes = {
 	children: PropTypes.node.isRequired,
@@ -22,39 +13,6 @@ const propTypes = {
 			path: PropTypes.string.isRequired,
 		}),
 	).isRequired,
-};
-
-const NavMenuLink = props => (
-	<Menu.Item
-		as={Link}
-		to={props.path}
-		content={props.name}
-		onClick={props.onNavigate}
-	/>
-);
-
-const Logo = props => {
-	const { mobile, onClick } = props;
-
-	const LogoImage = (
-		<Image
-			size="mini"
-			src={logo}
-			style={{ boxShadow: "2px 2px 3px 1px rgba(0,0,0,0.4)" }}
-		/>
-	);
-
-	return mobile ? (
-		<Button
-			size="mini"
-			borderless
-			compact
-			onClick={onClick}
-			content={LogoImage}
-		/>
-	) : (
-		LogoImage
-	);
 };
 
 class NavBar extends Component {
@@ -69,15 +27,6 @@ class NavBar extends Component {
 
 	toggleMobileMenu = () =>
 		this.setState(state => ({ mobileMenuOpen: !state.mobileMenuOpen }));
-
-	// toggles padding if screen transitions in width
-	setRootDivPadding = (_, data) => {
-		const { getWidth } = data;
-		rootDiv.style =
-			getWidth() > Responsive.onlyMobile.maxWidth
-				? "padding: 30px 50px 0px 50px" // > mobile max add padding
-				: ""; // <= mobile max remove padding
-	};
 
 	renderMobile = () => {
 		const { mobileMenuOpen } = this.state;
@@ -153,12 +102,10 @@ class NavBar extends Component {
 	render = () => (
 		<>
 			<Responsive
-				onUpdate={this.setRootDivPadding}
 				children={this.renderMobile()}
 				maxWidth={Responsive.onlyMobile.maxWidth}
 			/>
 			<Responsive
-				onUpdate={this.setRootDivPadding}
 				children={this.renderStandard()}
 				minWidth={Responsive.onlyTablet.minWidth}
 			/>
