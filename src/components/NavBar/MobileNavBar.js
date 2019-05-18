@@ -6,7 +6,7 @@ import navBarPropTypes from "./prop-types";
 
 /**
  * Responsive Mobile NavBar
- * - only renders at SUIR Responsive.onlyMobile.maxWidth
+ * - only renders up to SUIR Responsive.onlyMobile.maxWidth
  * - mobile links menu overlays content when activated
  * - links menu extends from bottom of nav bar
  *
