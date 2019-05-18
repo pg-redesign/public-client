@@ -8,7 +8,7 @@ import logo from "../../media/logo.jpg";
  * spreads all props into SUIR Image
  * @param {*} props
  * @param {string} props.size "mini"
- * @param {string} props.src media/logo.jpg
+ * @param {string} props.src src/media/logo.jpg
  * @param {*} props.style boxShadow fitting "mini" size
  */
 export const LogoImage = props => <Image {...props} />;
@@ -28,7 +28,12 @@ LogoImage.defaultProps = {
  * @param {*} props.content <LogoImage>
  */
 export const LogoButton = props => (
-	<Button {...props}>
+	// relax warning: Received `true` for a non-boolean attribute
+	<Button
+		{...props}
+		mobile={props.mobile.toString()}
+		borderless={props.borderless.toString()}
+	>
 		<LogoImage />
 	</Button>
 );
@@ -55,11 +60,14 @@ LogoButton.defaultProps = {
 const Logo = props =>
 	props.mobile ? <LogoButton {...props} /> : <LogoImage {...props} />;
 
-Logo.Image = LogoImage;
-Logo.Button = LogoButton;
-
 Logo.propTypes = {
 	mobile: PropTypes.bool,
 };
 
+Logo.defaultProps = {
+	mobile: false,
+};
+
+Logo.Image = LogoImage;
+Logo.Button = LogoButton;
 export default Logo;
