@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Container } from "semantic-ui-react";
 
-import "./media-styles.css";
 import Views from "./views";
 import NavBar from "./components/NavBar";
 
