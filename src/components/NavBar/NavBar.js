@@ -1,6 +1,6 @@
 import React from "react";
 
-import Logo from "./Logo";
+import Logo from "../Logo";
 import "./media-styles.css";
 import MobileNavBar from "./MobileNavBar";
 import navBarPropTypes from "./prop-types";
