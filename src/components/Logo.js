@@ -16,11 +16,12 @@ export const LogoImage = props => {
 };
 
 LogoImage.propTypes = {
-	logoImage: PropTypes.string.isRequired,
+  logoImage: PropTypes.string.isRequired,
 };
 
 LogoImage.defaultProps = {
-	size: "mini",
+  size: "mini",
+  logoImage: require("../media/logo.jpg"),
 	style: { boxShadow: "2px 2px 3px 1px rgba(0,0,0,0.4)" },
 };
 
@@ -76,10 +77,6 @@ const Logo = props => {
 Logo.propTypes = {
 	mobile: PropTypes.bool,
 	logoImage: PropTypes.string.isRequired,
-};
-
-Logo.defaultProps = {
-	logoImage: require("../media/logo.jpg"),
 };
 
 Logo.Image = LogoImage;
