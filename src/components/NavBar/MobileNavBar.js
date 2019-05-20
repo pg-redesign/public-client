@@ -6,7 +6,7 @@ import navBarPropTypes from "./prop-types";
 
 /**
  * Responsive Mobile NavBar
- * - only renders up to SUIR Responsive.onlyMobile.maxWidth
+ * - only renders up to SUIR Responsive.onlyTablet.maxWidth
  * - mobile links menu overlays content when activated
  * - links menu extends from bottom of nav bar
  *
@@ -40,7 +40,7 @@ class MobileNavBar extends Component {
 		const { menuOpen } = this.state;
 
 		return (
-			<Responsive maxWidth={Responsive.onlyMobile.maxWidth}>
+			<Responsive maxWidth={Responsive.onlyTablet.maxWidth}>
 				{/* nav */}
 				<Menu as="nav" size="tiny" widths="1">
 					<Menu.Item>
@@ -48,7 +48,7 @@ class MobileNavBar extends Component {
 					</Menu.Item>
 				</Menu>
 
-				<Sidebar.Pushable>
+				<Sidebar.Pushable style={{ marginTop: "-15px" }}>
 					{/* links menu */}
 					<Sidebar
 						as={Menu}
@@ -72,7 +72,10 @@ class MobileNavBar extends Component {
 
 					{/* content area (links menu will overlay) */}
 					<Ref innerRef={this.contentRef}>
-						<Sidebar.Pusher content={content || children} />
+						<Sidebar.Pusher
+							content={content || children}
+							style={{ paddingTop: "15px" }}
+						/>
 					</Ref>
 				</Sidebar.Pushable>
 			</Responsive>
