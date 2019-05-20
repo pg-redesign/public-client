@@ -1,0 +1,39 @@
+/* COLORS */
+:root {
+	--primary: rgba(2, 164, 236, 1);
+	--primary-light: rgba(2, 164, 236, 0.7);
+
+	--secondary: rgb(196, 140, 75, 1);
+	--secondary-light: rgb(196, 140, 75, 0.8);
+}
+
+/* MOBILE */
+:root {
+	--mobile-background: linear-gradient(
+			to bottom,
+			white 0%,
+			var(--secondary-light) 0%,
+			var(--secondary) 15%,
+			var(--primary-light) 45%
+		)
+		fixed;
+
+	--mobile-h1: 2.25rem;
+	--mobile-h2: 1.75rem;
+	--mobile-h3: 1.4rem;
+}
+
+/* ABOVE MOBILE (STANDARD) */
+:root {
+	--desktop-background: linear-gradient(
+			to bottom,
+			var(--secondary-light) 0%,
+			var(--secondary) 20%,
+			var(--primary-light) 50%
+		)
+		fixed;
+
+	--desktop-h1: 5rem;
+	--desktop-h2: 3rem;
+	--desktop-h3: 2rem;
+}
