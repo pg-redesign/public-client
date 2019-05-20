@@ -1,15 +1,14 @@
 import React from "react";
 
 import Logo from "../Logo";
-import "./media-styles.css";
 import MobileNavBar from "./MobileNavBar";
 import navBarPropTypes from "./prop-types";
 import StandardNavBar from "./StandardNavBar";
 
 /**
  * Responsive NavBar, NavBar.Mobile, NavBar.Standard
- * - only renders NavBar.Mobile up to SUIR Responsive.onlyMobile.maxWidth
- * - renders NavBar.Standard for widths above SUIR Responsive.onlyTablet.minWidth
+ * - only renders NavBar.Mobile up to SUIR Responsive.onlyTablet.maxWidth
+ * - renders NavBar.Standard for widths above SUIR Responsive.onlyComputer.minWidth
  *
  * @param {*} props spread into NavBar.Mobile and NavBar.Standard
  * @param {*} content alias for children
