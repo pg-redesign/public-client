@@ -1,17 +1,21 @@
 const optionalProp = {};
 
-optionalProp.ifOtherPropDefined = otherPropName => (
+/**
+ * prop type for a required prop with an alias
+ * - ensures either the prop itself or its alias are defined
+ */
+optionalProp.ifOtherPropDefined = aliasPropName => (
 	props,
 	propName,
 	componentName,
 ) => {
-  const errorMessage = `Invalid props: [${componentName}] requires either [${propName}] or ${otherPropName} to be defined.`;
-  
 	if (
-		[props[propName], props[otherPropName]].every(value => value === undefined)
+		[props[propName], props[aliasPropName]].every(value => value === undefined)
 	) {
-		return new Error(errorMessage);
-	}
+		return new Error(
+			`Invalid props: [${componentName}] requires either [${propName}] or ${aliasPropName} alias to be defined.`,
+		);
+  }
 };
 
 export default optionalProp;
