@@ -8,13 +8,14 @@ const defaultProps = {
 	data: {
 		viewData: {
 			videoID: "Ztk3Q9sTy84",
-			studentCount: 34532,
+			bannerPhrase:
+				"World-renowned Hydrology, Pollution, & Remediation courses",
 		},
 	},
 };
 
 const Banner = props => {
-	const { mobile, bannerImage, bannerPhrase } = props;
+	const { mobile, bannerPhrase } = props;
 
 	return (
 		<Container textAlign="center" fluid>
@@ -24,33 +25,31 @@ const Banner = props => {
 					rounded
 					centered
 					size="small"
-					logoImage={bannerImage}
 					style={{
 						border: "white 2px double",
 						boxShadow: "2px 2px 3px 1px rgba(0,0,0,0.4)",
 					}}
 				/>
 			)}
+			{/* site name - uppercased by global CSS */}
 			<Header
 				as="h1"
 				inverted
+				content="Princeton Groundwater"
 				style={{ textShadow: "4px 4px 0px rgba(0,0,0,0.2)" }}
-			>
-				Princeton Groundwater
-			</Header>
+			/>
+			{/* banner phrase */}
 			<Header
 				as="h3"
 				inverted
+				content={bannerPhrase}
 				style={{ textShadow: "3px 3px 0px rgba(0,0,0,0.2)" }}
-			>
-				{bannerPhrase}
-			</Header>
+			/>
 		</Container>
 	);
 };
 
 Banner.defaultProps = {
-	bannerImage: require("../media/logo.jpg"),
 	bannerPhrase: "World-renowned Hydrology, Pollution, & Remediation courses",
 };
 
@@ -68,15 +67,11 @@ const LandingView = props => {
 
 			<Grid.Row>
 				<Grid.Column computer="10" width="16" tablet="10">
-          {/* intro video */}
-					<Embed
-						defaultActive
-						source="youtube"
-						id={viewData.videoID}
-					/>
+					{/* intro video */}
+					<Embed defaultActive source="youtube" id={viewData.videoID} />
 				</Grid.Column>
 			</Grid.Row>
-      
+
 			{/* courses, Card Group */}
 			{/* register, Sticky */}
 		</Grid>
