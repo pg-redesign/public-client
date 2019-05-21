@@ -12,7 +12,7 @@ const Footer = props => {
 	const { links } = props;
 
 	return (
-			<Menu size="large" fixed="bottom">
+			<Menu size="large" style={{ bottom: "0px"}}>
 				{links.map(link => (
 					<MenuLink {...link} />
 				))}
