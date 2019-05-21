@@ -1,8 +1,11 @@
 body {
-	display: flex;
 	min-height: 100vh;
+  font-size: 1.1rem;
+  
+  display: flex;
 	flex-direction: column;
-	background: var(--desktop-background);
+  
+  background: var(--desktop-background);
 }
 
 h1 {
@@ -12,7 +15,7 @@ h1 {
 @media only screen and (max-width: 768px) {
 	/* mobile */
 	body {
-		background: var(--mobile-background);
+    background: var(--mobile-background);
 	}
 
 	h1 {
@@ -25,7 +28,7 @@ h1 {
 }
 
 @media only screen and (min-width: 1024px) {
-	/* above mobile */
+  /* above mobile */
 
 	h1 {
 		font-size: var(--desktop-h1) !important;
