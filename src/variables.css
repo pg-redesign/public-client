@@ -1,10 +1,12 @@
 /* COLORS */
 :root {
 	--primary: rgba(2, 164, 236, 1);
-	--primary-light: rgba(2, 164, 236, 0.7);
-
-	--secondary: rgb(196, 140, 75, 1);
-	--secondary-light: rgb(196, 140, 75, 0.8);
+  --primary-light: rgba(2, 164, 236, 0.7);
+  
+	--secondary: rgba(141, 89, 29, 1);
+  --secondary-light: rgb(141, 89, 29, 0.8);
+  
+  --dark-blue: rgb(35, 85, 248);
 }
 
 /* MOBILE */
@@ -12,9 +14,11 @@
 	--mobile-background: linear-gradient(
 			to bottom,
 			white 0%,
-			var(--secondary-light) 0%,
-			var(--secondary) 15%,
-			var(--primary-light) 45%
+			var(--secondary) 0%,
+			var(--secondary-light) 20%,
+      var(--primary-light) 40%,
+      var(--primary) 75%,
+      var(--dark-blue) 100%
 		)
 		fixed;
 
@@ -27,9 +31,11 @@
 :root {
 	--desktop-background: linear-gradient(
 			to bottom,
-			var(--secondary-light) 0%,
-			var(--secondary) 20%,
-			var(--primary-light) 50%
+			var(--secondary) 0%,
+			var(--secondary-light) 20%,
+			var(--primary-light) 40%,
+      var(--primary) 65%,
+      var(--dark-blue) 100%
 		)
 		fixed;
 
