@@ -8,7 +8,7 @@ import LandingView from "./LandingView";
 // import InstructorView from "./Instructor";
 
 const Views = () => (
-	<Container style={{ paddingTop: "20px" }}>
+	<Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
 		<Switch>
 			<Route exact path="/" component={LandingView} />
 			{/* <Route exact path="/courses/:courseName" component={CourseView} />
