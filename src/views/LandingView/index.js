@@ -45,7 +45,7 @@ const LandingView = props => {
 			</Grid.Row>
 
 			<Grid.Row>
-				<Grid.Column computer="12" tablet="16" mobile="16">
+				<Grid.Column computer="12" tablet="16" mobile="15">
 					<UpcomingCourses {...viewData} />
 				</Grid.Column>
 			</Grid.Row>

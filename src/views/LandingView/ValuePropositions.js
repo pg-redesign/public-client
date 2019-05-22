@@ -55,7 +55,7 @@ const ValuePropositions = props => {
 		<ValuePropCard {...cardData} />
 	));
 
-	return <Card.Group centered stackable itemsPerRow="2" content={cards} />;
+	return <Card.Group centered stackable content={cards} />;
 };
 
 export default ValuePropositions;
