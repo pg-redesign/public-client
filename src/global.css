@@ -1,11 +1,14 @@
 body {
 	min-height: 100vh;
-  font-size: 1.1rem;
-  
-  display: flex;
+	font-size: 1.1rem;
+
+	display: flex;
 	flex-direction: column;
-  
-  background: var(--desktop-background);
+}
+
+#root {
+	/* putting texture on root instead of body prevents the flickering on mobile when the url bar is shown / hidden */
+	background: url("media/background-texture.png");
 }
 
 h1 {
@@ -15,7 +18,7 @@ h1 {
 @media only screen and (max-width: 768px) {
 	/* mobile */
 	body {
-    background: var(--mobile-background);
+		background: var(--mobile-background);
 	}
 
 	h1 {
@@ -28,7 +31,11 @@ h1 {
 }
 
 @media only screen and (min-width: 1024px) {
-  /* above mobile */
+	/* above mobile */
+
+	body {
+		background: var(--desktop-background);
+	}
 
 	h1 {
 		font-size: var(--desktop-h1) !important;
