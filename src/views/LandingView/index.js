@@ -1,7 +1,8 @@
 import React from "react";
-import { Grid, Embed } from "semantic-ui-react";
+import { Grid, Embed, Header, Divider } from "semantic-ui-react";
 
 import Banner from "./Banner";
+import UpcomingCourses from "./UpcomingCourses";
 import ValuePropositions from "./ValuePropositions";
 import responsiveWrapper from "../../utils/responsive-wrapper";
 
@@ -38,7 +39,17 @@ const LandingView = props => {
 					<ValuePropositions />
 				</Grid.Column>
 			</Grid.Row>
-			{/* courses, Card Group */}
+
+			<Grid.Row>
+				<Header as="h1" content="Upcoming Courses" inverted />
+			</Grid.Row>
+
+			<Grid.Row>
+				<Grid.Column computer="12" tablet="16" mobile="16">
+					<UpcomingCourses {...viewData} />
+				</Grid.Column>
+			</Grid.Row>
+			{/* student count / student company logos */}
 			{/* register, Sticky */}
 		</Grid>
 	);
