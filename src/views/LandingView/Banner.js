@@ -5,7 +5,7 @@ import Logo from "../../components/Logo";
 
 const defaultProps = {
 	bannerPhrase:
-		"Teaching the World Groundwater Hydrology, Pollution, & Remediation since 1976",
+		"Teaching the World About Groundwater Hydrology, Pollution, & Remediation since 1974",
 	// version 2
 	// "World-renowned Hydrology, Pollution, & Remediation courses",
 };
