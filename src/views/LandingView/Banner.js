@@ -28,18 +28,13 @@ const Banner = props => {
 				/>
 			)}
 			{/* site name - uppercased by global CSS */}
-			<Header
-				as="h1"
-				inverted
-				content="Princeton Groundwater"
-				style={{ textShadow: "4px 4px 0px rgba(0,0,0,0.2)" }}
-			/>
+			<Header as="h1" inverted content="Princeton Groundwater" />
 			{/* banner phrase */}
 			<Header
 				as="h3"
 				inverted
 				content={bannerPhrase}
-				style={{ textShadow: "3px 3px 0px rgba(0,0,0,0.2)" }}
+				style={{ fontStyle: "oblique" }}
 			/>
 		</Container>
 	);

@@ -16,9 +16,9 @@ const Footer = props => {
 	const { links } = props;
 
 	return (
-			<Menu size="large" style={{ bottom: "0px"}}>
+			<Menu size="large" borderless>
 				{links.map(link => (
-					<MenuLink {...link} />
+					<MenuLink key={`footer-${link.name}`} {...link} />
 				))}
 			</Menu>
 	);
