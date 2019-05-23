@@ -79,6 +79,10 @@ Logo.propTypes = {
 	logoImage: PropTypes.string.isRequired,
 };
 
+Logo.defaultProps = {
+  logoImage: require("../media/logo.jpg"),
+};
+
 Logo.Image = LogoImage;
 Logo.Button = LogoButton;
 export default Logo;
