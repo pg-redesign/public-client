@@ -26,25 +26,48 @@ const LandingView = props => {
 					<Banner {...viewData} mobile={mobile} />
 				</Grid.Column>
 			</Grid.Row>
-			<Grid.Row>
-				<Grid.Column computer="10" tablet="10" mobile="16">
-					{/* intro video */}
-					<Embed defaultActive autoplay={false} source="youtube" id={viewData.videoID} />
+      <Divider section />
+
+    {/* MOBILE-TABLET: video + value props */}
+			<Grid.Row columns="equal" only="mobile tablet">
+				<Grid.Column tablet="10" mobile="16">
+					<Embed
+						defaultActive
+						autoplay={false}
+						source="youtube"
+						id={viewData.videoID}
+					/>
 				</Grid.Column>
 			</Grid.Row>
 
-			<Grid.Row>
-				<Grid.Column computer="16" tablet="16" mobile="14">
+			<Grid.Row only="mobile tablet">
+				<Grid.Column tablet="16" mobile="14">
+					<ValuePropositions />
+				</Grid.Column>
+			</Grid.Row>
+
+    {/* DESKTOP+: video + value props */}
+			<Grid.Row columns="equal" only="computer">
+				<Grid.Column width="6" verticalAlign="middle">
+					{/* intro video */}
+					<Embed
+						defaultActive
+						autoplay={false}
+						source="youtube"
+						id={viewData.videoID}
+					/>
+				</Grid.Column>
+				<Grid.Column width="10">
 					<ValuePropositions />
 				</Grid.Column>
 			</Grid.Row>
 
 			<Grid.Row>
-				<Header as="h1" content="Upcoming Courses" inverted />
+				<Header as="h2" content="Upcoming Courses" inverted />
 			</Grid.Row>
 
 			<Grid.Row>
-				<Grid.Column computer="12" tablet="16" mobile="15">
+				<Grid.Column computer="16" tablet="16" mobile="15">
 					<UpcomingCourses {...viewData} />
 				</Grid.Column>
 			</Grid.Row>
