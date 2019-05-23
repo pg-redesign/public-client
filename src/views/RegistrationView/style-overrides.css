@@ -1,0 +1,15 @@
+/* remove box border for registraion course buttons */
+.ui.button.registration-button {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* checkbox toggle colors */
+.ui.toggle.checkbox input:focus:checked:hover~.box:before,
+.ui.toggle.checkbox input:focus:checked:hover~label:before {
+    background-color: var(--primary) !important
+}
+
+.ui.toggle.checkbox .box:before, .ui.toggle.checkbox label:before {
+    background-color: rgba(128, 128, 128, 0.6);
+}
