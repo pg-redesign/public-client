@@ -26,11 +26,10 @@ const LandingView = props => {
 					<Banner {...viewData} mobile={mobile} />
 				</Grid.Column>
 			</Grid.Row>
-
 			<Grid.Row>
 				<Grid.Column computer="10" tablet="10" mobile="16">
 					{/* intro video */}
-					<Embed defaultActive source="youtube" id={viewData.videoID} />
+					<Embed defaultActive autoplay={false} source="youtube" id={viewData.videoID} />
 				</Grid.Column>
 			</Grid.Row>
 
