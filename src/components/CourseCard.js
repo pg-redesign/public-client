@@ -1,13 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-	Card,
-	Icon,
-	List,
-	Popup,
-	Button,
-	Header,
-} from "semantic-ui-react";
+import { Card, Icon, List, Popup, Button, Header } from "semantic-ui-react";
 
 import { courseType } from "../utils/prop-types";
 
@@ -70,13 +63,12 @@ const CourseCard = props => {
 			<Card.Content extra>
 				<Button.Group fluid>
 					<Button
-						color="blue"
 						rounded
-						size="large"
 						as={Link}
+						size="large"
 						content="Register Now"
 						to={`/register?courseID=${id}`}
-						// style={{ backgroundColor: "var(--primary-light)", color: "white"}}
+						style={{ backgroundColor: "var(--dark-blue)", color: "white" }}
 					/>
 					<Button.Or />
 					<Button
