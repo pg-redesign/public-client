@@ -1,7 +1,8 @@
 const siteLinks = {};
 
 siteLinks.nav = {
-	home: "/",
+  HOME: "/",
+  REGISTRATION: "/register",
 };
 
 siteLinks.footer = {

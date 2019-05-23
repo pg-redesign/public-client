@@ -2,17 +2,15 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { Container } from "semantic-ui-react";
 
-import siteLinks, { linksAsList } from "./site-links";
 import LandingView from "./LandingView";
-// import CourseView from "./Course";
-// import InstructorView from "./Instructor";
+import RegistrationView from "./RegistrationView";
+import siteLinks, { linksAsList } from "./site-links";
 
 const Views = () => (
-	<Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+	<Container style={{ paddingTop: "20px", paddingBottom: "100px" }}>
 		<Switch>
 			<Route exact path="/" component={LandingView} />
-			{/* <Route exact path="/courses/:courseName" component={CourseView} />
-		<Route exact path="/instructors" component={InstructorView} /> */}
+      <Route path="/register/:courseID?" component={RegistrationView} />
 		</Switch>
 	</Container>
 );
