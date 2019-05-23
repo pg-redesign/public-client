@@ -1,28 +1,24 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import { Container } from "semantic-ui-react";
 
-// import HomeView from "./Home";
-// import CourseView from "./Course";
-// import InstructorView from "./Instructor";
+import LandingView from "./LandingView";
+import RegistrationView from "./RegistrationView";
+import siteLinks, { linksAsList } from "./site-links";
 
 const Views = () => (
-	<Switch>
-		{/* <Route exact path="/" component={HomeView} />
-		<Route exact path="/courses/:courseName" component={CourseView} />
-		<Route exact path="/instructors" component={InstructorView} /> */}
-	</Switch>
+	<Container style={{ paddingTop: "20px", paddingBottom: "100px" }}>
+		<Switch>
+			<Route exact path="/" component={LandingView} />
+      <Route path="/register/:courseID?" component={RegistrationView} />
+		</Switch>
+	</Container>
 );
 
 Views.links = {
-	test: "path here",
-	another: "path another",
-	third: "path here",
-	fourth: "path another",
+	...siteLinks,
+	navList: linksAsList(siteLinks.nav),
+	footerList: linksAsList(siteLinks.footer),
 };
-
-Views.linkList = Object.entries(Views.links).map(([name, path]) => ({
-	name,
-	path,
-}));
 
 export default Views;

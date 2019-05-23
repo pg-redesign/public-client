@@ -6,7 +6,7 @@ import navBarPropTypes from "./prop-types";
 
 /**
  * Responsive Standard NavBar
- * - renders at widths above SUIR Responsive.onlyTablet.minWidth
+ * - renders at widths above SUIR Responsive.onlyComputer.minWidth
  * 
  * @param {*} props
  * @param {*} content alias for children
@@ -18,7 +18,7 @@ const StandardNavBar = props => {
 	const { links, content, children, Logo } = props;
 
 	return (
-		<Responsive minWidth={Responsive.onlyTablet.minWidth}>
+		<Responsive minWidth={Responsive.onlyComputer.minWidth}>
 			{/* nav */}
 			<Menu as="nav" fluid borderless size="huge">
 				<Menu.Menu widths={links.length} position="left">
