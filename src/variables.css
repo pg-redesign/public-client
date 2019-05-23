@@ -6,12 +6,12 @@
 	--secondary: rgba(141, 89, 29, 1);
   --secondary-light: rgb(141, 89, 29, 0.8);
   
-  --dark-blue: rgb(35, 85, 248);
+  --dark-blue: rgba(0, 100, 255, 1);
 }
 
 /* MOBILE */
 :root {
-	--mobile-background: linear-gradient(
+	--mobile-background: url("media/background-texture.png"), linear-gradient(
 			to bottom,
 			white 0%,
 			var(--secondary) 0%,
@@ -23,13 +23,13 @@
 		fixed;
 
 	--mobile-h1: 2.5rem;
-	--mobile-h2: 1.75rem;
-	--mobile-h3: 1.4rem;
+	--mobile-h2: 2rem;
+	--mobile-h3: 1.5rem;
 }
 
 /* ABOVE MOBILE (STANDARD) */
 :root {
-	--desktop-background: linear-gradient(
+	--desktop-background: url("media/background-texture.png"), linear-gradient(
 			to bottom,
 			var(--secondary) 0%,
 			var(--secondary-light) 20%,
