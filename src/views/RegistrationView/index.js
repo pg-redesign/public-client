@@ -15,10 +15,11 @@ import {
 	Transition,
 } from "semantic-ui-react";
 
-import { CourseCardTop } from "../components/CourseCard";
+import './style-overrides.css';
+import { CourseCardTop } from "../../components/CourseCard";
 
 // TODO: remove after connecting to API
-import { upcomingCourses } from "./mock-data";
+import { upcomingCourses } from "../mock-data";
 
 class StaticAnimation extends Component {
 	static propTypes = Transition.propTypes;
