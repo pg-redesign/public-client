@@ -5,7 +5,6 @@ import {
 	Header,
 	Card,
 	Button,
-	Segment,
 	Grid,
 	Divider,
 	Input,
@@ -62,6 +61,7 @@ const courseButton = (courseData, selectedCourseID, handleChange) => {
 			compact
 			onClick={handleClick}
 			style={{ margin: "10px" }}
+			className="registration-button"
 			key={`course-select-${courseData.id}`}
 			active={selectedCourseID === courseData.id}
 		>
@@ -98,7 +98,7 @@ export default class RegistrationView extends Component {
 				courseID: "",
 				firstName: "",
 				lastName: "",
-				email: "email@gm.com",
+				email: "",
 				city: "",
 				state: "",
 				country: "",
@@ -135,12 +135,12 @@ export default class RegistrationView extends Component {
 	shakeForm = () =>
 		this.setState({ shouldShake: true }, () =>
 			this.setState({ shouldShake: false }),
-    );
-    
-  formIsValid = () => {
-    const { errors } = this.state;
-    // TODO: validate here or onChange?
-  }
+		);
+
+	formIsValid = () => {
+		const { errors } = this.state;
+		// TODO: validate here or onChange?
+	};
 
 	handleSubmit = event => {
 		event.preventDefault();
@@ -199,9 +199,9 @@ export default class RegistrationView extends Component {
 
 				{/* student info */}
 				<StaticAnimation animation="shake" animate={shouldShake}>
-					<Container style={{ width: "60%" }}>
+					<Container style={{ width: "80%" }}>
 						<Form.Group widths="equal">
-							<Form.Field>
+							<Form.Field width="6">
 								<Input
 									name="firstName"
 									value={fields.firstName}
@@ -209,7 +209,7 @@ export default class RegistrationView extends Component {
 									label={this.labelOrError("firstName", "First Name")}
 								/>
 							</Form.Field>
-							<Form.Field>
+							<Form.Field width="6">
 								<Input
 									inverted
 									name="lastName"
@@ -221,7 +221,7 @@ export default class RegistrationView extends Component {
 						</Form.Group>
 
 						<Form.Group widths="equal">
-							<Form.Field>
+							<Form.Field width="8">
 								<Input
 									name="company"
 									value={fields.company}
@@ -229,7 +229,7 @@ export default class RegistrationView extends Component {
 									label={this.labelOrError("company", "Company")}
 								/>
 							</Form.Field>
-							<Form.Field>
+							<Form.Field width="8">
 								<Input
 									name="email"
 									type="email"
@@ -240,7 +240,7 @@ export default class RegistrationView extends Component {
 							</Form.Field>
 						</Form.Group>
 						<Form.Group widths="equal">
-							<Form.Field>
+							<Form.Field width="5">
 								<Input
 									name="city"
 									value={fields.city}
@@ -248,7 +248,7 @@ export default class RegistrationView extends Component {
 									label={this.labelOrError("city", "City")}
 								/>
 							</Form.Field>
-							<Form.Field width="">
+							<Form.Field width="5">
 								<Input
 									name="state"
 									value={fields.state}
@@ -256,7 +256,7 @@ export default class RegistrationView extends Component {
 									label={this.labelOrError("state", "State")}
 								/>
 							</Form.Field>
-							<Form.Field width="">
+							<Form.Field width="5">
 								<Input
 									name="country"
 									value={fields.country}
@@ -272,11 +272,12 @@ export default class RegistrationView extends Component {
 									<Message.Header content="Would you like to join our mailing list?" />
 									<Message.List>
 										<Message.Item>
-											We will never spam or sell your contact information
+											We will <strong>never spam or sell</strong> your contact
+											information
 										</Message.Item>
 										<Message.Item>
-											We send around 4 emails per year about upcoming courses
-											and events
+											We <strong>only send 4-5 emails per year</strong> about
+											upcoming courses and events
 										</Message.Item>
 									</Message.List>
 									<Divider />
