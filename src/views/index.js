@@ -7,18 +7,18 @@ import RegistrationView from "./RegistrationView";
 import siteLinks, { linksAsList } from "./site-links";
 
 const Views = () => (
-	<Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
-		<Switch>
-			<Route exact path="/" component={LandingView} />
+  <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+    <Switch>
+      <Route exact path="/" component={LandingView} />
       <Route path="/register/:courseID?" component={RegistrationView} />
-		</Switch>
-	</Container>
+    </Switch>
+  </Container>
 );
 
 Views.links = {
-	...siteLinks,
-	navList: linksAsList(siteLinks.nav),
-	footerList: linksAsList(siteLinks.footer),
+  ...siteLinks,
+  navList: linksAsList(siteLinks.nav),
+  footerList: linksAsList(siteLinks.footer),
 };
 
 export default Views;
