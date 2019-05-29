@@ -23,9 +23,9 @@ const query = gql`
 /**
  * HOF used for requesting and injecting upcoming course data
  * - uses <Request> wrapper component with getCourses query
- * - provides a courses [Course] prop to the Consumer component
+ * - provides a data.courses [Course] prop to the Consumer component
  * - curries any additional props
- * @param {func} Consumer receives props.courses
+ * @param {func} Consumer receives props.data.courses
  */
 const withUpcomingCourses = Consumer => props => (
   <Request query={query} Consumer={Consumer} {...props} />
