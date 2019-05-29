@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import {
   Form,
   Header,
@@ -12,56 +11,27 @@ import {
 } from "semantic-ui-react";
 
 import "./style-overrides.css";
-import CourseButton from "./CourseButton";
+import CourseSelect from "./CourseSelect";
 import StaticAnimation from "../../components/StaticAnimation";
 
-// TODO: remove after connecting to API
-import { upcomingCourses } from "../mock-data";
-
-const isValidCourseID = (courseID, courses) =>
-  courses.some(course => course.id === Number(courseID));
-
 class RegistrationView extends Component {
-  static propTypes = {
-    // TODO: complete after settling API schema
-  };
-  static defaultProps = {
-    data: {
-      getCourses: {
-        courses: upcomingCourses,
-      },
+  state = {
+    fields: {
+      city: "",
+      email: "",
+      state: "",
+      country: "",
+      company: "",
+      lastName: "",
+      firstName: "",
+      paymentType: "",
+      mailingList: false,
+      courseId: this.props.match.params.courseId || "",
     },
+    errors: {},
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      fields: {
-        courseID: "",
-        firstName: "",
-        lastName: "",
-        email: "",
-        city: "",
-        state: "",
-        country: "",
-        company: "",
-        mailingList: false,
-        paymentType: "",
-      },
-      errors: {},
-    };
-
-    const { match, data } = props;
-    const { courseID } = match.params;
-    const { courses } = data.getCourses;
-
-    if (courseID && isValidCourseID(courseID, courses)) {
-      this.state.fields.courseID = Number(courseID);
-    }
-  }
-
-  handleChange = (event, target) =>
+  handleChange = (_, target) =>
     this.setState(state => {
       const { name, value } = target;
       const { fields } = state;
@@ -113,7 +83,6 @@ class RegistrationView extends Component {
   };
 
   render() {
-    const { courses } = this.props.data.getCourses;
     const { fields, shouldShake } = this.state;
 
     return (
@@ -131,13 +100,10 @@ class RegistrationView extends Component {
             <Header as="h2" inverted content="Select a Course" />
           </Grid.Row>
           <Grid.Row>
-            {courses.map(course => (
-              <CourseButton
-                course={course}
-                handleChange={this.handleChange}
-                selectedCourseID={fields.courseID}
-              />
-            ))}
+            <CourseSelect
+              handleChange={this.handleChange}
+              selectedCourseId={fields.courseId}
+            />
           </Grid.Row>
         </Grid>
         <Divider clearing hidden />
@@ -222,7 +188,7 @@ class RegistrationView extends Component {
                     </Message.Item>
                     <Message.Item>
                       We <strong>only send 4-5 emails per year</strong> about
-                      upcoming courses and events
+                      upcoming courses and web events
                     </Message.Item>
                   </Message.List>
                   <Divider />
