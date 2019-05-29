@@ -4,8 +4,8 @@ import { Transition } from "semantic-ui-react";
 
 class StaticAnimation extends Component {
   static propTypes = {
+    animate: PropTypes.bool,
     duration: PropTypes.number,
-    animate: PropTypes.bool.isRequired,
     children: PropTypes.element.isRequired,
     animation: PropTypes.oneOf([
       "jiggle",
