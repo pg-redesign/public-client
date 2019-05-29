@@ -1,309 +1,254 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import {
-	Form,
-	Header,
-	Card,
-	Button,
-	Grid,
-	Divider,
-	Input,
-	Label,
-	Container,
-	Message,
-	Icon,
-	Transition,
+  Form,
+  Header,
+  Grid,
+  Divider,
+  Input,
+  Label,
+  Container,
+  Message,
 } from "semantic-ui-react";
 
-import './style-overrides.css';
-import { CourseCardTop } from "../../components/CourseCard";
+import "./style-overrides.css";
+import CourseButton from "./CourseButton";
+import StaticAnimation from "../../components/StaticAnimation";
 
 // TODO: remove after connecting to API
 import { upcomingCourses } from "../mock-data";
 
-class StaticAnimation extends Component {
-	static propTypes = Transition.propTypes;
-
-	state = {
-		visible: true,
-	};
-
-	componentDidUpdate = previousProps => {
-		const { animate } = this.props;
-		if (animate && !previousProps.animate) {
-			this.handleAnimate();
-		}
-	};
-
-	handleAnimate = () => this.setState(state => ({ visible: !state.visible }));
-
-	render = () => {
-		const { visible } = this.state;
-		const { animation, children } = this.props;
-
-		return (
-			<Transition animation={animation} visible={visible}>
-				{children}
-			</Transition>
-		);
-	};
-}
-
 const isValidCourseID = (courseID, courses) =>
-	courses.some(course => course.id === Number(courseID));
+  courses.some(course => course.id === Number(courseID));
 
-const courseButton = (courseData, selectedCourseID, handleChange) => {
-	const handleClick = event =>
-		handleChange(event, { name: "courseID", value: courseData.id });
+class RegistrationView extends Component {
+  static propTypes = {
+    // TODO: complete after settling API schema
+  };
+  static defaultProps = {
+    data: {
+      getCourses: {
+        courses: upcomingCourses,
+      },
+    },
+  };
 
-	return (
-		<Button
-			inverted
-			compact
-			onClick={handleClick}
-			style={{ margin: "10px" }}
-			className="registration-button"
-			key={`course-select-${courseData.id}`}
-			active={selectedCourseID === courseData.id}
-		>
-			<Card color="grey" raised>
-				<CourseCardTop {...courseData} />
-				<Card.Content textAlign="center" style={{ color: "black" }}>
-					<Icon name="dollar sign" color="green" fitted />{" "}
-					{courseData.cost || 1695} USD
-				</Card.Content>
-			</Card>
-		</Button>
-	);
-};
+  constructor(props) {
+    super(props);
 
-export default class RegistrationView extends Component {
-	static propTypes = {};
-	static defaultProps = {
-		data: {
-			viewData: {
-				courses: upcomingCourses,
-				referenceOptions: [
-					{ text: "newsletter", value: "email" },
-					{ text: "a colleague", value: "colleague" },
-				],
-			},
-		},
-	};
+    this.state = {
+      fields: {
+        courseID: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        city: "",
+        state: "",
+        country: "",
+        company: "",
+        mailingList: false,
+        paymentType: "",
+      },
+      errors: {},
+    };
 
-	constructor(props) {
-		super(props);
+    const { match, data } = props;
+    const { courseID } = match.params;
+    const { courses } = data.getCourses;
 
-		this.state = {
-			fields: {
-				courseID: "",
-				firstName: "",
-				lastName: "",
-				email: "",
-				city: "",
-				state: "",
-				country: "",
-				company: "",
-				mailingList: false,
-				reference: "",
-				paymentType: "",
-			},
-			errors: {},
-		};
+    if (courseID && isValidCourseID(courseID, courses)) {
+      this.state.fields.courseID = Number(courseID);
+    }
+  }
 
-		const { match, data } = props;
-		const { courseID } = match.params;
-		const { courses } = data.viewData;
+  handleChange = (event, target) =>
+    this.setState(state => {
+      const { name, value } = target;
+      const { fields } = state;
+      console.log({ fields, target });
+      return { fields: { ...fields, [name]: value } };
+    });
 
-		if (courseID && isValidCourseID(courseID, courses)) {
-			this.state.fields.courseID = Number(courseID);
-		}
-	}
+  handleCheckbox = (event, target) => {
+    const { name, checked } = target;
+    this.handleChange(event, { name, value: checked });
+  };
 
-	handleChange = (event, target) =>
-		this.setState(state => {
-			const { name, value } = target;
-			const { fields, errors, disabled } = state;
-			console.log({ fields, target });
-			return { fields: { ...fields, [name]: value } };
-		});
+  shakeForm = () =>
+    this.setState({ shouldShake: true }, () =>
+      this.setState({ shouldShake: false }),
+    );
 
-	handleCheckbox = (event, target) => {
-		const { name, checked } = target;
-		this.handleChange(event, { name, value: checked });
-	};
+  formIsValid = () => {
+    const { errors } = this.state;
+    // TODO: validate here or onChange?
+  };
 
-	shakeForm = () =>
-		this.setState({ shouldShake: true }, () =>
-			this.setState({ shouldShake: false }),
-		);
+  handleSubmit = event => {
+    event.preventDefault();
 
-	formIsValid = () => {
-		const { errors } = this.state;
-		// TODO: validate here or onChange?
-	};
+    const { fields } = this.state;
 
-	handleSubmit = event => {
-		event.preventDefault();
+    if (!this.formIsValid()) {
+      this.shakeForm();
+    }
+    // TODO: submit mutation
+  };
 
-		const { fields, errors } = this.state;
-		console.log({ fields });
+  labelOrError = (fieldName, labelText, errorText) => {
+    const error = this.state.errors[fieldName];
 
-		if (!this.formIsValid()) {
-			this.shakeForm();
-		}
-		// TODO: submit mutation
-	};
+    if (!error) return <Label basic content={labelText} />;
 
-	labelOrError = (fieldName, labelText, errorText) => {
-		const error = this.state.errors[fieldName];
+    return (
+      <Label
+        basic
+        color="red"
+        size="large"
+        horizontal
+        pointing="right"
+        content={errorText || "invalid entry"}
+      />
+    );
+  };
 
-		if (!error) return <Label basic content={labelText} />;
+  render() {
+    const { courses } = this.props.data.getCourses;
+    const { fields, shouldShake } = this.state;
 
-		return (
-			<Label
-				basic
-				color="red"
-				size="large"
-				horizontal
-				pointing="right"
-				content={errorText || "invalid entry"}
-			/>
-		);
-	};
+    return (
+      <Form>
+        <Header
+          as="h1"
+          textAlign="center"
+          content="Course Registration"
+          inverted
+        />
+        <Divider section />
 
-	render() {
-		const { courses } = this.props.data.viewData;
-		const { fields, shouldShake } = this.state;
+        <Grid container centered>
+          <Grid.Row>
+            <Header as="h2" inverted content="Select a Course" />
+          </Grid.Row>
+          <Grid.Row>
+            {courses.map(course => (
+              <CourseButton
+                course={course}
+                handleChange={this.handleChange}
+                selectedCourseID={fields.courseID}
+              />
+            ))}
+          </Grid.Row>
+        </Grid>
+        <Divider clearing hidden />
 
-		return (
-			<Form>
-				<Header
-					as="h1"
-					textAlign="center"
-					content="Course Registration"
-					inverted
-				/>
-				<Divider section />
+        {/* student info */}
+        <StaticAnimation animation="shake" animate={shouldShake}>
+          <Container style={{ width: "80%" }}>
+            <Form.Group widths="equal">
+              <Form.Field width="6">
+                <Input
+                  name="firstName"
+                  value={fields.firstName}
+                  onChange={this.handleChange}
+                  label={this.labelOrError("firstName", "First Name")}
+                />
+              </Form.Field>
+              <Form.Field width="6">
+                <Input
+                  inverted
+                  name="lastName"
+                  value={fields.lastName}
+                  onChange={this.handleChange}
+                  label={this.labelOrError("lastName", "Last Name")}
+                />
+              </Form.Field>
+            </Form.Group>
 
-				<Grid container centered>
-					<Grid.Row>
-						<Header as="h2" inverted content="Select a Course" />
-					</Grid.Row>
-					<Grid.Row>
-						{courses.map(courseData =>
-							courseButton(courseData, fields.courseID, this.handleChange),
-						)}
-					</Grid.Row>
-				</Grid>
-				<Divider clearing hidden />
+            <Form.Group widths="equal">
+              <Form.Field width="8">
+                <Input
+                  name="company"
+                  value={fields.company}
+                  onChange={this.handleChange}
+                  label={this.labelOrError("company", "Company")}
+                />
+              </Form.Field>
+              <Form.Field width="8">
+                <Input
+                  name="email"
+                  type="email"
+                  value={fields.email}
+                  onChange={this.handleChange}
+                  label={this.labelOrError("email", "Email", "invalid email")}
+                />
+              </Form.Field>
+            </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Field width="5">
+                <Input
+                  name="city"
+                  value={fields.city}
+                  onChange={this.handleChange}
+                  label={this.labelOrError("city", "City")}
+                />
+              </Form.Field>
+              <Form.Field width="5">
+                <Input
+                  name="state"
+                  value={fields.state}
+                  onChange={this.handleChange}
+                  label={this.labelOrError("state", "State")}
+                />
+              </Form.Field>
+              <Form.Field width="5">
+                <Input
+                  name="country"
+                  value={fields.country}
+                  onChange={this.handleChange}
+                  label={this.labelOrError("country", "Country")}
+                />
+              </Form.Field>
+            </Form.Group>
 
-				{/* student info */}
-				<StaticAnimation animation="shake" animate={shouldShake}>
-					<Container style={{ width: "80%" }}>
-						<Form.Group widths="equal">
-							<Form.Field width="6">
-								<Input
-									name="firstName"
-									value={fields.firstName}
-									onChange={this.handleChange}
-									label={this.labelOrError("firstName", "First Name")}
-								/>
-							</Form.Field>
-							<Form.Field width="6">
-								<Input
-									inverted
-									name="lastName"
-									value={fields.lastName}
-									onChange={this.handleChange}
-									label={this.labelOrError("lastName", "Last Name")}
-								/>
-							</Form.Field>
-						</Form.Group>
-
-						<Form.Group widths="equal">
-							<Form.Field width="8">
-								<Input
-									name="company"
-									value={fields.company}
-									onChange={this.handleChange}
-									label={this.labelOrError("company", "Company")}
-								/>
-							</Form.Field>
-							<Form.Field width="8">
-								<Input
-									name="email"
-									type="email"
-									value={fields.email}
-									onChange={this.handleChange}
-									label={this.labelOrError("email", "Email", "invalid email")}
-								/>
-							</Form.Field>
-						</Form.Group>
-						<Form.Group widths="equal">
-							<Form.Field width="5">
-								<Input
-									name="city"
-									value={fields.city}
-									onChange={this.handleChange}
-									label={this.labelOrError("city", "City")}
-								/>
-							</Form.Field>
-							<Form.Field width="5">
-								<Input
-									name="state"
-									value={fields.state}
-									onChange={this.handleChange}
-									label={this.labelOrError("state", "State")}
-								/>
-							</Form.Field>
-							<Form.Field width="5">
-								<Input
-									name="country"
-									value={fields.country}
-									onChange={this.handleChange}
-									label={this.labelOrError("country", "Country")}
-								/>
-							</Form.Field>
-						</Form.Group>
-
-						<Grid centered container>
-							<Grid.Row>
-								<Message compact positive>
-									<Message.Header content="Would you like to join our mailing list?" />
-									<Message.List>
-										<Message.Item>
-											We will <strong>never spam or sell</strong> your contact
-											information
-										</Message.Item>
-										<Message.Item>
-											We <strong>only send 4-5 emails per year</strong> about
-											upcoming courses and events
-										</Message.Item>
-									</Message.List>
-									<Divider />
-									<Form.Checkbox
-										toggle
-										name="mailingList"
-										checked={fields.mailingList}
-										onClick={this.handleCheckbox}
-									/>
-								</Message>
-							</Grid.Row>
-							<Grid.Row>
-								<Form.Button
-									type="submit"
-									inverted
-									size="huge"
-									// disabled={disabled}
-									onClick={this.handleSubmit}
-									content="Continue to Payment"
-								/>
-							</Grid.Row>
-						</Grid>
-					</Container>
-				</StaticAnimation>
-			</Form>
-		);
-	}
+            <Grid centered container>
+              <Grid.Row>
+                <Message compact positive>
+                  <Message.Header content="Would you like to join our mailing list?" />
+                  <Message.List>
+                    <Message.Item>
+                      We will <strong>never spam or sell</strong> your contact
+                      information
+                    </Message.Item>
+                    <Message.Item>
+                      We <strong>only send 4-5 emails per year</strong> about
+                      upcoming courses and events
+                    </Message.Item>
+                  </Message.List>
+                  <Divider />
+                  <Form.Checkbox
+                    toggle
+                    name="mailingList"
+                    checked={fields.mailingList}
+                    onClick={this.handleCheckbox}
+                  />
+                </Message>
+              </Grid.Row>
+              <Grid.Row>
+                <Form.Button
+                  inverted
+                  size="huge"
+                  type="submit"
+                  onClick={this.handleSubmit}
+                  content="Continue to Payment"
+                />
+              </Grid.Row>
+            </Grid>
+          </Container>
+        </StaticAnimation>
+      </Form>
+    );
+  }
 }
+
+export default RegistrationView;
