@@ -2,30 +2,26 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Card } from "semantic-ui-react";
 
-import { courseTypeShape } from "../../utils/prop-types";
 import CourseCard from "../../components/CourseCard";
-
-// TODO: remove when connected to API
-import { upcomingCourses } from "../mock-data";
+import { withUpcomingCourses } from "../../wrappers";
+import { courseTypeShape } from "../../utils/prop-types";
 
 const UpcomingCourses = props => {
-	const { courses } = props;
+  const { courses } = props.data;
 
-	return (
-		<Card.Group stackable itemsPerRow="2">
-			{courses.map(courseData => (
-				<CourseCard key={`course-${courseData.id}`} {...courseData} />
-			))}
-		</Card.Group>
-	);
+  return (
+    <Card.Group stackable centered itemsPerRow="2">
+      {courses.map(course => (
+        <CourseCard key={`course-${course.id}`} {...course} />
+      ))}
+    </Card.Group>
+  );
 };
 
 UpcomingCourses.propTypes = {
-	courses: PropTypes.arrayOf(courseTypeShape).isRequired,
+  data: PropTypes.shape({
+    courses: PropTypes.arrayOf(courseTypeShape).isRequired,
+  }),
 };
 
-UpcomingCourses.defaultProps = {
-	courses: upcomingCourses,
-};
-
-export default UpcomingCourses;
+export default withUpcomingCourses(UpcomingCourses);
