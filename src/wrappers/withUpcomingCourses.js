@@ -1,7 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { gql } from "apollo-boost";
 
 import Request from "../components/Request";
+import { courseTypeShape } from "../utils/prop-types";
 
 const query = gql`
   query UpcomingCourses {
@@ -30,5 +32,11 @@ const query = gql`
 const withUpcomingCourses = Consumer => props => (
   <Request query={query} Consumer={Consumer} {...props} />
 );
+
+withUpcomingCourses.consumerPropTypes = {
+  data: PropTypes.shape({
+    courses: PropTypes.arrayOf(courseTypeShape).isRequired,
+  }),
+};
 
 export default withUpcomingCourses;

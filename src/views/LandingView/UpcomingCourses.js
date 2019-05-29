@@ -1,10 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Card } from "semantic-ui-react";
 
 import CourseCard from "../../components/CourseCard";
 import { withUpcomingCourses } from "../../wrappers";
-import { courseTypeShape } from "../../utils/prop-types";
 
 const UpcomingCourses = props => {
   const { courses } = props.data;
@@ -19,9 +17,7 @@ const UpcomingCourses = props => {
 };
 
 UpcomingCourses.propTypes = {
-  data: PropTypes.shape({
-    courses: PropTypes.arrayOf(courseTypeShape).isRequired,
-  }),
+  ...withUpcomingCourses.consumerPropTypes,
 };
 
 export default withUpcomingCourses(UpcomingCourses);
