@@ -6,7 +6,7 @@ import { ErrorMessage, LoadingMessage } from "./IconMessage";
 
 const propTypes = {
   variables: PropTypes.object,
-  query: PropTypes.func.isRequired,
+  query: PropTypes.object.isRequired,
   Consumer: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
 };
 
