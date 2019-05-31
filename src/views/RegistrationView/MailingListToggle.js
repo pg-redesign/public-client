@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Form, Divider, Message } from "semantic-ui-react";
 
 const MailingListToggle = props => {
-  const { mailingListField, handleToggle } = props;
+  const { mailingListField, onToggle } = props;
 
   return (
     <Message compact positive>
@@ -21,7 +21,7 @@ const MailingListToggle = props => {
       <Form.Checkbox
         toggle
         name="mailingList"
-        onClick={handleToggle}
+        onClick={onToggle}
         checked={mailingListField}
       />
     </Message>
@@ -29,7 +29,7 @@ const MailingListToggle = props => {
 };
 
 MailingListToggle.propTypes = {
-  handleToggle: PropTypes.func.isRequired,
+  onToggle: PropTypes.func.isRequired,
   mailingListField: PropTypes.bool.isRequired,
 };
 

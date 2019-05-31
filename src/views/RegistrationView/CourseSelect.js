@@ -8,21 +8,21 @@ import { CourseCardTop } from "../../components/CourseCard";
 
 const courseSelectPropTypes = {
   ...withUpcomingCourses.consumerPropTypes,
-  handleSelect: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
   selectedCourseId: PropTypes.string.isRequired,
 };
 
 const courseSelectButtonPropTypes = {
   course: courseTypeShape.isRequired,
-  handleSelect: courseSelectPropTypes.handleSelect,
+  onSelect: courseSelectPropTypes.onSelect,
   selectedCourseId: courseSelectPropTypes.selectedCourseId,
 };
 
 export const CourseSelectButton = props => {
-  const { course, selectedCourseId, handleSelect } = props;
+  const { course, selectedCourseId, onSelect } = props;
 
   const handleClick = event =>
-    handleSelect(event, { name: "courseId", value: course.id });
+    onSelect(event, { name: "courseId", value: course.id });
 
   return (
     <Button
@@ -48,7 +48,7 @@ CourseSelectButton.propTypes = courseSelectButtonPropTypes;
 
 const CourseSelect = props => {
   const {
-    handleSelect,
+    onSelect,
     selectedCourseId,
     data: { courses },
   } = props;
@@ -56,7 +56,7 @@ const CourseSelect = props => {
   return courses.map(course => (
     <CourseSelectButton
       course={course}
-      handleSelect={handleSelect}
+      onSelect={onSelect}
       selectedCourseId={selectedCourseId}
       key={`course-select-button-${course.id}`}
     />
