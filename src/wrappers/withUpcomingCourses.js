@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { gql } from "apollo-boost";
 
-import Request from "../components/Request";
+import QueryHandler from "../components/QueryHandler";
 import { courseTypeShape } from "../utils/prop-types";
 
 const query = gql`
@@ -24,13 +24,13 @@ const query = gql`
 
 /**
  * HOF used for requesting and injecting upcoming course data
- * - uses <Request> wrapper component with getCourses query
+ * - uses <QueryHandler> wrapper component with getCourses query
  * - provides a data.courses [Course] prop to the Consumer component
  * - curries any additional props
  * @param {func} Consumer receives props.data.courses
  */
 const withUpcomingCourses = Consumer => props => (
-  <Request query={query} Consumer={Consumer} {...props} />
+  <QueryHandler query={query} Consumer={Consumer} {...props} />
 );
 
 withUpcomingCourses.consumerPropTypes = {
