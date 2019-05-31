@@ -15,6 +15,7 @@ const iconMessagePropTypes = {
 
 const IconMessage = props => {
   const {
+    size,
     width,
     info,
     negative,
@@ -28,7 +29,7 @@ const IconMessage = props => {
 
   return (
     <Container style={{ width }}>
-      <Message {...messageType} icon size="small">
+      <Message {...messageType} icon size={size}>
         <Icon name={iconName} loading={spinIcon} />
         <Message.Content>
           <Message.Header content={header} />
@@ -46,6 +47,7 @@ export const LoadingMessage = props => <IconMessage {...props} />;
 LoadingMessage.defaultProps = {
   info: true,
   width: "25%",
+  size: "small",
   spinIcon: true,
   iconName: "circle notched",
   header: "Loading content...",
@@ -55,6 +57,7 @@ export const ErrorMessage = props => <IconMessage {...props} />;
 
 ErrorMessage.defaultProps = {
   width: "25%",
+  size: "small",
   iconName: "bug",
   negative: true,
   header: "An error occurred",
