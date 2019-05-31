@@ -1,89 +1,135 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import AJV from "ajv";
+import { gql } from "apollo-boost";
 import {
   Form,
-  Header,
+  Icon,
   Grid,
-  Divider,
   Input,
   Label,
-  Container,
+  Header,
   Message,
+  Divider,
+  Container,
 } from "semantic-ui-react";
 
 import "./style-overrides.css";
+
 import CourseSelect from "./CourseSelect";
+import PaymentSelect from "./PaymentSelect";
+// import client from "../../utils/api-client";
+import Request from "../../components/Request";
+import ErrorLabel from "../../components/ErrorLabel";
 import StaticAnimation from "../../components/StaticAnimation";
 
+const query = gql`
+  query RegistrationView {
+    schema: getFormSchema(form: REGISTRATION)
+    courses: getCourses {
+      id
+    }
+  }
+`;
+
+const isValidCourseId = (courseId, courses) =>
+  courses.some(course => course.id === courseId);
+
 class RegistrationView extends Component {
-  state = {
-    fields: {
-      city: "",
-      email: "",
-      state: "",
-      country: "",
-      company: "",
-      lastName: "",
-      firstName: "",
-      paymentType: "",
-      mailingList: false,
-      courseId: this.props.match.params.courseId || "",
-    },
-    errors: {},
+  static propTypes = {
+    data: PropTypes.shape({
+      schema: PropTypes.object.isRequired,
+      courses: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.string }))
+        .isRequired,
+    }),
   };
 
-  handleChange = (_, target) =>
-    this.setState(state => {
-      const { name, value } = target;
-      const { fields } = state;
-      console.log({ fields, target });
-      return { fields: { ...fields, [name]: value } };
-    });
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      fields: {
+        city: "",
+        email: "",
+        state: "",
+        country: "",
+        company: "",
+        courseId: "",
+        lastName: "",
+        firstName: "",
+        paymentType: "",
+        mailingList: false,
+      },
+      errors: {},
+    };
+
+    const { courses, schema } = props.data;
+    const { courseId } = props.match.params;
+
+    // preselect the course if a valid courseId is found in the path
+    if (courseId && isValidCourseId(courseId, courses)) {
+      this.state.fields.courseId = courseId;
+    }
+
+    // compiles the API form schema, usage: formValidator(fieldsObject) -> boolean
+    const ajv = new AJV({ allErrors: true });
+    // after executing formValidator.errors holds field errors information
+    this.state.formValidator = ajv.compile(schema);
+  }
+
+  // callback used for additional operation after state has been set
+  handleChange = (event, target, callback) =>
+    this.setState(
+      state => {
+        const { name, value } = target;
+        return {
+          fields: { ...state.fields, [name]: value },
+          errors: { ...state.errors, [name]: false },
+        };
+      },
+      // handleSubmit after setting state, <PaymentSelect> onClick
+      () => callback && callback(event),
+    );
 
   handleCheckbox = (event, target) => {
     const { name, checked } = target;
     this.handleChange(event, { name, value: checked });
   };
 
-  shakeForm = () =>
-    this.setState({ shouldShake: true }, () =>
+  handleFormErrors = validationErrors => {
+    const errors = validationErrors.reduce((errors, error) => {
+      // AJV has each field name as dataPath: ".fieldName"
+      const name = error.dataPath.replace(".", "");
+      return { ...errors, [name]: true };
+    }, {});
+
+    this.setState({ errors, shouldShake: true }, () =>
       this.setState({ shouldShake: false }),
     );
-
-  formIsValid = () => {
-    const { errors } = this.state;
-    // TODO: validate here or onChange?
   };
 
   handleSubmit = event => {
     event.preventDefault();
+    const { fields, formValidator } = this.state;
 
-    const { fields } = this.state;
+    const isValid = formValidator(fields);
+    if (!isValid) return this.handleFormErrors(formValidator.errors);
 
-    if (!this.formIsValid()) {
-      this.shakeForm();
-    }
-    // TODO: submit mutation
+    // TODO: submit form
   };
 
   labelOrError = (fieldName, labelText, errorText) => {
     const error = this.state.errors[fieldName];
 
-    if (!error) return <Label basic content={labelText} />;
-
-    return (
-      <Label
-        basic
-        color="red"
-        size="large"
-        horizontal
-        pointing="right"
-        content={errorText || "invalid entry"}
-      />
+    return error ? (
+      <ErrorLabel content={`invalid ${labelText}`} />
+    ) : (
+      <Label basic content={labelText} />
     );
   };
 
   render() {
-    const { fields, shouldShake } = this.state;
+    const { fields, errors, shouldShake } = this.state;
 
     return (
       <Form>
@@ -93,20 +139,26 @@ class RegistrationView extends Component {
           content="Course Registration"
           inverted
         />
-        <Divider section />
+        <Divider clearing />
 
         <Grid container centered>
           <Grid.Row>
-            <Header as="h2" inverted content="Select a Course" />
-          </Grid.Row>
-          <Grid.Row>
             <CourseSelect
-              handleChange={this.handleChange}
+              handleSelect={this.handleChange}
               selectedCourseId={fields.courseId}
             />
           </Grid.Row>
+          {errors.courseId && (
+            <Grid.Column computer="3" width="10" textAlign="center" centered>
+              <ErrorLabel
+                pointing="above"
+                attached="bottom"
+                content="Please select a course"
+              />
+            </Grid.Column>
+          )}
         </Grid>
-        <Divider clearing hidden />
+        <Divider clearing />
 
         {/* student info */}
         <StaticAnimation animation="shake" animate={shouldShake}>
@@ -146,7 +198,7 @@ class RegistrationView extends Component {
                   type="email"
                   value={fields.email}
                   onChange={this.handleChange}
-                  label={this.labelOrError("email", "Email", "invalid email")}
+                  label={this.labelOrError("email", "Email")}
                 />
               </Form.Field>
             </Form.Group>
@@ -200,14 +252,29 @@ class RegistrationView extends Component {
                   />
                 </Message>
               </Grid.Row>
+
               <Grid.Row>
-                <Form.Button
-                  inverted
-                  size="huge"
-                  type="submit"
-                  onClick={this.handleSubmit}
-                  content="Continue to Payment"
+                <PaymentSelect
+                  handleSubmit={this.handleSubmit}
+                  handleSelect={this.handleChange}
+                  selectedPaymentType={fields.paymentType}
                 />
+              </Grid.Row>
+
+              <Grid.Row>
+                <Label
+                  basic
+                  as="a"
+                  size="large"
+                  color="purple"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://stripe.com/"
+                >
+                  <Icon name="lock" />
+                  secure credit card processing with{" "}
+                  <Icon name="stripe card" size="large" fitted />
+                </Label>
               </Grid.Row>
             </Grid>
           </Container>
@@ -217,4 +284,7 @@ class RegistrationView extends Component {
   }
 }
 
-export default RegistrationView;
+// export default RegistrationView;
+export default props => (
+  <Request query={query} Consumer={RegistrationView} {...props} />
+);
