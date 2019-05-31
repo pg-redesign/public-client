@@ -8,28 +8,27 @@ import { CourseCardTop } from "../../components/CourseCard";
 
 const courseSelectPropTypes = {
   ...withUpcomingCourses.consumerPropTypes,
-  handleChange: PropTypes.func.isRequired,
+  handleSelect: PropTypes.func.isRequired,
   selectedCourseId: PropTypes.string.isRequired,
 };
 
 const courseSelectButtonPropTypes = {
   course: courseTypeShape.isRequired,
-  handleChange: courseSelectPropTypes.handleChange,
+  handleSelect: courseSelectPropTypes.handleSelect,
   selectedCourseId: courseSelectPropTypes.selectedCourseId,
 };
 
 export const CourseSelectButton = props => {
-  const { course, selectedCourseId, handleChange } = props;
+  const { course, selectedCourseId, handleSelect } = props;
 
   const handleClick = event =>
-    handleChange(event, { name: "courseId", value: course.id });
+    handleSelect(event, { name: "courseId", value: course.id });
 
   return (
     <Button
       compact
       inverted
       onClick={handleClick}
-      style={{ margin: "10px" }}
       className="registration-button"
       key={`course-button-${course.id}`}
       active={selectedCourseId === course.id}
@@ -49,7 +48,7 @@ CourseSelectButton.propTypes = courseSelectButtonPropTypes;
 
 const CourseSelect = props => {
   const {
-    handleChange,
+    handleSelect,
     selectedCourseId,
     data: { courses },
   } = props;
@@ -57,7 +56,7 @@ const CourseSelect = props => {
   return courses.map(course => (
     <CourseSelectButton
       course={course}
-      handleChange={handleChange}
+      handleSelect={handleSelect}
       selectedCourseId={selectedCourseId}
       key={`course-select-button-${course.id}`}
     />
