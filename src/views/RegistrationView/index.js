@@ -9,7 +9,6 @@ import {
   Input,
   Label,
   Header,
-  Message,
   Divider,
   Container,
 } from "semantic-ui-react";
@@ -18,8 +17,9 @@ import "./style-overrides.css";
 
 import CourseSelect from "./CourseSelect";
 import PaymentSelect from "./PaymentSelect";
-// import client from "../../utils/api-client";
+import client from "../../utils/api-client";
 import Request from "../../components/Request";
+import MailingListToggle from "./MailingListToggle";
 import ErrorLabel from "../../components/ErrorLabel";
 import StaticAnimation from "../../components/StaticAnimation";
 
@@ -118,7 +118,7 @@ class RegistrationView extends Component {
     // TODO: submit form
   };
 
-  labelOrError = (fieldName, labelText, errorText) => {
+  labelOrError = (fieldName, labelText) => {
     const error = this.state.errors[fieldName];
 
     return error ? (
@@ -139,8 +139,10 @@ class RegistrationView extends Component {
           content="Course Registration"
           inverted
         />
+
         <Divider clearing />
 
+        {/* course selection */}
         <Grid container centered>
           <Grid.Row>
             <CourseSelect
@@ -158,7 +160,8 @@ class RegistrationView extends Component {
             </Grid.Column>
           )}
         </Grid>
-        <Divider clearing />
+
+        <Divider clearing hidden />
 
         {/* student info */}
         <StaticAnimation animation="shake" animate={shouldShake}>
@@ -228,57 +231,46 @@ class RegistrationView extends Component {
                 />
               </Form.Field>
             </Form.Group>
-
-            <Grid centered container>
-              <Grid.Row>
-                <Message compact positive>
-                  <Message.Header content="Would you like to join our mailing list?" />
-                  <Message.List>
-                    <Message.Item>
-                      We will <strong>never spam or sell</strong> your contact
-                      information
-                    </Message.Item>
-                    <Message.Item>
-                      We <strong>only send 4-5 emails per year</strong> about
-                      upcoming courses and web events
-                    </Message.Item>
-                  </Message.List>
-                  <Divider />
-                  <Form.Checkbox
-                    toggle
-                    name="mailingList"
-                    checked={fields.mailingList}
-                    onClick={this.handleCheckbox}
-                  />
-                </Message>
-              </Grid.Row>
-
-              <Grid.Row>
-                <PaymentSelect
-                  handleSubmit={this.handleSubmit}
-                  handleSelect={this.handleChange}
-                  selectedPaymentType={fields.paymentType}
-                />
-              </Grid.Row>
-
-              <Grid.Row>
-                <Label
-                  basic
-                  as="a"
-                  size="large"
-                  color="purple"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://stripe.com/"
-                >
-                  <Icon name="lock" />
-                  secure credit card processing with{" "}
-                  <Icon name="stripe card" size="large" fitted />
-                </Label>
-              </Grid.Row>
-            </Grid>
           </Container>
         </StaticAnimation>
+
+        <Divider hidden />
+
+        <Grid centered container>
+          {/* mailing list */}
+          <Grid.Row>
+            <MailingListToggle
+              handleToggle={this.handleCheckbox}
+              mailingListField={fields.mailingList}
+            />
+          </Grid.Row>
+
+          {/* payment select / form submit */}
+          <Grid.Row>
+            <PaymentSelect
+              handleSubmit={this.handleSubmit}
+              handleSelect={this.handleChange}
+              selectedPaymentType={fields.paymentType}
+            />
+          </Grid.Row>
+
+          {/* credit card processing notice */}
+          <Grid.Row>
+            <Label
+              basic
+              as="a"
+              size="large"
+              color="purple"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://stripe.com/"
+            >
+              <Icon name="lock" />
+              secure credit card processing with{" "}
+              <Icon name="stripe card" size="large" fitted />
+            </Label>
+          </Grid.Row>
+        </Grid>
       </Form>
     );
   }
