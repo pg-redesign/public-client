@@ -12,7 +12,7 @@ export const CourseCardTop = props => {
       <Card.Header textAlign="center" content={name} />
       <Card.Meta textAlign="center">
         {date}
-        {" - "}
+        <br />
         <Popup
           size="tiny"
           position="bottom center"
