@@ -10,7 +10,7 @@ const Views = () => (
   <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
     <Switch>
       <Route exact path="/" component={LandingView} />
-      <Route path="/register/:courseID?" component={RegistrationView} />
+      <Route path="/register/:courseId?" component={RegistrationView} />
     </Switch>
   </Container>
 );
