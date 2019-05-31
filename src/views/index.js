@@ -4,21 +4,25 @@ import { Container } from "semantic-ui-react";
 
 import LandingView from "./LandingView";
 import RegistrationView from "./RegistrationView";
-import siteLinks, { linksAsList } from "./site-links";
+import siteLinks, { navList, footerList } from "./site-links";
 
 const Views = () => (
   <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
     <Switch>
-      <Route exact path="/" component={LandingView} />
-      <Route path="/register/:courseId?" component={RegistrationView} />
+      <Route exact path={siteLinks.LANDING} component={LandingView} />
+      <Route
+        component={RegistrationView}
+        // optional courseId path param
+        path={`${siteLinks.REGISTRATION}/:courseId?`}
+      />
     </Switch>
   </Container>
 );
 
 Views.links = {
+  navList,
+  footerList,
   ...siteLinks,
-  navList: linksAsList(siteLinks.nav),
-  footerList: linksAsList(siteLinks.footer),
 };
 
 export default Views;
