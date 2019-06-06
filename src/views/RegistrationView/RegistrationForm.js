@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AJV from "ajv";
 import { gql } from "apollo-boost";
-import { Redirect } from "react-router-dom";
 import {
   Form,
   Icon,
@@ -15,15 +14,12 @@ import {
 } from "semantic-ui-react";
 
 import "./style-overrides.css";
-
-import siteLinks from "../site-links";
 import { withHandledQuery } from "../../wrappers";
 
 import CourseSelect from "./CourseSelect";
 import PaymentSelect from "./PaymentSelect";
 import MailingListToggle from "./MailingListToggle";
-import ErrorLabel from "../../components/ErrorLabel";
-import StaticAnimation from "../../components/StaticAnimation";
+import { LabelOrError, ErrorLabel, StaticAnimation } from "../../components";
 
 const query = gql`
   query RegistrationForm {
@@ -45,6 +41,7 @@ class RegistrationForm extends Component {
       courses: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.string }))
         .isRequired,
     }),
+    submitRegistration: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -113,54 +110,29 @@ class RegistrationForm extends Component {
   };
 
   handleSubmit = () => {
-    const { submitForm } = this.props;
+    const { submitRegistration } = this.props;
     const { fields, formValidator } = this.state;
-    console.log("calling handle submit");
 
     const isValid = formValidator(fields);
     if (!isValid) {
-      console.log({ isValid, errors: formValidator.errors });
       return this.handleFormErrors(formValidator.errors);
     }
-    submitForm({ variables: { registrationData: fields } });
+
+    submitRegistration(fields);
   };
 
   labelOrError = (fieldName, labelText) => {
-    const error = this.state.errors[fieldName];
-
-    return error ? (
-      <ErrorLabel content={`Invalid ${labelText}`} />
-    ) : (
-      <Label basic content={labelText} />
+    return (
+      <LabelOrError
+        fieldName={fieldName}
+        labelText={labelText}
+        errors={this.state.errors}
+      />
     );
   };
 
-  buildRedirect = () => {
-    const { fields } = this.state;
-
-    let pathName;
-    switch (fields.paymentType) {
-      case "CREDIT":
-        pathName = siteLinks.CREDIT_PAYMENT;
-        break;
-      case "CHECK":
-        pathName = siteLinks.CHECK_PAYMENT;
-        break;
-      default:
-        pathName = "/";
-    }
-
-    return {
-      pathName,
-      state: fields,
-    };
-  };
-
   render() {
-    const { submitComplete } = this.props;
     const { fields, errors, shouldShakeForErrors } = this.state;
-
-    if (submitComplete) return <Redirect to={this.buildRedirect()} />;
 
     return (
       <Form>
@@ -234,7 +206,6 @@ class RegistrationForm extends Component {
               <Form.Field width="8">
                 <Input
                   name="email"
-                  type="email"
                   value={fields.email}
                   onChange={this.handleChange}
                   label={this.labelOrError("email", "Email")}
