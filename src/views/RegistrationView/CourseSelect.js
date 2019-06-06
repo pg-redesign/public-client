@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card, Button, Icon } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 
 import { withUpcomingCourses } from "../../wrappers";
 import { courseTypeShape } from "../../utils/prop-types";
-import { CourseCardTop } from "../../components/CourseCard";
+import { CourseCardShort } from "../../components/CourseCard";
 
 const courseSelectPropTypes = {
   ...withUpcomingCourses.consumerPropTypes,
@@ -33,13 +33,7 @@ export const CourseSelectButton = props => {
       key={`course-button-${course.id}`}
       active={selectedCourseId === course.id}
     >
-      <Card color="grey" raised>
-        <CourseCardTop {...course} />
-        <Card.Content textAlign="center" style={{ color: "black" }}>
-          <Icon name="dollar sign" color="green" fitted />
-          {course.price} USD
-        </Card.Content>
-      </Card>
+      <CourseCardShort course={course} includePrice />
     </Button>
   );
 };
