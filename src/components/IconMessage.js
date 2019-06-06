@@ -3,37 +3,45 @@ import PropTypes from "prop-types";
 import { Container, Message, Icon } from "semantic-ui-react";
 
 const iconMessagePropTypes = {
-  body: PropTypes.string,
-  info: PropTypes.bool,
   spinIcon: PropTypes.bool,
-  positive: PropTypes.bool,
-  negative: PropTypes.bool,
-  header: PropTypes.string.isRequired,
-  width: PropTypes.oneOf(["20%", "25%", "30%", "50%", "60%", "75%", "100%"])
+  iconName: PropTypes.string,
+  body: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.element,
+  ]),
+  header: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.element,
+  ]).isRequired,
+  width: PropTypes.oneOf(["25%", "30%", "40%", "50%", "60%", "75%", "100%"])
     .isRequired,
 };
 
 const IconMessage = props => {
   const {
-    size,
-    width,
-    info,
-    negative,
-    positive,
-    header,
     body,
+    extra,
+    width,
+    header,
     spinIcon,
     iconName,
+    ...messageProps
   } = props;
-  const messageType = { info, negative, positive };
 
   return (
     <Container style={{ width }}>
-      <Message {...messageType} icon size={size}>
-        <Icon name={iconName} loading={spinIcon} />
+      <Message {...messageProps} icon>
+        {iconName && <Icon name={iconName} loading={spinIcon} />}
         <Message.Content>
           <Message.Header content={header} />
           {body}
+          {extra && (
+            <div>
+              <br /> {extra}
+            </div>
+          )}
         </Message.Content>
       </Message>
     </Container>
@@ -49,7 +57,7 @@ LoadingMessage.defaultProps = {
   width: "25%",
   size: "small",
   spinIcon: true,
-  iconName: "circle notched",
+  iconName: "sync alternate",
   header: "Loading content...",
 };
 
@@ -58,13 +66,28 @@ export const ErrorMessage = props => <IconMessage {...props} />;
 ErrorMessage.defaultProps = {
   width: "25%",
   size: "small",
-  iconName: "bug",
-  negative: true,
+  color: "red",
+  iconName: "cancel",
   header: "An error occurred",
   body: "Try refreshing the page",
 };
 
-IconMessage.Loading = LoadingMessage;
+export const SuccessMessage = props => <IconMessage {...props} />;
+
+SuccessMessage.propTypes = {
+  body: PropTypes.string.isRequired,
+};
+
+SuccessMessage.defaultProps = {
+  width: "25%",
+  size: "small",
+  positive: true,
+  header: "Success!",
+  iconName: "check circle",
+};
+
 IconMessage.Error = ErrorMessage;
+IconMessage.Success = SuccessMessage;
+IconMessage.Loading = LoadingMessage;
 
 export default IconMessage;
