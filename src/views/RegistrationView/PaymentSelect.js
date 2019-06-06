@@ -32,6 +32,8 @@ const PaymentSelect = props => {
           <Button fluid {...baseProps("CREDIT")} content="Pay by Credit" />
         </Grid.Column>
         <Grid.Column {...columnProps}>
+          {/* TODO: display "Send Invoice", add note about alternative payment
+          types */}
           <Button fluid {...baseProps("CHECK")} content="Pay by Check" />
         </Grid.Column>
       </Grid>
