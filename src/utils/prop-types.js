@@ -17,13 +17,13 @@ export const courseLocationType = PropTypes.shape({
 export const idType = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
 
 export const courseType = {
-  id: idType.isRequired,
-  price: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  shortName: PropTypes.string.isRequired,
-  location: courseLocationType.isRequired,
-  description: PropTypes.arrayOf(PropTypes.string).isRequired,
+  id: idType,
+  price: PropTypes.number,
+  name: PropTypes.string,
+  date: PropTypes.string,
+  shortName: PropTypes.string,
+  location: courseLocationType,
+  description: PropTypes.arrayOf(PropTypes.string),
 };
 
 export const courseTypeShape = PropTypes.shape(courseType);
@@ -31,13 +31,11 @@ export const courseTypeShape = PropTypes.shape(courseType);
 // -- STUDENT -- //
 export const studentType = {
   id: idType.isRequired,
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  email: PropTypes.string,
   company: PropTypes.string,
   location: PropTypes.shape(locationType),
-  paymentType: PropTypes.oneOf(["CHECK", "CREDIT"]),
-  hasPaid: PropTypes.bool,
 };
 
 export const studentTypeShape = PropTypes.shape(studentType);
