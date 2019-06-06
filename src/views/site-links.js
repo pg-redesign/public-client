@@ -2,8 +2,7 @@ const siteLinks = {
   LANDING: "/",
   ABOUT: "/about",
   REGISTRATION: "/register",
-  CHECK_PAYMENT: "/checkout/check",
-  CREDIT_PAYMENT: "/checkout/credit",
+  CREDIT_PAYMENT: "/payment/credit",
 };
 
 const linksAsList = links =>
