@@ -2,30 +2,18 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AJV from "ajv";
 import { gql } from "apollo-boost";
-import {
-  Form,
-  Icon,
-  Grid,
-  Input,
-  Button,
-  Header,
-  Divider,
-  Responsive,
-} from "semantic-ui-react";
+import { Form, Icon, Input, Button, Header } from "semantic-ui-react";
 
 import { withHandledQuery } from "../../wrappers";
-import { studentTypeShape, idType } from "../../utils/prop-types";
+import { idType, studentTypeShape } from "../../utils/prop-types";
 
 import StripeCardInput from "./StripeCardInput";
-import {
-  CourseCard,
-  IconMessage,
-  ErrorMessage,
-  LabelOrError,
-} from "../../components";
+import MobileStripePayment from "./MobileStripePayment";
+import StandardStripePayment from "./StandardStripePayment";
+import { IconMessage, ErrorMessage, LabelOrError } from "../../components";
 
 // SUIR input spacing, use for spacing nearby elements
-const INPUT_SPACING = "14px";
+export const INPUT_SPACING = "14px";
 
 const query = gql`
   query StripePaymentForm {
@@ -75,6 +63,30 @@ class StripePaymentForm extends Component {
     };
   }
 
+  render() {
+    const { courseId, data } = this.props;
+
+    const [course] = data.courses.filter(course => course.id === courseId);
+
+    return (
+      <>
+        {/* mobile: stacks short course card and form inputs */}
+        <MobileStripePayment
+          course={course}
+          renderFormInputs={this.renderFormInputs}
+          renderSubmitButton={this.renderSubmitButton}
+        />
+
+        {/* tablet+: full course card left form inputs right */}
+        <StandardStripePayment
+          course={course}
+          renderFormInputs={this.renderFormInputs}
+          renderSubmitButton={this.renderSubmitButton}
+        />
+      </>
+    );
+  }
+
   handleChange = (_, target) =>
     this.setState(state => {
       const { name, value } = target;
@@ -88,9 +100,11 @@ class StripePaymentForm extends Component {
   handleStripeCardChange = () =>
     // clear stripe errors as user corrects the input
     this.setState(state => {
+      const { stripeError } = state.errors;
+
       const errors = { ...state.errors, stripeError: false };
       // only if existing error, null does not cause re-render
-      return errors.stripeError ? { errors } : null;
+      return stripeError ? { errors } : null;
     });
 
   handleFormErrors = validationErrors => {
@@ -126,17 +140,18 @@ class StripePaymentForm extends Component {
 
     if (stripeResponse.error) {
       const { error } = stripeResponse;
+      console.log({ error });
       return this.handleStripeError(error.message);
     }
 
-    submitPayment({
-      variables: {
-        courseId,
-        receiptEmail,
-        studentId: student.id,
-        tokenId: stripeResponse.token.id,
-      },
-    });
+    const paymentData = {
+      courseId,
+      receiptEmail,
+      studentId: student.id,
+      tokenId: stripeResponse.token.id,
+    };
+
+    submitPayment({ variables: { paymentData } });
   };
 
   labelOrError = (fieldName, labelText) => (
@@ -169,7 +184,7 @@ class StripePaymentForm extends Component {
             name="lastName"
             value={fields.lastName}
             onChange={this.handleChange}
-            label={this.labelOrError("lastName", "Last Name")}
+            label={this.labelOrError("lastName", "Last Name ")}
           />
         </Form.Field>
 
@@ -187,6 +202,7 @@ class StripePaymentForm extends Component {
           <StripeCardInput onChange={this.handleStripeCardChange} />
         </Form.Field>
 
+        {/* TODO: separate messages or swap between them with ternary? */}
         {errors.stripeError && (
           <ErrorMessage
             size="small"
@@ -226,56 +242,6 @@ class StripePaymentForm extends Component {
       content={`Submit Payment: $${coursePrice} USD`}
     />
   );
-
-  render() {
-    const { courseId, data } = this.props;
-
-    const [course] = data.courses.filter(course => course.id === courseId);
-
-    return (
-      <>
-        {/* mobile: stack short course card and form inputs */}
-        <Responsive maxWidth={Responsive.onlyMobile.maxWidth}>
-          <Grid centered>
-            <Grid.Row>
-              <CourseCard.Short
-                course={course}
-                style={{ fontSize: "0.95em" }}
-              />
-            </Grid.Row>
-          </Grid>
-
-          <Divider />
-
-          {this.renderFormInputs()}
-
-          <Grid centered style={{ marginTop: INPUT_SPACING }}>
-            {this.renderSubmitButton(course.price)}
-          </Grid>
-        </Responsive>
-
-        {/* tablet+: full course card left form inputs right */}
-        <Responsive minWidth={Responsive.onlyTablet.minWidth}>
-          <Grid container centered>
-            <Grid.Column computer="6" tablet="8">
-              <CourseCard fluid {...course} withButtons={false} />
-            </Grid.Column>
-
-            <Grid.Column computer="6" tablet="8">
-              {this.renderFormInputs()}
-            </Grid.Column>
-
-            {/* adjust spacing on widescreen vs tablet */}
-            <Grid.Row only="widescreen">
-              <Divider hidden />
-            </Grid.Row>
-
-            <Grid.Row>{this.renderSubmitButton(course.price)}</Grid.Row>
-          </Grid>
-        </Responsive>
-      </>
-    );
-  }
 }
 
 export default withHandledQuery(StripePaymentForm, query);
