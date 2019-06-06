@@ -2,9 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Modal } from "semantic-ui-react";
 
-import { ErrorMessage, LoadingMessage, SuccessMessage } from "..";
+import { responsiveWrapper } from "../../wrappers";
+import { ErrorMessage, LoadingMessage, SuccessMessage } from "../IconMessage";
 
 const propTypes = {
+  mobile: PropTypes.bool,
   data: PropTypes.object,
   error: PropTypes.object,
   loading: PropTypes.bool,
@@ -26,9 +28,9 @@ const propTypes = {
  *  - loading: loading -> { header, body, extra } applied to <LoadingMessage>
  */
 const MutationModal = props => {
-  const { loading, error, data, messageProps } = props;
+  const { mobile, loading, error, data, messageProps } = props;
 
-  const baseMessageProps = { width: "100%", size: "large" };
+  const baseMessageProps = { width: "100%", size: mobile ? "small" : "large" };
 
   const content = data ? (
     <SuccessMessage {...baseMessageProps} {...messageProps.success(data)} />
@@ -39,7 +41,10 @@ const MutationModal = props => {
   );
 
   return (
-    <Modal open={loading || Boolean(error) || Boolean(data)} size="tiny">
+    <Modal
+      size={mobile ? "tiny" : "small"}
+      open={loading || Boolean(error) || Boolean(data)}
+    >
       <Modal.Content>{content}</Modal.Content>
     </Modal>
   );
@@ -47,4 +52,4 @@ const MutationModal = props => {
 
 MutationModal.propTypes = propTypes;
 
-export default MutationModal;
+export default responsiveWrapper(MutationModal);
