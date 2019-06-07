@@ -5,6 +5,9 @@ import { Card, Icon, List, Popup, Button, Header } from "semantic-ui-react";
 
 import { courseType, courseTypeShape } from "../utils/prop-types";
 
+// TODO: whats included section for payment page
+// 1300 page notes, CEUs, digital certificate
+
 export const CourseCardTop = props => {
   const { name, location, date } = props;
 
