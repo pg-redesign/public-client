@@ -4,7 +4,7 @@ import { Button } from "semantic-ui-react";
 
 import { withUpcomingCourses } from "../../wrappers";
 import { courseTypeShape } from "../../utils/prop-types";
-import { CourseCardShort } from "../../components/CourseCard";
+import { CourseCardShort } from "../../components";
 
 const courseSelectPropTypes = {
   ...withUpcomingCourses.consumerPropTypes,

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { gql } from "apollo-boost";
 
-import QueryHandler from "../components/QueryHandler";
+import { QueryHandler } from "../components";
 import { courseTypeShape } from "../utils/prop-types";
 
 const query = gql`

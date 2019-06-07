@@ -7,8 +7,7 @@ import "./variables.css";
 
 import Views from "./views";
 import client from "./utils/api-client";
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
+import { NavBar, Footer } from "./components";
 
 const App = () => (
   <ApolloProvider client={client}>

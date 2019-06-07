@@ -6,8 +6,8 @@ import { Container } from "semantic-ui-react";
 
 import siteLinks from "../site-links";
 
+import { MutationModal } from "../../components";
 import RegistrationForm from "./RegistrationForm";
-import MutationModal from "../../components/FormTools/MutationModal";
 
 const mutation = gql`
   mutation SubmitRegistrationForm($registrationData: RegistrationInput!) {

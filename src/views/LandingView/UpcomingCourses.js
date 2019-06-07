@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
 
-import CourseCard from "../../components/CourseCard";
+import { CourseCard } from "../../components";
 import { withUpcomingCourses } from "../../wrappers";
 
 const UpcomingCourses = props => {
