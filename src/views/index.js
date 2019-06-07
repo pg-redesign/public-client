@@ -21,6 +21,8 @@ const Views = () => (
         path={siteLinks.CREDIT_PAYMENT}
         component={StripePaymentView}
       />
+      {/* all other addresses directed to home page */}
+      <Route path="/" component={LandingView} />
     </Switch>
   </Container>
 );
