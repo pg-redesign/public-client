@@ -5,6 +5,7 @@ import Banner from "./Banner";
 import IntroVideo from "./IntroVideo";
 import UpcomingCourses from "./UpcomingCourses";
 import ValuePropositions from "./ValuePropositions";
+import AttendeeRecognition from "./AttendeeRecognition";
 import responsiveWrapper from "../../wrappers/responsiveWrapper";
 
 const LandingView = props => {
@@ -58,8 +59,12 @@ const LandingView = props => {
           <UpcomingCourses />
         </Grid.Column>
       </Grid.Row>
-      {/* student count / student company logos */}
-      {/* register, Sticky */}
+
+      <Divider />
+
+      <Grid.Row>
+        <AttendeeRecognition />
+      </Grid.Row>
     </Grid>
   );
 };
