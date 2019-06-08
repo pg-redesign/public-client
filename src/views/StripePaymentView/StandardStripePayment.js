@@ -11,8 +11,8 @@ const StandardStripePayment = props => {
   return (
     <Responsive minWidth={Responsive.onlyTablet.minWidth}>
       <Grid container centered>
-        <Grid.Column computer="6" tablet="8">
-          <CourseCard fluid {...course} withButtons={false} />
+        <Grid.Column computer="6" tablet="8" style={{ marginTop: "12px" }}>
+          <CourseCard fluid {...course} withWhatsIncluded />
         </Grid.Column>
 
         <Grid.Column computer="6" tablet="8">

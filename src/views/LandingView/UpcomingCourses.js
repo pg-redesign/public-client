@@ -10,7 +10,13 @@ const UpcomingCourses = props => {
   return (
     <Card.Group stackable centered itemsPerRow="2">
       {courses.map(course => (
-        <CourseCard key={`course-${course.id}`} {...course} />
+        <CourseCard
+          {...course}
+          withButtons
+          withTopics
+          withWhatsIncluded
+          key={`course-${course.id}`}
+        />
       ))}
     </Card.Group>
   );
