@@ -12,8 +12,8 @@ const valuePropCardData = (() => {
       headerIcon: <i className="fas fa-graduation-cap fa-2x" {...iconProps} />,
       description: (
         <>
-          Over <strong>20,000 graduates</strong> from leading companies and
-          government agencies
+          The largest groundwater courses in the industry with over{" "}
+          <strong>25,000 graduates</strong>
         </>
       ),
     },
@@ -25,7 +25,7 @@ const valuePropCardData = (() => {
     {
       headerIcon: <i className="fas fa-clipboard-check fa-2x" {...iconProps} />,
       description:
-        "Groundwater concepts, principles, technologies, and best practices",
+        "Continously updated groundwater concepts, principles, technologies, and best practices",
     },
     {
       headerIcon: <i className="fas fa-university fa-2x" {...iconProps} />,

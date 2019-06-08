@@ -5,7 +5,7 @@ import { Logo } from "../../components";
 
 const defaultProps = {
   bannerPhrase:
-    "Teaching Professionals About Groundwater Pollution, Hydrology and Remediation since 1974",
+    "Teaching Groundwater Professionals About Pollution, Hydrology and Remediation since 1974",
 };
 
 const Banner = props => {
