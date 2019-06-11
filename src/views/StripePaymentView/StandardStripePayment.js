@@ -19,11 +19,6 @@ const StandardStripePayment = props => {
           {renderFormInputs()}
         </Grid.Column>
 
-        {/* adjust spacing on widescreen vs tablet */}
-        <Grid.Row only="widescreen">
-          <Divider hidden />
-        </Grid.Row>
-
         <Grid.Row>{renderSubmitButton(course.price)}</Grid.Row>
       </Grid>
     </Responsive>

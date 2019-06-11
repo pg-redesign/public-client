@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AJV from "ajv";
 import { gql } from "apollo-boost";
-import { Form, Icon, Input, Button, Header } from "semantic-ui-react";
+import { Form, Icon, Input, Button, Header, Divider } from "semantic-ui-react";
 
 import { withHandledQuery } from "../../wrappers";
 import { idType, studentTypeShape } from "../../utils/prop-types";
@@ -70,6 +70,10 @@ class StripePaymentForm extends Component {
 
     return (
       <>
+        <Header inverted as="h1" textAlign="center" content="Billing Details" />
+
+        <Divider />
+
         {/* mobile: stacks short course card and form inputs */}
         <MobileStripePayment
           course={course}
@@ -140,7 +144,6 @@ class StripePaymentForm extends Component {
 
     if (stripeResponse.error) {
       const { error } = stripeResponse;
-      console.log({ error });
       return this.handleStripeError(error.message);
     }
 
@@ -167,8 +170,6 @@ class StripePaymentForm extends Component {
 
     return (
       <Form>
-        <Header inverted as="h2" textAlign="center" content="Billing Details" />
-
         <Form.Field>
           <Input
             name="firstName"
@@ -202,8 +203,7 @@ class StripePaymentForm extends Component {
           <StripeCardInput onChange={this.handleStripeCardChange} />
         </Form.Field>
 
-        {/* TODO: separate messages or swap between them with ternary? */}
-        {errors.stripeError && (
+        {errors.stripeError ? (
           <ErrorMessage
             size="small"
             width="100%"
@@ -211,24 +211,24 @@ class StripePaymentForm extends Component {
             header="Unable to process your payment"
             style={{ marginBottom: INPUT_SPACING }}
           />
+        ) : (
+          <IconMessage
+            width="100%"
+            size="small"
+            color="violet"
+            header={
+              <div style={{ textAlign: "center" }}>
+                Card processing secured by{" "}
+                <Icon name="stripe card" size="large" fitted />
+              </div>
+            }
+            body={
+              <p style={{ textAlign: "center" }}>
+                Card details are never stored on our servers.
+              </p>
+            }
+          />
         )}
-
-        <IconMessage
-          width="100%"
-          size="small"
-          color="violet"
-          header={
-            <div style={{ textAlign: "center" }}>
-              Card processing secured by{" "}
-              <Icon name="stripe card" size="large" fitted />
-            </div>
-          }
-          body={
-            <p style={{ textAlign: "center" }}>
-              Card details are never stored on our servers.
-            </p>
-          }
-        />
       </Form>
     );
   };
