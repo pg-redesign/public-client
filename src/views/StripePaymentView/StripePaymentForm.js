@@ -22,6 +22,7 @@ const query = gql`
     courses: getCourses {
       id
       name
+      shortName: name(short: true)
       price
       date
       description
@@ -69,8 +70,8 @@ class StripePaymentForm extends Component {
     const [course] = data.courses.filter(course => course.id === courseId);
 
     return (
-      <>
-        <Header inverted as="h1" textAlign="center" content="Billing Details" />
+      <div>
+        <Header inverted as="h1" textAlign="center" content="Payment" />
 
         <Divider />
 
@@ -87,7 +88,7 @@ class StripePaymentForm extends Component {
           renderFormInputs={this.renderFormInputs}
           renderSubmitButton={this.renderSubmitButton}
         />
-      </>
+      </div>
     );
   }
 
