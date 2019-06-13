@@ -4,32 +4,25 @@ import AJV from "ajv";
 import { gql } from "apollo-boost";
 import { Form, Icon, Input, Button, Header, Divider } from "semantic-ui-react";
 
-import { withHandledQuery } from "../../wrappers";
 import { idType, studentTypeShape } from "../../utils/prop-types";
+import { withHandledQuery, withUpcomingCourses } from "../../wrappers";
 
 import StripeCardInput from "./StripeCardInput";
 import MobileStripePayment from "./MobileStripePayment";
 import StandardStripePayment from "./StandardStripePayment";
 import { IconMessage, ErrorMessage, LabelOrError } from "../../components";
 
-// SUIR input spacing, use for spacing nearby elements
+// SUIR input spacing, use for consistent spacing with nearby elements
 export const INPUT_SPACING = "14px";
 
 const query = gql`
+  ${withUpcomingCourses.courseCardFragment}
+
   query StripePaymentForm {
     schema: getFormSchema(form: STRIPE_PAYMENT)
 
     courses: getCourses {
-      id
-      name
-      shortName: name(short: true)
-      price
-      date
-      description
-      location {
-        mapURL
-        concatenated
-      }
+      ...CourseCardData
     }
   }
 `;
