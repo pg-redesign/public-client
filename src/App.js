@@ -6,8 +6,8 @@ import "./global.css";
 import "./variables.css";
 
 import Views from "./views";
+import { NavBar } from "./components";
 import client from "./utils/api-client";
-import { NavBar, Footer } from "./components";
 
 const App = () => (
   <ApolloProvider client={client}>
@@ -15,7 +15,6 @@ const App = () => (
       <NavBar links={Views.links.navList}>
         <Views />
       </NavBar>
-      <Footer links={Views.links.footerList} />
     </Router>
   </ApolloProvider>
 );
