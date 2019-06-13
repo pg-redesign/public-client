@@ -20,17 +20,19 @@ const valuePropCardData = (() => {
     {
       headerIcon: <i className="fas fa-globe-americas fa-2x" {...iconProps} />,
       description:
-        "Taught by globally recognized experts in groundwater hydrology & remediation",
+        "Taught by globally recognized experts in groundwater hydrology and remediation",
     },
     {
       headerIcon: <i className="fas fa-clipboard-check fa-2x" {...iconProps} />,
       description:
-        "Continously updated groundwater concepts, principles, technologies, and best practices",
+        // "Continously updated groundwater concepts, technologies and best practices",
+        "Groundwater concepts, case studies, technologies and best practices",
     },
     {
       headerIcon: <i className="fas fa-university fa-2x" {...iconProps} />,
       description:
-        "Designed for  Geologists, Engineers, Chemists and Environmental Scientists",
+        // "Designed for  Geologists, Engineers, Chemists and Environmental Scientists",
+        "Designed for  Geologists, Engineers, Regulators and Environmental Scientists",
     },
   ];
 })();
