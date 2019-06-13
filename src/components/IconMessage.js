@@ -52,10 +52,12 @@ IconMessage.propTypes = iconMessagePropTypes;
 
 export const LoadingMessage = props => <IconMessage {...props} />;
 
+LoadingMessage.propTypes = iconMessagePropTypes;
+
 LoadingMessage.defaultProps = {
   info: true,
-  width: "25%",
-  size: "small",
+  width: "75%",
+  size: "large",
   spinIcon: true,
   iconName: "sync alternate",
   header: "Loading content...",
@@ -63,9 +65,11 @@ LoadingMessage.defaultProps = {
 
 export const ErrorMessage = props => <IconMessage {...props} />;
 
+ErrorMessage.propTypes = iconMessagePropTypes;
+
 ErrorMessage.defaultProps = {
-  width: "25%",
-  size: "small",
+  width: "75%",
+  size: "large",
   color: "red",
   iconName: "cancel",
   header: "An error occurred",
@@ -75,12 +79,13 @@ ErrorMessage.defaultProps = {
 export const SuccessMessage = props => <IconMessage {...props} />;
 
 SuccessMessage.propTypes = {
+  ...iconMessagePropTypes,
   body: PropTypes.string.isRequired,
 };
 
 SuccessMessage.defaultProps = {
-  width: "25%",
-  size: "small",
+  width: "75%",
+  size: "large",
   positive: true,
   header: "Success!",
   iconName: "check circle",
