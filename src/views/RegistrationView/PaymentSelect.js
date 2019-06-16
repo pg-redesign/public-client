@@ -4,22 +4,22 @@ import { Button, Responsive, Grid } from "semantic-ui-react";
 
 const propTypes = {
   onSelect: PropTypes.func.isRequired,
-  selectedPaymentType: PropTypes.string.isRequired,
+  selectedPaymentOption: PropTypes.string.isRequired,
 };
 
 const PaymentSelect = props => {
-  const { onSelect, selectedPaymentType } = props;
+  const { onSelect, selectedPaymentOption } = props;
 
   const handleClick = value => event => {
     // event, target, shouldSubmit
-    onSelect(event, { name: "paymentType", value }, true);
+    onSelect(event, { name: "paymentOption", value }, true);
   };
 
   const baseProps = value => ({
     size: "huge",
     inverted: true,
-    name: "paymentType",
-    value: selectedPaymentType,
+    name: "paymentOption",
+    value: selectedPaymentOption,
     onClick: handleClick(value),
   });
 
@@ -34,7 +34,7 @@ const PaymentSelect = props => {
         <Grid.Column {...columnProps}>
           {/* TODO: display "Send Invoice", add note about alternative payment
           types */}
-          <Button fluid {...baseProps("CHECK")} content="Pay by Check" />
+          <Button fluid {...baseProps("INVOICE")} content="Bill by Invoice" />
         </Grid.Column>
       </Grid>
     </Responsive>

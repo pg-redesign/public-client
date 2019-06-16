@@ -57,7 +57,7 @@ class RegistrationForm extends Component {
         courseId: "",
         lastName: "",
         firstName: "",
-        paymentType: "",
+        paymentOption: "",
         mailingList: false,
       },
       errors: {},
@@ -257,7 +257,7 @@ class RegistrationForm extends Component {
             {/* handles payment type selection and form submission */}
             <PaymentSelect
               onSelect={this.handleChange}
-              selectedPaymentType={fields.paymentType}
+              selectedPaymentOption={fields.paymentOption}
             />
           </Grid.Row>
 
