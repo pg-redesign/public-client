@@ -54,10 +54,6 @@ const LandingView = props => {
       )}
 
       <Grid.Row>
-        <Header as="h2" content="Upcoming Courses" inverted />
-      </Grid.Row>
-
-      <Grid.Row>
         <Grid.Column computer="16" tablet="16" mobile="15">
           <UpcomingCourses />
         </Grid.Column>
