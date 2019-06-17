@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Card, Icon, List, Popup, Button, Header } from "semantic-ui-react";
 
+import siteLinks from "../views/site-links";
 import { courseType } from "../utils/prop-types";
 
 const NameDateAndLocation = props => {
@@ -45,7 +46,7 @@ const RegistrationAndInfoButtons = props => {
           as={Link}
           size="large"
           content="Register Now"
-          to={`/register/${id}`}
+          to={`${siteLinks.REGISTRATION}/${id}`}
           style={{ backgroundColor: "var(--dark-blue)", color: "white" }}
         />
         <Button.Or />
@@ -53,7 +54,7 @@ const RegistrationAndInfoButtons = props => {
           as={Link}
           size="large"
           content="Learn More"
-          to={`/courses/${shortName}`}
+          to={`/${siteLinks.COURSES}/${shortName}`}
         />
       </Button.Group>
     </Card.Content>
