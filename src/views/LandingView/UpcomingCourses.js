@@ -1,18 +1,37 @@
 import React from "react";
-import { Card } from "semantic-ui-react";
+import { Card, Header, Divider } from "semantic-ui-react";
 
-import CourseCard from "../../components/CourseCard";
+import { CourseCard } from "../../components";
 import { withUpcomingCourses } from "../../wrappers";
 
 const UpcomingCourses = props => {
   const { courses } = props.data;
 
   return (
-    <Card.Group stackable centered itemsPerRow="2">
-      {courses.map(course => (
-        <CourseCard key={`course-${course.id}`} {...course} />
-      ))}
-    </Card.Group>
+    courses.length > 0 && (
+      <>
+        <Divider horizontal>
+          <Header
+            as="h2"
+            inverted
+            textAlign="center"
+            content="Upcoming Courses"
+          />
+        </Divider>
+
+        <Card.Group stackable centered itemsPerRow="2">
+          {courses.map(course => (
+            <CourseCard
+              {...course}
+              withTopics
+              withButtons
+              withWhatsIncluded
+              key={`upcoming-course-${course.id}`}
+            />
+          ))}
+        </Card.Group>
+      </>
+    )
   );
 };
 

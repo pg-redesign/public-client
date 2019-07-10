@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Responsive, Grid, Divider } from "semantic-ui-react";
+import { Responsive, Grid } from "semantic-ui-react";
+
+import { INPUT_SPACING } from "./StripePaymentForm";
+import { courseTypeShape } from "../../utils/prop-types";
 
 import { CourseCard } from "../../components";
-import { courseTypeShape } from "../../utils/prop-types";
 
 const StandardStripePayment = props => {
   const { course, renderFormInputs, renderSubmitButton } = props;
@@ -11,18 +13,17 @@ const StandardStripePayment = props => {
   return (
     <Responsive minWidth={Responsive.onlyTablet.minWidth}>
       <Grid container centered>
-        <Grid.Column computer="6" tablet="8">
-          <CourseCard fluid {...course} withButtons={false} />
+        <Grid.Column
+          computer="6"
+          tablet="8"
+          style={{ marginTop: INPUT_SPACING }}
+        >
+          <CourseCard fluid {...course} withWhatsIncluded />
         </Grid.Column>
 
         <Grid.Column computer="6" tablet="8">
           {renderFormInputs()}
         </Grid.Column>
-
-        {/* adjust spacing on widescreen vs tablet */}
-        <Grid.Row only="widescreen">
-          <Divider hidden />
-        </Grid.Row>
 
         <Grid.Row>{renderSubmitButton(course.price)}</Grid.Row>
       </Grid>

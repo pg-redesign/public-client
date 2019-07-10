@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "semantic-ui-react";
 
+import { CourseCard } from "../../components";
 import { withUpcomingCourses } from "../../wrappers";
 import { courseTypeShape } from "../../utils/prop-types";
-import { CourseCardShort } from "../../components/CourseCard";
 
 const courseSelectPropTypes = {
   ...withUpcomingCourses.consumerPropTypes,
@@ -33,7 +33,7 @@ export const CourseSelectButton = props => {
       key={`course-button-${course.id}`}
       active={selectedCourseId === course.id}
     >
-      <CourseCardShort course={course} includePrice />
+      <CourseCard {...course} withPrice withWhatsIncluded />
     </Button>
   );
 };

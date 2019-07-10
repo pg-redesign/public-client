@@ -2,33 +2,27 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AJV from "ajv";
 import { gql } from "apollo-boost";
-import { Form, Icon, Input, Button, Header } from "semantic-ui-react";
+import { Form, Icon, Input, Button, Header, Divider } from "semantic-ui-react";
 
-import { withHandledQuery } from "../../wrappers";
 import { idType, studentTypeShape } from "../../utils/prop-types";
+import { withHandledQuery, withUpcomingCourses } from "../../wrappers";
 
 import StripeCardInput from "./StripeCardInput";
 import MobileStripePayment from "./MobileStripePayment";
 import StandardStripePayment from "./StandardStripePayment";
 import { IconMessage, ErrorMessage, LabelOrError } from "../../components";
 
-// SUIR input spacing, use for spacing nearby elements
+// SUIR input spacing, use for consistent spacing with nearby elements
 export const INPUT_SPACING = "14px";
 
 const query = gql`
+  ${withUpcomingCourses.courseCardFragment}
+
   query StripePaymentForm {
     schema: getFormSchema(form: STRIPE_PAYMENT)
 
     courses: getCourses {
-      id
-      name
-      price
-      date
-      description
-      location {
-        mapURL
-        concatenated
-      }
+      ...CourseCardData
     }
   }
 `;
@@ -69,7 +63,11 @@ class StripePaymentForm extends Component {
     const [course] = data.courses.filter(course => course.id === courseId);
 
     return (
-      <>
+      <div>
+        <Header inverted as="h1" textAlign="center" content="Payment" />
+
+        <Divider />
+
         {/* mobile: stacks short course card and form inputs */}
         <MobileStripePayment
           course={course}
@@ -83,7 +81,7 @@ class StripePaymentForm extends Component {
           renderFormInputs={this.renderFormInputs}
           renderSubmitButton={this.renderSubmitButton}
         />
-      </>
+      </div>
     );
   }
 
@@ -140,7 +138,6 @@ class StripePaymentForm extends Component {
 
     if (stripeResponse.error) {
       const { error } = stripeResponse;
-      console.log({ error });
       return this.handleStripeError(error.message);
     }
 
@@ -167,8 +164,6 @@ class StripePaymentForm extends Component {
 
     return (
       <Form>
-        <Header inverted as="h2" textAlign="center" content="Billing Details" />
-
         <Form.Field>
           <Input
             name="firstName"
@@ -202,8 +197,7 @@ class StripePaymentForm extends Component {
           <StripeCardInput onChange={this.handleStripeCardChange} />
         </Form.Field>
 
-        {/* TODO: separate messages or swap between them with ternary? */}
-        {errors.stripeError && (
+        {errors.stripeError ? (
           <ErrorMessage
             size="small"
             width="100%"
@@ -211,24 +205,24 @@ class StripePaymentForm extends Component {
             header="Unable to process your payment"
             style={{ marginBottom: INPUT_SPACING }}
           />
+        ) : (
+          <IconMessage
+            width="100%"
+            size="small"
+            color="violet"
+            header={
+              <div style={{ textAlign: "center" }}>
+                Card processing secured by{" "}
+                <Icon name="stripe card" size="large" fitted />
+              </div>
+            }
+            body={
+              <p style={{ textAlign: "center" }}>
+                Card details are never stored on our servers.
+              </p>
+            }
+          />
         )}
-
-        <IconMessage
-          width="100%"
-          size="small"
-          color="violet"
-          header={
-            <div style={{ textAlign: "center" }}>
-              Card processing secured by{" "}
-              <Icon name="stripe card" size="large" fitted />
-            </div>
-          }
-          body={
-            <p style={{ textAlign: "center" }}>
-              Card details are never stored on our servers.
-            </p>
-          }
-        />
       </Form>
     );
   };

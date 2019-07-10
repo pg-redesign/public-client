@@ -6,7 +6,6 @@ export * from "./IconMessage";
 
 export { default as Logo } from "./Logo";
 export { default as NavBar } from "./NavBar";
-export { default as Footer } from "./Footer";
 export { default as CourseCard } from "./CourseCard";
 export { default as IconMessage } from "./IconMessage";
 export { default as QueryHandler } from "./QueryHandler";

@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon, Card } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 
 const valuePropCardData = (() => {
   const iconProps = {
@@ -9,30 +9,30 @@ const valuePropCardData = (() => {
 
   return [
     {
-      // "trophy"
-      headerIcon: <Icon className="fas fa-trophy" {...iconProps} />,
-      description:
-        "Taught by award-winning, globally recognized groundwater experts",
+      headerIcon: <i className="fas fa-graduation-cap fa-2x" {...iconProps} />,
+      description: (
+        <>
+          The largest groundwater courses in the industry with over{" "}
+          <strong>25,000 graduates</strong>
+        </>
+      ),
     },
     {
-      // "microscope" "user-graduate"
-      // does not work with <Icon> component, fa-2x == "big"
-      headerIcon: <i className="fas fa-microscope fa-2x" {...iconProps} />,
+      headerIcon: <i className="fas fa-globe-americas fa-2x" {...iconProps} />,
       description:
-        "Designed for  Geologists, Engineers, Chemists and Environmental Scientists",
+        "Taught by globally recognized experts in groundwater hydrology and remediation",
     },
     {
-      // "hard-hat" "clipboard-check"
-      headerIcon: <Icon className="fas fa-clipboard-check" {...iconProps} />,
+      headerIcon: <i className="fas fa-clipboard-check fa-2x" {...iconProps} />,
       description:
-        "Academic & practical principles, technologies, and best practices",
-      // version 2 (takes up 3-4 lines, not consistent with other value props)
-      // "Comprehensive & practical knowledge of groundwater principles, technologies, and best practices",
+        // "Continously updated groundwater concepts, technologies and best practices",
+        "Groundwater concepts, case studies, technologies and best practices",
     },
     {
-      // "university" "graduation-cap"
-      headerIcon: <Icon className="fas fa-graduation-cap" {...iconProps} />,
-      description: "Board approved for Continuing Education Credits (CEU)",
+      headerIcon: <i className="fas fa-university fa-2x" {...iconProps} />,
+      description:
+        // "Designed for  Geologists, Engineers, Chemists and Environmental Scientists",
+        "Designed for  Geologists, Engineers, Regulators and Environmental Scientists",
     },
   ];
 })();

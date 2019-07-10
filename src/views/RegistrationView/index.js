@@ -6,8 +6,8 @@ import { Container } from "semantic-ui-react";
 
 import siteLinks from "../site-links";
 
+import { MutationModal } from "../../components";
 import RegistrationForm from "./RegistrationForm";
-import MutationModal from "../../components/FormTools/MutationModal";
 
 const mutation = gql`
   mutation SubmitRegistrationForm($registrationData: RegistrationInput!) {
@@ -22,14 +22,13 @@ const mutation = gql`
 
 const modalMessageProps = {
   loading: () => ({
-    header: "Submitting course registration.",
+    header: "Submitting course registration...",
   }),
 
   error: error => {
     console.error({ error });
     return {
-      body: error.message,
-      extra: "(try refreshing the page and re-submitting)",
+      header: error.message,
     };
   },
 
@@ -37,8 +36,8 @@ const modalMessageProps = {
     const { email } = data.student;
 
     return {
-      header: "Registration complete!",
-      body: `An invoice with alternative payment instructions has been sent to ${email}.`,
+      header: "Registration pending.",
+      body: `An invoice with payment options has been sent to ${email}.`,
       extra: "(you can close this window)",
     };
   },
@@ -47,26 +46,26 @@ const modalMessageProps = {
 class RegistrationView extends Component {
   state = {
     courseId: "",
-    paymentType: "",
+    paymentOption: "",
   };
 
   handleSubmit = submitMutation => registrationData => {
-    const { courseId, paymentType } = registrationData;
+    const { courseId, paymentOption } = registrationData;
 
-    this.setState({ courseId, paymentType }, () =>
+    this.setState({ courseId, paymentOption }, () =>
       submitMutation({ variables: { registrationData } }),
     );
   };
 
   render() {
-    const { courseId, paymentType } = this.state;
+    const { courseId, paymentOption } = this.state;
 
     return (
       <Mutation mutation={mutation}>
         {(submitMutation, mutationState) => {
           const { data } = mutationState;
 
-          if (data && paymentType === "CREDIT") {
+          if (data && paymentOption === "CREDIT") {
             const { student } = data;
 
             return (

@@ -1,6 +1,6 @@
 import React from "react";
 
-import QueryHandler from "../components/QueryHandler";
+import { QueryHandler } from "../components";
 
 /**
  * HOF used for exporting a Consumer component with a data requirement

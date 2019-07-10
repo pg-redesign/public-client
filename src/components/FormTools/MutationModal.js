@@ -5,6 +5,11 @@ import { Modal } from "semantic-ui-react";
 import { responsiveWrapper } from "../../wrappers";
 import { ErrorMessage, LoadingMessage, SuccessMessage } from "../IconMessage";
 
+const shapeError = error => {
+  const message = error.message.replace("GraphQL error: ", "").trim();
+  return { errors: error.graphQLErrors, message };
+};
+
 const propTypes = {
   mobile: PropTypes.bool,
   data: PropTypes.object,
@@ -35,7 +40,10 @@ const MutationModal = props => {
   const content = data ? (
     <SuccessMessage {...baseMessageProps} {...messageProps.success(data)} />
   ) : error ? (
-    <ErrorMessage {...baseMessageProps} {...messageProps.error(error)} />
+    <ErrorMessage
+      {...baseMessageProps}
+      {...messageProps.error(shapeError(error))}
+    />
   ) : (
     <LoadingMessage {...baseMessageProps} {...messageProps.loading(loading)} />
   );
