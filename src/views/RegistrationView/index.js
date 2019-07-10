@@ -28,8 +28,7 @@ const modalMessageProps = {
   error: error => {
     console.error({ error });
     return {
-      body: error.message,
-      extra: "(try refreshing the page and re-submitting)",
+      header: error.message,
     };
   },
 
