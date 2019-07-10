@@ -72,8 +72,7 @@ ErrorMessage.defaultProps = {
   size: "large",
   color: "red",
   iconName: "cancel",
-  header: "An error occurred",
-  body: "Try refreshing the page",
+  header: "Something went wrong!",
 };
 
 export const SuccessMessage = props => <IconMessage {...props} />;
