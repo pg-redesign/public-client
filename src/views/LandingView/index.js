@@ -1,14 +1,13 @@
 import React from "react";
-import { Grid, Divider, Segment } from "semantic-ui-react";
+import { Grid, Divider } from "semantic-ui-react";
 
 import responsiveWrapper from "../../wrappers/responsiveWrapper";
 
 import Banner from "./Banner";
 import IntroVideo from "./IntroVideo";
-import ConnectWithUs from "./ConnectWithUs";
 import UpcomingCourses from "./UpcomingCourses";
-import { JoinMailingList } from "../../components";
 import ValuePropositions from "./ValuePropositions";
+import { SubscribeAndConnect } from "../../components";
 import AttendeeRecognition from "./AttendeeRecognition";
 
 const LandingView = props => {
@@ -68,10 +67,7 @@ const LandingView = props => {
       <Divider />
 
       <Grid.Row>
-        <Segment style={{ width: mobile ? "80%" : "40%" }}>
-          <JoinMailingList />
-          <ConnectWithUs />
-        </Segment>
+        <SubscribeAndConnect mobile={mobile} />
       </Grid.Row>
     </Grid>
   );
