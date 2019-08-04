@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import AJV from "ajv";
 import { gql } from "apollo-boost";
 import { Mutation } from "react-apollo";
-import { Form, Input, Button } from "semantic-ui-react";
+import { Form, Input, Button, Message } from "semantic-ui-react";
 
-import { withHandledQuery } from "../../wrappers";
-import { LoadingMessage, ErrorMessage, SuccessMessage } from "../../components";
+import { withHandledQuery } from "../wrappers";
+import { LoadingMessage, ErrorMessage, SuccessMessage } from ".";
 
 const query = gql`
   query MailingListForm {
@@ -15,10 +15,23 @@ const query = gql`
 `;
 
 const mutation = gql`
-  mutation JoinMailingList($mailingListData: MailingListInput!) {
+  mutation JoinMailingList($mailingListData: MailingListData!) {
     subscribeToMailingList(mailingListData: $mailingListData)
   }
 `;
+
+export const NewsletterPledge = () => (
+  <Message.List>
+    <Message.Item>You can unsubscribe at any time</Message.Item>
+    <Message.Item>
+      We will <strong>never spam or sell</strong> your contact information
+    </Message.Item>
+    <Message.Item>
+      We <strong>only send 4-5 emails per year</strong> about our upcoming
+      courses and web events
+    </Message.Item>
+  </Message.List>
+);
 
 class JoinMailingList extends Component {
   static propTypes = {
@@ -140,6 +153,7 @@ class JoinMailingList extends Component {
                   style={{ color: "white", background: "var(--primary)" }}
                 />
               </Form.Field>
+              <Message compact color="blue" content={<NewsletterPledge />} />
             </Form>
           );
         }}
@@ -147,5 +161,7 @@ class JoinMailingList extends Component {
     );
   }
 }
+
+JoinMailingList.NewsletterPledge = NewsletterPledge;
 
 export default withHandledQuery(JoinMailingList, query);

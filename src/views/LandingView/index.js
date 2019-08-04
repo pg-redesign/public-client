@@ -1,13 +1,13 @@
 import React from "react";
-import { Grid, Header, Divider, Segment } from "semantic-ui-react";
+import { Grid, Divider, Segment } from "semantic-ui-react";
 
 import responsiveWrapper from "../../wrappers/responsiveWrapper";
 
 import Banner from "./Banner";
 import IntroVideo from "./IntroVideo";
 import ConnectWithUs from "./ConnectWithUs";
-import JoinMailingList from "./JoinMailingList";
 import UpcomingCourses from "./UpcomingCourses";
+import { JoinMailingList } from "../../components";
 import ValuePropositions from "./ValuePropositions";
 import AttendeeRecognition from "./AttendeeRecognition";
 
