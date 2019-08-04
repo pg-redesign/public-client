@@ -20,7 +20,7 @@ const propTypes = {
 };
 
 const mutation = gql`
-  mutation SubmitStripePayment($paymentData: StripePaymentInput!) {
+  mutation SubmitStripePayment($paymentData: StripePaymentData!) {
     student: payForCourseWithStripe(paymentData: $paymentData) {
       id
       email
