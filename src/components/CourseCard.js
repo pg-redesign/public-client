@@ -20,7 +20,7 @@ const NameDateAndLocation = props => {
           position="bottom center"
           content="click to view hotel on Google Maps"
           trigger={
-            <a href={location.mapURL} target="_blank" rel="noopener noreferrer">
+            <a href={location.mapUrl} target="_blank" rel="noopener noreferrer">
               {location.concatenated}&nbsp;
               <Icon name="map marker alternate" color="red" />
             </a>
