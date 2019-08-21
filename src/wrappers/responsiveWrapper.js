@@ -15,7 +15,7 @@ const responsiveWrapper = Component => props => (
       maxWidth={Responsive.onlyTablet.maxWidth}
     />
     <Responsive
-      children={<Component {...props} />}
+      children={<Component {...props} mobile={false} />}
       minWidth={Responsive.onlyComputer.minWidth}
     />
   </>

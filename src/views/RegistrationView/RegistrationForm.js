@@ -16,10 +16,11 @@ import {
 import "./style-overrides.css";
 import { withHandledQuery } from "../../wrappers";
 
+import NoCourses from "./NoCourses";
 import CourseSelect from "./CourseSelect";
 import PaymentSelect from "./PaymentSelect";
 import MailingListToggle from "./MailingListToggle";
-import { LabelOrError, ErrorLabel, StaticAnimation } from "../../components";
+import { ErrorLabel, LabelOrError, StaticAnimation } from "../../components";
 
 const query = gql`
   query RegistrationForm {
@@ -132,7 +133,12 @@ class RegistrationForm extends Component {
   };
 
   render() {
+    const { courses } = this.props.data;
     const { fields, errors, shouldShakeForErrors } = this.state;
+
+    if (courses.length === 0) {
+      return <NoCourses />;
+    }
 
     return (
       <Form>

@@ -14,7 +14,7 @@ const courseCardFragment = gql`
     price
     description
     location {
-      mapURL
+      mapUrl
       concatenated
     }
   }
