@@ -54,7 +54,7 @@ const RegistrationAndInfoButtons = props => {
           as={Link}
           size="large"
           content="Learn More"
-          to={`/${siteLinks.COURSES}/${shortName}`}
+          to={`${siteLinks.COURSES}/${shortName.toLowerCase()}`}
         />
       </Button.Group>
     </Card.Content>
@@ -103,7 +103,7 @@ const WhatsIncluded = props => {
           <List.Item content="Digital certificate of completion" />
           <List.Item
             content={`${
-              shortName === "pollution" ? "38" : "40"
+              shortName === "POLLUTION" ? "38" : "40"
             } continuing education units (CEU)`}
           />
           <List.Item
