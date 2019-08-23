@@ -16,11 +16,15 @@ import {
 import "./style-overrides.css";
 import { withHandledQuery } from "../../wrappers";
 
-import NoCourses from "./NoCourses";
 import CourseSelect from "./CourseSelect";
 import PaymentSelect from "./PaymentSelect";
 import MailingListToggle from "./MailingListToggle";
-import { ErrorLabel, LabelOrError, StaticAnimation } from "../../components";
+import {
+  ErrorLabel,
+  LabelOrError,
+  StaticAnimation,
+  NoCourseAvailable,
+} from "../../components";
 
 const query = gql`
   query RegistrationForm {
@@ -137,7 +141,7 @@ class RegistrationForm extends Component {
     const { fields, errors, shouldShakeForErrors } = this.state;
 
     if (courses.length === 0) {
-      return <NoCourses />;
+      return <NoCourseAvailable mobileWidth="90%" standardWidth="40%" />;
     }
 
     return (
