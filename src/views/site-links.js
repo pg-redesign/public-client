@@ -2,10 +2,12 @@ const siteLinks = {
   LANDING: "/",
   ABOUT: "/about",
   COURSES: "/courses",
-  CONTACT: "/contact",
   INSTRUCTORS: "/instructors",
+  TESTIMONIALS: "/testimonials",
   REGISTRATION: "/registration",
   CREDIT_PAYMENT: "/payment/credit",
+  POLLUTION_COURSE: "/courses/pollution",
+  REMEDIATION_COURSE: "/courses/remediation",
 };
 
 const linksAsList = links =>
@@ -13,9 +15,11 @@ const linksAsList = links =>
 
 export const navList = linksAsList({
   Home: siteLinks.LANDING,
-  Registration: siteLinks.REGISTRATION,
-  Courses: siteLinks.COURSES,
+  "Register Now": siteLinks.REGISTRATION,
+  "Pollution & Hydrology Course": siteLinks.POLLUTION_COURSE,
+  "Remediation Course": siteLinks.REMEDIATION_COURSE,
   Instructors: siteLinks.INSTRUCTORS,
+  Testimonials: siteLinks.TESTIMONIALS, // rename as reviews (with star rating) for SEO?
   "Contact Us": siteLinks.CONTACT,
 });
 
