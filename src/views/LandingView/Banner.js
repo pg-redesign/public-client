@@ -32,6 +32,7 @@ const Banner = props => {
         as="h3"
         inverted
         content={bannerPhrase}
+        className="header-shadow"
         style={{ fontStyle: "oblique" }}
       />
     </Container>

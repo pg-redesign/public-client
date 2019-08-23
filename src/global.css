@@ -1,62 +1,61 @@
 body {
-	min-height: 100vh;
-	font-size: 1.1rem;
+  min-height: 100vh;
+  font-size: 1.1rem;
 
-	display: flex;
+  display: flex;
   flex-direction: column;
 }
 
 #root {
-	/* putting texture on root instead of body prevents the flickering on mobile when the url bar is shown / hidden */
+  /* putting texture on root instead of body prevents the flickering on mobile when the url bar is shown / hidden */
   /* but the background also stops halfway... */
   /* background: url("media/background-texture.png"); */
 }
 
 h1 {
-	text-transform: uppercase !important;
-	text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2) !important;
+  text-transform: uppercase !important;
+  text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2) !important;
 }
 
-h2,
-h3 {
-	text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2) !important;
+.header-shadow {
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2) !important;
 }
 
 @media only screen and (max-width: 1023px) {
-	/* mobile */
-	body {
-		background: var(--mobile-background);
-	}
+  /* mobile */
+  body {
+    background: var(--mobile-background);
+  }
 
-	h1 {
-		font-size: var(--mobile-h1) !important;
-	}
+  h1 {
+    font-size: var(--mobile-h1) !important;
+  }
 
-	h2 {
-		font-size: var(--mobile-h2) !important;
-	}
+  h2 {
+    font-size: var(--mobile-h2) !important;
+  }
 
-	h3 {
-		font-size: var(--mobile-h3) !important;
-	}
+  h3 {
+    font-size: var(--mobile-h3) !important;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
-	/* above mobile */
+  /* above mobile */
 
-	body {
-		background: var(--desktop-background);
-	}
+  body {
+    background: var(--desktop-background);
+  }
 
-	h1 {
-		font-size: var(--desktop-h1) !important;
-	}
+  h1 {
+    font-size: var(--desktop-h1) !important;
+  }
 
-	h2 {
-		font-size: var(--desktop-h2) !important;
-	}
+  h2 {
+    font-size: var(--desktop-h2) !important;
+  }
 
-	h3 {
-		font-size: var(--desktop-h3) !important;
-	}
+  h3 {
+    font-size: var(--desktop-h3) !important;
+  }
 }
