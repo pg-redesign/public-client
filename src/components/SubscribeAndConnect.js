@@ -5,12 +5,12 @@ import { Segment } from "semantic-ui-react";
 import { JoinMailingList, ConnectWithUs } from ".";
 
 const SubscribeAndConnect = props => {
-  const { mobile, attached, mobileWidth, standardWidth } = props;
+  const { mobile, mobileWidth, standardWidth } = props;
   const style = { width: mobile ? mobileWidth : standardWidth };
 
   return (
-    <Segment attached={attached} style={style}>
-      <JoinMailingList />
+    <Segment style={style}>
+      <JoinMailingList mobile={mobile} />
       <ConnectWithUs />
     </Segment>
   );

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import AJV from "ajv";
 import { gql } from "apollo-boost";
 import { Mutation } from "react-apollo";
-import { Form, Input, Button, Message } from "semantic-ui-react";
+import { Form, Input, Button, Message, Segment } from "semantic-ui-react";
 
 import { withHandledQuery } from "../wrappers";
 import { LoadingMessage, ErrorMessage, SuccessMessage } from ".";
@@ -82,6 +82,7 @@ class JoinMailingList extends Component {
 
   render() {
     const { fields, errors } = this.state;
+    const { mobile, attached } = this.props;
 
     return (
       <Mutation mutation={mutation}>
@@ -107,54 +108,62 @@ class JoinMailingList extends Component {
           }
 
           return (
-            <Form>
-              <Form.Group>
-                <Form.Field width="8" error={errors.firstName}>
+            <Segment attached={attached}>
+              <Form>
+                <Form.Group>
+                  <Form.Field width="8" error={errors.firstName}>
+                    <Input
+                      required
+                      size="large"
+                      name="firstName"
+                      value={fields.firstName}
+                      placeholder="First Name"
+                      onChange={this.handleChange}
+                    />
+                  </Form.Field>
+                  <Form.Field width="8" error={errors.lastName}>
+                    <Input
+                      required
+                      size="large"
+                      name="lastName"
+                      value={fields.lastName}
+                      placeholder="Last Name"
+                      onChange={this.handleChange}
+                    />
+                  </Form.Field>
+                </Form.Group>
+
+                <Form.Field error={errors.email}>
                   <Input
                     required
                     size="large"
-                    name="firstName"
-                    value={fields.firstName}
-                    placeholder="First Name"
+                    type="email"
+                    name="email"
+                    value={fields.email}
+                    placeholder="Email Address"
                     onChange={this.handleChange}
                   />
                 </Form.Field>
-                <Form.Field width="8" error={errors.lastName}>
-                  <Input
-                    required
+
+                <Form.Field>
+                  <Button
                     size="large"
-                    name="lastName"
-                    value={fields.lastName}
-                    placeholder="Last Name"
-                    onChange={this.handleChange}
+                    type="button"
+                    color="blue"
+                    content="Join Our Mailing List"
+                    onClick={this.handleSubmit(joinMailingList)}
+                    style={{ color: "white", background: "var(--primary)" }}
                   />
                 </Form.Field>
-              </Form.Group>
-
-              <Form.Field error={errors.email}>
-                <Input
-                  required
-                  size="large"
-                  type="email"
-                  name="email"
-                  value={fields.email}
-                  placeholder="Email Address"
-                  onChange={this.handleChange}
-                />
-              </Form.Field>
-
-              <Form.Field>
-                <Button
-                  size="large"
-                  type="button"
-                  color="blue"
-                  content="Join Our Mailing List"
-                  onClick={this.handleSubmit(joinMailingList)}
-                  style={{ color: "white", background: "var(--primary)" }}
-                />
-              </Form.Field>
-              <Message compact color="blue" content={<NewsletterPledge />} />
-            </Form>
+                {!mobile && (
+                  <Message
+                    compact
+                    color="blue"
+                    content={<NewsletterPledge />}
+                  />
+                )}
+              </Form>
+            </Segment>
           );
         }}
       </Mutation>
