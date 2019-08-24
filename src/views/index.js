@@ -24,7 +24,11 @@ const Views = () => (
           path={siteLinks.CREDIT_PAYMENT}
           component={StripePaymentView}
         />
-        <Route component={CourseView} path={"/courses/:courseName?"} />
+        <Route
+          exact
+          component={CourseView}
+          path={"/courses/:courseShortName"}
+        />
         {/* all other addresses directed to home page */}
         <Route path="/" component={LandingView} />
       </Switch>
