@@ -9,7 +9,7 @@ const ListCard = props => (
         textAlign="center"
         content={<Header content={props.header} />}
       />
-      <List divided>
+      <List divided relaxed="very">
         {props.items.map(item => (
           <List.Item content={item} />
         ))}
