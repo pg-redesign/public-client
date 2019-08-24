@@ -109,12 +109,12 @@ const WhatsIncluded = props => {
           <List.Item
             content={
               // <>
-              //   <strong>1300+ page course binder</strong> with an unmatched
+              //   <strong>1200+ page course binder</strong> with an unmatched
               //   wealth of information from over 40 years of teaching and
               //   consulting
               // </>
               <>
-                <strong>1300+ page course binder</strong> with an unmatched
+                <strong>1200+ page course binder</strong> with an unmatched
                 wealth of information
               </>
             }

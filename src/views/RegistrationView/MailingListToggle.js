@@ -9,7 +9,7 @@ const MailingListToggle = props => {
 
   return (
     <Message compact positive>
-      <Message.Header content="Would you like to join our mailing list?" />
+      <Message.Header content="Join our mailing list?" />
       <NewsletterPledge />
       <Divider />
       <Form.Checkbox

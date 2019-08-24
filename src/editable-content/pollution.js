@@ -1,21 +1,22 @@
 const overview = `The Pollution & Hydrology Course is the only one-week course in the US or Europe which comprehensively teaches from theory to practice all aspects of groundwater contamination, hydrology, monitoring, site characterization and remediation.
   
-  This course assumes no prior experience in groundwater hydrology, contamination or remediation. Like any short course, some experience is helpful but not necessary as the course teaches basic principles and concepts first before dealing with more advanced topics. The course succeeds in significantly enhancing the technical skills and knowledge of all the participants from professionals that are new to the field to those with many years of experience.
+This course assumes no prior experience in groundwater hydrology, contamination or remediation. We begin with basic principles before expanding into more advanced topics. The course enhances the technical skillset of all participants from new professionals to those with years of experience.
   `;
 
 const whoShouldAttend = [
+  "Chemists",
+  "Engineers",
+  "Geologists",
   "Environmental Scientists",
-  "State/Federal Regulators",
-  "Chemists, Engineers, Geologists",
+  "State and Federal Regulators",
+  "Superfund and Industry Site Managers",
   "Compliance/Regulatory Program Managers",
-  "Project Managers For Superfund and Industry Sites",
 ];
 
 const schedule = [
   "Daily: 8-11:30 A.M. and 1-4:30 P.M.",
-  "Morning Break: 9:30-10 A.M.",
-  "Lunch Break: 11:30-1 P.M.",
-  "Afternoon Break: 2:30-3 P.M.",
+  "Coffee break: 9:30-10 A.M. and 2:30-3 P.M.",
+  "Lunch break: 11:30-1 P.M.",
   "Monday evening: 4:45-6 P.M.",
   "Tuesday evening: 4:45-8 P.M.",
   "Thursday evening: 4:45-6:30 P.M.",
@@ -23,13 +24,10 @@ const schedule = [
 ];
 
 const uniqueAspects = [
-  "Our courses span 4.5 days and are taught twice a year. The advantages of a longer course include time to cover and absorb more aspects of this expanding field and the opportunity for in-depth technical training.",
-  "Our instructors collectively have over 180 years of academic and consulting experience and are recognized as among the top teachers in the field.",
-  "Over 1600 unique slides have been carefully selected and continuously updated to illustrate the many course topics.",
-  "Every student receives an invaluable 1300 page binder filled with practical notes and unique material.",
-  // NOTE: this originally said 20,000. if you change this value it must be reflected elsewhere on the site where 25,000 is listed in several places
-  "Our courses are the established standard among groundwater training courses. They have consistently drawn the largest attendance of all courses offered anywhere in groundwater with over 25,000 participants since 1974.",
-  "We have thousands of positive evaluations, a subset of which can be seen in our testimonials section. Over 90% of our students say they heard about either course through the recommendation of a colleague.",
+  "Thousands of testimonials with over 90% of our students registering by colleague recommendation",
+  "We have the largest attendance of any groundwater course with professionals from around the world",
+  "Our instructors are the best in the field with a collective 180+ years of academic and consulting experience",
+  "Each course includes its own 1200+ page binder filled with practical notes and unique material",
 ];
 
 const longDescription = `
@@ -39,9 +37,9 @@ The advantages of a longer course include time to cover and absorb more aspects 
 
 One of the most widespread and difficult problems in groundwater contamination and remediation today is dense non-aqueous phase liquids (DNAPLs). Dr. John Cherry, one of the world’s leading experts in this area, will present the fundamental concepts underlying the occurrence, behavior, movement and characterization of DNAPLs in unconsolidated sedimentary deposits, aquitards and fractured hard rocks.
 
-Although some areas are necessarily surveyed in the interest of time, technical depth is the norm in the majority of sessions. Remediation topics are introduced in this course but are covered in much greater detail in our advanced Remediation Course.
+Although some areas are necessarily surveyed in the interest of time, technical depth is the norm in the majority of sessions. Remediation topics are introduced in this course but are covered in much greater detail in our more rigorous Remediation Course.
 
-This is the highest rated course in the industry because of the unparalleled technical information and applied knowledge it provides - no course teaches so much! Among groundwater professionals, the Princeton Groundwater Pollution and Hydrology Course is considered a must course of outstanding educational value.
+This is the highest rated course in the industry because of the unparalleled technical information and applied knowledge it provides - no course teaches so much! Among groundwater professionals the Princeton Groundwater Pollution and Hydrology Course is an industry standard due to its outstanding educational value.
 `;
 
 const topics = [
