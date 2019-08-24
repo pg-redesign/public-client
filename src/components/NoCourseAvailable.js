@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Grid, Message } from "semantic-ui-react";
 
 import { responsiveWrapper } from "../wrappers";
-import SubscribeAndConnect from "./SubscribeAndConnect";
+import JoinMailingList from "./JoinMailingList";
 
 const propTypes = {
   mobile: PropTypes.bool,
@@ -34,7 +34,7 @@ const NoCourseMessage = props => (
 const NoCourseAvailable = props => {
   const { mobile, attached, header, mobileWidth, standardWidth } = props;
 
-  const subscribeAndConnectProps = {
+  const joinMailingListProps = {
     mobile,
     mobileWidth,
     standardWidth,
@@ -46,10 +46,7 @@ const NoCourseAvailable = props => {
         // (compact) attaches the message to the subscribe container
         <Grid.Row>
           <NoCourseMessage header={header} attached="top" />
-          <SubscribeAndConnect
-            attached="bottom"
-            {...subscribeAndConnectProps}
-          />
+          <JoinMailingList attached="bottom" {...joinMailingListProps} />
         </Grid.Row>
       ) : (
         // (open) separates the two for more negative space
@@ -58,7 +55,7 @@ const NoCourseAvailable = props => {
             <NoCourseMessage header={header} />
           </Grid.Row>
           <Grid.Row>
-            <SubscribeAndConnect {...subscribeAndConnectProps} />
+            <JoinMailingList {...joinMailingListProps} />
           </Grid.Row>
         </>
       )}
