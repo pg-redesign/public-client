@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import { Grid, Header, Message } from "semantic-ui-react";
 
 import { courseTypeShape } from "../../utils/prop-types";
-import { courseContentType } from "../../editable-content";
+import { courseContentTypeShape } from "../../editable-content";
 import {
   boldFirstWord,
   addLineBreaks,
 } from "../../utils/format-editable-content";
 
 import RegisterNow from "./RegisterNow";
-import CourseTopics from "./CourseTopics";
+import { CourseTopic } from "./CourseTopics";
 import {
   ListCard,
   NoCourseAvailable,
@@ -20,13 +20,14 @@ import {
 const propTypes = {
   availableCourse: courseTypeShape.isRequired,
   courseFullName: PropTypes.string.isRequired,
-  courseContent: courseContentType.isRequired,
+  courseContent: courseContentTypeShape.isRequired,
 };
 
 const MobileCourseView = props => {
   const { courseFullName, courseContent, availableCourse } = props;
 
   const [collapsibleStates, setCollapsibleStates] = useState({
+    topics: false,
     schedule: false,
     overview: false,
     uniqueAspects: true,
@@ -87,7 +88,15 @@ const MobileCourseView = props => {
         content={addLineBreaks(courseContent.longDescription)}
       />
 
-      {/* <CourseTopics topics={courseContent.topics} /> */}
+      <CollapsibleContent
+        header="Course Topics"
+        active={collapsibleStates.topics}
+        toggleContent={toggleContent("topics")}
+        content={courseContent.topics.map(topic => (
+          <CourseTopic key={`course-topic-${topic.header}`} topic={topic} />
+        ))}
+      />
+
       {availableCourse ? (
         <RegisterNow course={availableCourse} />
       ) : (

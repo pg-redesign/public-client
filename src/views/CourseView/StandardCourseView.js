@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Grid, Ref, Header, Sticky, Message } from "semantic-ui-react";
 
 import { courseTypeShape } from "../../utils/prop-types";
-import { courseContentType } from "../../editable-content";
+import { courseContentTypeShape } from "../../editable-content";
 import {
   boldFirstWord,
   addLineBreaks,
@@ -16,7 +16,7 @@ import { NoCourseAvailable, ListCard } from "../../components";
 const propTypes = {
   availableCourse: courseTypeShape.isRequired,
   courseFullName: PropTypes.string.isRequired,
-  courseContent: courseContentType.isRequired,
+  courseContent: courseContentTypeShape.isRequired,
 };
 
 const StandardCourseView = props => {
@@ -26,7 +26,7 @@ const StandardCourseView = props => {
 
   return (
     <Ref innerRef={contextRef}>
-      <Grid container stackable centered columns={2}>
+      <Grid stackable centered columns={2}>
         <Header
           as="h2"
           inverted
@@ -67,7 +67,7 @@ const StandardCourseView = props => {
             {addLineBreaks(courseContent.longDescription)}
           </Message>
 
-          {/* <CourseTopics topics={courseContent.topics} /> */}
+          <CourseTopics topics={courseContent.topics} />
         </Grid.Column>
 
         <Grid.Column width="4">
