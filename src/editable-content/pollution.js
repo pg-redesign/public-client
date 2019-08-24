@@ -1,6 +1,6 @@
 const overview = `The Pollution & Hydrology Course is the only one-week course in the US or Europe which comprehensively teaches from theory to practice all aspects of groundwater contamination, hydrology, monitoring, site characterization and remediation.
   
-This course assumes no prior experience in groundwater hydrology, contamination or remediation. We begin with basic principles before expanding into more advanced topics. The course enhances the technical skillset of all participants from new professionals to those with years of experience.
+This course assumes no prior experience. We begin with basic principles before expanding into more advanced topics and application. The course enhances the technical skillset of all its participants from new professionals to those with years of experience.
   `;
 
 const whoShouldAttend = [
@@ -24,14 +24,13 @@ const schedule = [
 ];
 
 const uniqueAspects = [
-  "Thousands of testimonials with over 90% of our students registering by colleague recommendation",
-  "We have the largest attendance of any groundwater course with professionals from around the world",
+  "We have thousands of testimonials and over 90% of our students register by colleague recommendation",
+  "Our courses have the largest attendance in the industry attracting professionals from around the world",
   "Our instructors are the best in the field with a collective 180+ years of academic and consulting experience",
   "Each course includes its own 1200+ page binder filled with practical notes and unique material",
 ];
 
-const longDescription = `
-The widespread interest in groundwater contamination, characterization and remediation has seen the offering of many 1-3 day topic-specific training courses. There are no other one-week courses covering all aspects of groundwater. The emphasis of this comprehensive course is on acquiring an extensive working knowledge of the concepts, principles and professional practices underlying groundwater contamination, hydrology and remediation.
+const longDescription = `The widespread interest in groundwater contamination, characterization and remediation has seen the offering of many 1-3 day topic-specific training courses. There are no other one-week courses covering all aspects of groundwater. The emphasis of this comprehensive course is on acquiring an extensive working knowledge of the concepts, principles and professional practices underlying groundwater contamination, hydrology and remediation.
 
 The advantages of a longer course include time to cover and absorb more aspects of this expanding field and the opportunity for in-depth technical learning. Groundwater legislation, high resolution site characterization, remediation techniques, natural attenuation, risk assessment, wellhead protection techniques, multi-level monitoring systems, LNAPL/ DNAPL contamination, indoor air vapor intrusion, emerging contaminants and applications of computer modeling have grown to such an extent in the last few decades that intensive one-week courses, with a few early evening sessions, are needed to adequately cover all of these new developments.
 
@@ -44,7 +43,7 @@ This is the highest rated course in the industry because of the unparalleled tec
 
 const topics = [
   {
-    topicHeader:
+    header:
       "Basic to Advanced Concepts and Principles of Groundwater Hydrology in the Saturated and Unsaturated Zones",
 
     subTopics: [
@@ -56,7 +55,7 @@ const topics = [
     ],
   },
   {
-    topicHeader:
+    header:
       "Basic to Advanced Concepts and Principles of Contamination Fate and Transport",
 
     subTopics: [
@@ -64,14 +63,14 @@ const topics = [
     ],
   },
   {
-    topicHeader: "Groundwater Monitoring and Sampling Technology",
+    header: "Groundwater Monitoring and Sampling Technology",
 
     subTopics: [
       "Groundwater Monitoring And Sampling Technology: Monitoring Program Elements and Design, Site Characterization Tools and Field Analytical Methods, Traditional and Accelerated Site Characterization Plans, Well Design Standards and Practices, Collecting Representative Groundwater Samples, Preservation and Decontamination Procedures, Factors that Affect Sample Accuracy, Precision and Quality, Low Flow Purging, No-Purge/Passive Sampling, The Triad Approach, Screen Size and Location Based On The 3D Site Conceptual Model.",
     ],
   },
   {
-    topicHeader:
+    header:
       "Site Characterization in 3D: Geohydrology and Contaminant Distributions In Soils, Groundwater and Vapors",
 
     subTopics: [
@@ -81,7 +80,7 @@ const topics = [
     ],
   },
   {
-    topicHeader:
+    header:
       "Dense Non-Aqueous Phase Liquids (DNAPLs) in Sedimentary deposits, Aquitards and Fractured Rocks",
 
     subTopics: [
@@ -89,7 +88,7 @@ const topics = [
     ],
   },
   {
-    topicHeader:
+    header:
       "Remediation of Soil and Groundwater: Technologies, Case histories and Long Term Management",
 
     subTopics: [
