@@ -82,60 +82,6 @@ class RegistrationForm extends Component {
     this.state.formValidator = ajv.compile(schema);
   }
 
-  // shouldSubmit is passed true by <PaymentSelect> onClick
-  handleChange = (_, target, shouldSubmit) =>
-    this.setState(
-      state => {
-        const { name, value } = target;
-
-        return {
-          fields: { ...state.fields, [name]: value },
-          errors: { ...state.errors, [name]: false },
-        };
-      },
-      // handleSubmit after setting state
-      () => shouldSubmit && this.handleSubmit(),
-    );
-
-  handleCheckbox = (event, target) => {
-    const { name, checked } = target;
-    this.handleChange(event, { name, value: checked });
-  };
-
-  handleFormErrors = validationErrors => {
-    const errors = validationErrors.reduce((errors, error) => {
-      // AJV has each field name as dataPath: ".fieldName"
-      const name = error.dataPath.replace(".", "");
-      return { ...errors, [name]: true };
-    }, {});
-
-    this.setState({ errors, shouldShakeForErrors: true }, () =>
-      this.setState({ shouldShakeForErrors: false }),
-    );
-  };
-
-  handleSubmit = () => {
-    const { submitRegistration } = this.props;
-    const { fields, formValidator } = this.state;
-
-    const isValid = formValidator(fields);
-    if (!isValid) {
-      return this.handleFormErrors(formValidator.errors);
-    }
-
-    submitRegistration(fields);
-  };
-
-  labelOrError = (fieldName, labelText) => {
-    return (
-      <LabelOrError
-        fieldName={fieldName}
-        labelText={labelText}
-        errors={this.state.errors}
-      />
-    );
-  };
-
   render() {
     const { courses } = this.props.data;
     const { fields, errors, shouldShakeForErrors } = this.state;
@@ -147,10 +93,11 @@ class RegistrationForm extends Component {
     return (
       <Form>
         <Header
-          as="h1"
-          textAlign="center"
-          content="Course Registration"
+          as="h2"
           inverted
+          textAlign="center"
+          className="header-shadow"
+          content="Course Registration"
         />
 
         <Divider clearing />
@@ -207,18 +154,18 @@ class RegistrationForm extends Component {
             <Form.Group widths="equal">
               <Form.Field width="8">
                 <Input
-                  name="company"
-                  value={fields.company}
-                  onChange={this.handleChange}
-                  label={this.labelOrError("company", "Company")}
-                />
-              </Form.Field>
-              <Form.Field width="8">
-                <Input
                   name="email"
                   value={fields.email}
                   onChange={this.handleChange}
                   label={this.labelOrError("email", "Email")}
+                />
+              </Form.Field>
+              <Form.Field width="8">
+                <Input
+                  name="company"
+                  value={fields.company}
+                  onChange={this.handleChange}
+                  label={this.labelOrError("company", "Company")}
                 />
               </Form.Field>
             </Form.Group>
@@ -291,6 +238,60 @@ class RegistrationForm extends Component {
       </Form>
     );
   }
+
+  // shouldSubmit is passed true by <PaymentSelect> onClick
+  handleChange = (_, target, shouldSubmit) =>
+    this.setState(
+      state => {
+        const { name, value } = target;
+
+        return {
+          fields: { ...state.fields, [name]: value },
+          errors: { ...state.errors, [name]: false },
+        };
+      },
+      // handleSubmit after setting state
+      () => shouldSubmit && this.handleSubmit(),
+    );
+
+  handleCheckbox = (event, target) => {
+    const { name, checked } = target;
+    this.handleChange(event, { name, value: checked });
+  };
+
+  handleFormErrors = validationErrors => {
+    const errors = validationErrors.reduce((errors, error) => {
+      // AJV has each field name as dataPath: ".fieldName"
+      const name = error.dataPath.replace(".", "");
+      return { ...errors, [name]: true };
+    }, {});
+
+    this.setState({ errors, shouldShakeForErrors: true }, () =>
+      this.setState({ shouldShakeForErrors: false }),
+    );
+  };
+
+  handleSubmit = () => {
+    const { submitRegistration } = this.props;
+    const { fields, formValidator } = this.state;
+
+    const isValid = formValidator(fields);
+    if (!isValid) {
+      return this.handleFormErrors(formValidator.errors);
+    }
+
+    submitRegistration(fields);
+  };
+
+  labelOrError = (fieldName, labelText) => {
+    return (
+      <LabelOrError
+        fieldName={fieldName}
+        labelText={labelText}
+        errors={this.state.errors}
+      />
+    );
+  };
 }
 
 export default withHandledQuery(RegistrationForm, query);
