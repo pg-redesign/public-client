@@ -20,7 +20,7 @@ export const navList = linksAsList({
   "Remediation Course": siteLinks.REMEDIATION_COURSE,
   Instructors: siteLinks.INSTRUCTORS,
   Testimonials: siteLinks.TESTIMONIALS, // rename as reviews (with star rating) for SEO?
-  "Contact Us": siteLinks.CONTACT,
+  // "Contact Us": siteLinks.CONTACT,
 });
 
 export default siteLinks;
