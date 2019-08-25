@@ -9,11 +9,13 @@ const AttendeeRecognition = () => (
       <Header
         as="h2"
         inverted
+        className="header-shadow"
         content="Over 25,000 professionals taught since 1974"
-      />
+        />
       <Header
         as="h3"
         inverted
+        className="header-shadow"
         style={{ marginTop: "0px" }}
         content="including international attendees from leading companies and government agencies"
       />

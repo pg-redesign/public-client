@@ -10,7 +10,7 @@ const SubscribeAndConnect = props => {
 
   return (
     <Segment style={style}>
-      <JoinMailingList />
+      <JoinMailingList mobile={mobile} />
       <ConnectWithUs />
     </Segment>
   );

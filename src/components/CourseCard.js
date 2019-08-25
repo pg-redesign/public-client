@@ -37,25 +37,33 @@ NameDateAndLocation.propTypes = {
   location: courseType.location.isRequired,
 };
 
+const RegistrationButton = props => (
+  <Button
+    as={Link}
+    size="large"
+    content="Register Now"
+    to={`${siteLinks.REGISTRATION}/${props.courseId}`}
+    style={{ backgroundColor: "var(--dark-blue)", color: "white" }}
+  />
+);
+
+const InfoButton = props => (
+  <Button
+    as={Link}
+    size="large"
+    content="Learn More"
+    to={`${siteLinks.COURSES}/${props.courseShortName.toLowerCase()}`}
+  />
+);
+
 const RegistrationAndInfoButtons = props => {
   const { id, shortName } = props;
   return (
     <Card.Content extra>
       <Button.Group fluid>
-        <Button
-          as={Link}
-          size="large"
-          content="Register Now"
-          to={`${siteLinks.REGISTRATION}/${id}`}
-          style={{ backgroundColor: "var(--dark-blue)", color: "white" }}
-        />
+        <RegistrationButton courseId={id} />
         <Button.Or />
-        <Button
-          as={Link}
-          size="large"
-          content="Learn More"
-          to={`/${siteLinks.COURSES}/${shortName}`}
-        />
+        <InfoButton courseShortName={shortName} />
       </Button.Group>
     </Card.Content>
   );
@@ -103,18 +111,18 @@ const WhatsIncluded = props => {
           <List.Item content="Digital certificate of completion" />
           <List.Item
             content={`${
-              shortName === "pollution" ? "38" : "40"
+              shortName === "POLLUTION" ? "38" : "40"
             } continuing education units (CEU)`}
           />
           <List.Item
             content={
               // <>
-              //   <strong>1300+ page course binder</strong> with an unmatched
+              //   <strong>1200+ page course binder</strong> with an unmatched
               //   wealth of information from over 40 years of teaching and
               //   consulting
               // </>
               <>
-                <strong>1300+ page course binder</strong> with an unmatched
+                <strong>1200+ page course binder</strong> with an unmatched
                 wealth of information
               </>
             }
@@ -151,6 +159,7 @@ const CourseCard = props => {
     withTopics,
     withButtons,
     withWhatsIncluded,
+    withRegisterButton,
     ...courseData
   } = props;
 
@@ -170,6 +179,13 @@ const CourseCard = props => {
 
       {/* register / more info buttons section */}
       {withButtons && <RegistrationAndInfoButtons {...courseData} />}
+
+      {/* just registration button */}
+      {withRegisterButton && (
+        <Card.Content extra textAlign="center">
+          <RegistrationButton courseId={courseData.id} />
+        </Card.Content>
+      )}
     </Card>
   );
 };
@@ -181,6 +197,7 @@ CourseCard.propTypes = {
   withTopics: PropTypes.bool,
   withButtons: PropTypes.bool,
   withWhatsIncluded: PropTypes.bool,
+  withRegisterButton: PropTypes.bool,
 };
 
 export default CourseCard;
