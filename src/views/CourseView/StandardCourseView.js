@@ -35,7 +35,7 @@ const StandardCourseView = props => {
           className="header-shadow"
         />
 
-        <Grid.Column width="12">
+        <Grid.Column width="11">
           <Message info content={addLineBreaks(courseContent.overview)} />
 
           <ListCard
@@ -70,7 +70,7 @@ const StandardCourseView = props => {
           <CourseTopics topics={courseContent.topics} />
         </Grid.Column>
 
-        <Grid.Column width="4">
+        <Grid.Column width="5">
           <Sticky pushing offset={50} context={contextRef}>
             {availableCourse ? (
               <RegisterNow course={availableCourse} />

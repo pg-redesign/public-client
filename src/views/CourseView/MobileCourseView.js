@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Grid, Header, Message } from "semantic-ui-react";
+import { Header, Message } from "semantic-ui-react";
 
 import { courseTypeShape } from "../../utils/prop-types";
 import { courseContentTypeShape } from "../../editable-content";
@@ -42,7 +42,7 @@ const MobileCourseView = props => {
     });
 
   return (
-    <Grid stackable>
+    <div>
       <Header
         as="h2"
         inverted
@@ -105,7 +105,7 @@ const MobileCourseView = props => {
           header="Sorry, this course is not open for registration at this time."
         />
       )}
-    </Grid>
+    </div>
   );
 };
 
