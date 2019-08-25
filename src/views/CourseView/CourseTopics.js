@@ -17,7 +17,7 @@ export const CourseTopic = props => {
       subContent
       header={header}
       active={subTopicsVisibility}
-      content={<ListCard items={subTopics} />}
+      content={<ListCard items={subTopics} bulleted />}
       toggleContent={() => setSubTopicsVisibility(!subTopicsVisibility)}
     />
   );
