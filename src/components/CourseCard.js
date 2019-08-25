@@ -37,25 +37,33 @@ NameDateAndLocation.propTypes = {
   location: courseType.location.isRequired,
 };
 
+const RegistrationButton = props => (
+  <Button
+    as={Link}
+    size="large"
+    content="Register Now"
+    to={`${siteLinks.REGISTRATION}/${props.courseId}`}
+    style={{ backgroundColor: "var(--dark-blue)", color: "white" }}
+  />
+);
+
+const InfoButton = props => (
+  <Button
+    as={Link}
+    size="large"
+    content="Learn More"
+    to={`${siteLinks.COURSES}/${props.courseShortName.toLowerCase()}`}
+  />
+);
+
 const RegistrationAndInfoButtons = props => {
   const { id, shortName } = props;
   return (
     <Card.Content extra>
       <Button.Group fluid>
-        <Button
-          as={Link}
-          size="large"
-          content="Register Now"
-          to={`${siteLinks.REGISTRATION}/${id}`}
-          style={{ backgroundColor: "var(--dark-blue)", color: "white" }}
-        />
+        <RegistrationButton courseId={id} />
         <Button.Or />
-        <Button
-          as={Link}
-          size="large"
-          content="Learn More"
-          to={`${siteLinks.COURSES}/${shortName.toLowerCase()}`}
-        />
+        <InfoButton courseShortName={shortName} />
       </Button.Group>
     </Card.Content>
   );
@@ -151,6 +159,7 @@ const CourseCard = props => {
     withTopics,
     withButtons,
     withWhatsIncluded,
+    withRegisterButton,
     ...courseData
   } = props;
 
@@ -170,6 +179,13 @@ const CourseCard = props => {
 
       {/* register / more info buttons section */}
       {withButtons && <RegistrationAndInfoButtons {...courseData} />}
+
+      {/* just registration button */}
+      {withRegisterButton && (
+        <Card.Content extra textAlign="center">
+          <RegistrationButton courseId={courseData.id} />
+        </Card.Content>
+      )}
     </Card>
   );
 };
@@ -181,6 +197,7 @@ CourseCard.propTypes = {
   withTopics: PropTypes.bool,
   withButtons: PropTypes.bool,
   withWhatsIncluded: PropTypes.bool,
+  withRegisterButton: PropTypes.bool,
 };
 
 export default CourseCard;
