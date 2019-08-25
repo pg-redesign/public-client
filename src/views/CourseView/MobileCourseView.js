@@ -42,7 +42,7 @@ const MobileCourseView = props => {
     });
 
   return (
-    <Grid stackable centered>
+    <Grid stackable>
       <Header
         as="h2"
         inverted
