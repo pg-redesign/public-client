@@ -24,10 +24,11 @@ const schedule = [
 ];
 
 const uniqueAspects = [
-  "We have thousands of testimonials and over 90% of our students register by colleague recommendation",
-  "Our courses have the largest attendance in the industry attracting professionals from around the world",
-  "Our instructors are the best in the field with a collective 180+ years of academic and consulting experience",
+  "Our courses have been continously updated and refined for over 40 years",
+  "Our instructors have over 300 years of collective academic and consulting experience",
   "Each course includes its own 1200+ page binder filled with practical notes and unique material",
+  "Our courses have the largest attendance in the industry attracting professionals from around the world",
+  "We have thousands of testimonials and over 90% of our students register by colleague recommendation",
 ];
 
 const longDescription = `The widespread interest in groundwater contamination, characterization and remediation has seen the offering of many 1-3 day topic-specific training courses. There are no other one-week courses covering all aspects of groundwater. The emphasis of this comprehensive course is on acquiring an extensive working knowledge of the concepts, principles and professional practices underlying groundwater contamination, hydrology and remediation.
