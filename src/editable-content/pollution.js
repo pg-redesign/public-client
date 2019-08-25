@@ -45,68 +45,137 @@ const topics = [
   {
     header:
       "Basic to Advanced Concepts and Principles of Groundwater Hydrology in the Saturated and Unsaturated Zones",
-
     subTopics: [
-      "Advanced Concepts and Principles of Groundwater Flow, USGS Modflow, Volumetric Flux and Discharge, Capture Zones in Plan and Vertical Cross-Sections, Horizontal and Vertical Anisotropy Effects on Contaminant Flow Directions, Impact of Shifting Plume Directions on Concentrations Measured in Fixed Monitoring Wells, Effects of Heterogeneity, Mobile/Immobile/Storage Porosities and Their Effects on Forward Diffusion/Back Diffusion, Refraction, Impacts of Permeable Lenses, Non-Horizontal Flow Effects...",
-
-      "Fundamental Concepts and Theory of Water and Chemical Movement in the Unsaturated Zone. Laboratory Methods and Field Equipment (Suction Lysimeters and Tensiometers) to Characterize Soils and Sample Water/Gases in the Vadose Zone.",
-
-      "Wellhead Protection under the Safe Drinking Water Act Amendments: Theory and Practice. Determining 3D Capture Zones Using Analytical and Numerical Models (USGS Modflow, Waterloo Hydrogeologic’s Visual Modflow).",
+      "Advanced concepts and principles of groundwater flow",
+      "USGS modflow",
+      "Volumetric flux and discharge",
+      "Capture zones in plan and vertical cross-sections",
+      "Horizontal and vertical anisotropy effects on contaminant flow directions",
+      "Impact of shifting plume directions on concentrations measured in fixed monitoring wells",
+      "Effects of heterogeneity",
+      "Mobile/immobile/storage porosities and their effects on forward diffusion/back diffusion",
+      "Refraction",
+      "Impacts of permeable lenses",
+      "Non-horizontal flow effects",
+      "Fundamental concepts and theory of water and chemical movement in the unsaturated zone. laboratory methods and field equipment (suction lysimeters and tensiometers) to characterize soils and sample water/gases in the vadose zone",
+      "Wellhead protection under the Safe Drinking Water Act amendments: theory and practice",
+      "Determining 3D capture zones using analytical and numerical models (USGS modflow, Waterloo Hydrogeologic’s Visual Modflow)",
     ],
   },
   {
     header:
       "Basic to Advanced Concepts and Principles of Contamination Fate and Transport",
-
     subTopics: [
-      "Advanced Concepts and Principles of Fate and Transport, MT3D, Bioscreen, Dispersion, Sorption, Retardation, Biodegradation, Natural Attenuation, Mass Flux, Mass Discharge, Arcadis Stratagraphic Flux Method, Horizontal and Vertical Anisotropy Effects on Contaminant Flow Directions, Impact of Shifting Plume Directions on Concentrations Measured in Fixed Monitoring Wells, Mobile/Immobile/Storage Porosities and Their Effects on Forward Diffusion/Back Diffusion and Asymptotic C vs. T Curves, Refraction, Lenses, Natural Source Zone Depletion (NSZD), ...",
+      "MT3D",
+      "Bioscreen",
+      "Dispersion",
+      "Sorption",
+      "Retardation",
+      "Biodegradation",
+      "Natural attenuation",
+      "Mass flux",
+      "Mass discharge",
+      "Arcadis stratagraphic flux method",
+      "Horizontal and vertical anisotropy effects on contaminant flow directions",
+      "Impact of shifting plume directions on concentrations measured in fixed monitoring wells",
+      "Mobile/immobile/storage porosities and their effects on forward diffusion/back diffusion and asymptotic c vs. t curves",
+      "Refraction",
+      "Lenses",
+      "Natural source zone depletion (NSZD)",
     ],
   },
   {
     header: "Groundwater Monitoring and Sampling Technology",
-
     subTopics: [
-      "Groundwater Monitoring And Sampling Technology: Monitoring Program Elements and Design, Site Characterization Tools and Field Analytical Methods, Traditional and Accelerated Site Characterization Plans, Well Design Standards and Practices, Collecting Representative Groundwater Samples, Preservation and Decontamination Procedures, Factors that Affect Sample Accuracy, Precision and Quality, Low Flow Purging, No-Purge/Passive Sampling, The Triad Approach, Screen Size and Location Based On The 3D Site Conceptual Model.",
+      "Monitoring program elements and design",
+      "Site characterization tools and field analytical methods",
+      "Traditional and accelerated site characterization plans",
+      "Well design standards and practices",
+      "Collecting representative groundwater samples",
+      "Preservation and decontamination procedures",
+      "Factors that affect sample accuracy",
+      "Precision and quality",
+      "Low flow purging",
+      "No-purge/passive sampling",
+      "The triad approach",
+      "Screen size and location based on the 3d site conceptual model.",
     ],
   },
   {
     header:
       "Site Characterization in 3D: Geohydrology and Contaminant Distributions In Soils, Groundwater and Vapors",
-
     subTopics: [
-      "Site Characterization (Water, Soil and Vapors): Transects, Direct Push Methods, Geophysical Methods, Soil Gas Sampling, Soil and Hard Rock Sampling/Coring Techniques, Multi-Level Samplers (CMT, Westbay, Flute and Waterloo), High Resolution Site Characterization Using, LIF, DYE-LIF and Geoprobe's MIP, HPT, and MiHPT, Optical Image Profilers (Lasers) for LNAPLs, Creosote and Coal Tar, Inficon's Hapsite Portable GC/MS for Indoor Air Vapor Intrusion Investigations, Mini- Piezometers, Seepage Pans to Measure River/Lake Fluxes and Hydraulic Conductivities, Dispersion Coefficient Measurements in the Field, Transects to Measure Mass flux/Mass Discharge, Data Validation (QA/QC Statistics and Procedures) Expedited Site Characterization Techniques...",
-
-      'Hydraulic Characterization: Pumping Test Methods, Slug Test Methods and Practices, Laboratory Permeameters, Grain Size Distributions for screen selection and K Determination, Hydraulic Tomography, Borehole Dilution Methods, Flowmeters and Geoprobe\'s HPT (Hydraulic Profiling Tool) to Determine K(Z), Numerical Models in Pumping Tests for Determining Heterogeneous and Anisotropic Aquifer Properties, "Pumping Tests" in the Vadose Zone to Determine the Radius of Influence (ROI) for Soil Vapor Extraction Remediation',
+      "Transects",
+      "Direct push methods",
+      "Geophysical methods",
+      "Soil gas sampling",
+      "Soil and hard rock sampling/coring techniques",
+      "Multi-level samplers (CMT, Westbay, Flute and Waterloo)",
+      "High resolution site characterization using LIF, Dye-LIF, Geoprobe's MIP, HPT, MIHPT",
+      "Optical image profilers (lasers) for LNAPLs",
+      "Creosote and coal tar",
+      "Inficon's hapsite portable gc/ms for indoor air vapor intrusion investigations",
+      "Mini-piezometers",
+      "Seepage pans to measure river/lake fluxes and hydraulic conductivities",
+      "Dispersion coefficient measurements in the field",
+      "Transects to measure mass flux/mass discharge",
+      "Data validation (qa/qc statistics and procedures) expedited site characterization techniques",
+      "Hydraulic characterization",
+      "Pumping test methods",
+      "Slug test methods and practices",
+      "Laboratory permeameters",
+      "Grain size distributions for screen selection and k determination",
+      "Hydraulic tomography",
+      "Borehole dilution methods",
+      "Flowmeters and Geoprobe's HPT (hydraulic profiling tool) to determine k(z)",
+      "Numerical models in pumping tests for determining heterogeneous and anisotropic aquifer properties",
+      "Pumping tests in the vadose zone to determine the radius of influence (ROI) for soil vapor extraction remediation",
     ],
   },
   {
     header:
       "Dense Non-Aqueous Phase Liquids (DNAPLs) in Sedimentary deposits, Aquitards and Fractured Rocks",
-
     subTopics: [
-      "DNAPL's (Dense Non-Aqueous Phase Liquids): Occurrence, Movement, Characterization and Implications with Respect to Site Monitoring and Remediation in Unconsolidated Sedimentary Deposits, Aquitards and Fractured Hard Rock. Concepts Illustrated by Laboratory and Field Experiments with Chlorinated Solvents. Viruses in Fractured Hard Rock. Oldest Published,Peer-Reviewed DNAPL Case History (111- trichloroethane)",
+      "Occurrence",
+      "Movement",
+      "Characterization and implications with respect to site monitoring and remediation in unconsolidated sedimentary deposits",
+      "Aquitards and fractured hard rock",
+      "Concepts illustrated by laboratory and field experiments with chlorinated solvents",
+      "Viruses in fractured hard rock",
+      "Oldest published peer-reviewed DNAPL case history (111-trichloroethane)",
     ],
   },
   {
     header:
       "Remediation of Soil and Groundwater: Technologies, Case histories and Long Term Management",
-
     subTopics: [
-      "Treatment Technologies, Illustrative Case Histories, Cleanup and Long Term Management Costs and Aquifer Restoration Alternatives For Soil and Groundwater, including Pump and Treat, Recirculation, Chaotic Advection, Capture Zones, Monitored Natural Attenuation, Bioremediation, In Situ Chemical Oxidation and Reduction, Soil Vapor Extraction, Multi-Phase Extraction, Thermal Technologies, Bioaugmentation and Permeable Reactive Barriers",
-
-      "Cleanup Goals, Key Regulatory and Risk Drivers for Remediation, Federal and State Equivalents (RCRA, CERCLA, SARA, Voluntary Cleanup Programs), Brownfields Redevelopment and Long Term Management",
-
-      "Conceptual Site Models (CSM) As The Basis For Remedial Strategies and Decision",
-
-      "LNAPLs (Light Non-Aqueous Phase Liquids, BTEX, MTBE), DNAPLs (Dense Non- Aqueous Phase Liquids): Concepts, Remediation and Challenges. Natural Source Zone Depletion (NSZD), ...",
-
-      "Ex Situ treatment technologies",
-
-      "Trends in Source and Groundwater Treatment Remedies. Annual Superfund Remedy Report",
-
-      "EPA’s Unregulated Contaminant Monitoring Rule (UCMR) and Emerging Contaminants",
-
-      "Remediation Strategies for RCRA, Superfund and Brownfield Sites",
+      "Treatment technologies",
+      "Illustrative case histories",
+      "Cleanup and long term management costs and aquifer restoration alternatives for soil and groundwater",
+      "Pump and treat",
+      "Recirculation",
+      "Chaotic advection",
+      "Capture zones",
+      "Monitored natural attenuation",
+      "Bioremediation",
+      "In situ chemical oxidation and reduction",
+      "Soil vapor extraction",
+      "Multi-phase extraction",
+      "Thermal technologies",
+      "Bioaugmentation and permeable reactive barriers",
+      "Cleanup goals",
+      "Key regulatory and risk drivers for remediation",
+      "Federal and state equivalents (RCRA, CERCLA, SARA, voluntary cleanup programs)",
+      "Brownfields redevelopment and long term management",
+      "Conceptual site models (CSM) as the basis for remedial strategies and decision",
+      "LNAPLs (light non-aqueous phase liquids, BTEX, MTBE)",
+      "Remediation and challenges",
+      "Natural source zone depletion (NSZD)",
+      "Ex situ treatment technologies",
+      "Trends in source and groundwater treatment remedies. annual superfund remedy report",
+      "EPA's unregulated contaminant monitoring rule (UCMR) and emerging contaminants",
+      "Remediation strategies for RCRA",
+      "Superfund and Brownfield sites",
     ],
   },
 ];
