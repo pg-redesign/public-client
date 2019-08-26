@@ -5,6 +5,7 @@ import editableContent from "../../editable-content";
 import { courseTypeShape } from "../../utils/prop-types";
 import responsiveWrapper from "../../wrappers/responsiveWrapper";
 import withUpcomingCourses from "../../wrappers/withUpcomingCourses";
+import { convertToFullName } from "../../utils/format-editable-content";
 
 import MobileCourseView from "./MobileCourseView";
 import StandardCourseView from "./StandardCourseView";
@@ -15,10 +16,7 @@ const CourseView = props => {
 
   const courseViewProps = {
     courseContent: editableContent[courseShortName],
-    courseFullName:
-      courseShortName === "pollution"
-        ? "The Pollution & Hydrology Course"
-        : "The Remediation Course",
+    courseFullName: convertToFullName(courseShortName),
     availableCourse: data.courses.find(
       course => course.shortName === courseShortName.toUpperCase(),
     ),

@@ -16,6 +16,7 @@ export const CourseTopic = props => {
     <CollapsibleContent
       subContent
       header={header}
+      alignHeader="left"
       active={subTopicsVisibility}
       content={<ListCard items={subTopics} bulleted />}
       toggleContent={() => setSubTopicsVisibility(!subTopicsVisibility)}

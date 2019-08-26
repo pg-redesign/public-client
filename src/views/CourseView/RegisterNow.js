@@ -1,8 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-import { courseTypeShape } from "../../utils/prop-types";
 import { CourseCard } from "../../components";
+import { courseTypeShape } from "../../utils/prop-types";
 
 const RegisterNow = props => {
   const { course } = props;
