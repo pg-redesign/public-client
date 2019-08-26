@@ -35,7 +35,16 @@ export const NewsletterPledge = () => (
 
 class JoinMailingList extends Component {
   static propTypes = {
+    mobile: PropTypes.bool,
+    mobileWidth: PropTypes.string,
+    standardWith: PropTypes.string,
     data: PropTypes.shape({ schema: PropTypes.object.isRequired }).isRequired,
+  };
+
+  static defaultProps = {
+    mobile: false,
+    mobileWidth: "100%",
+    standardWith: "100%",
   };
 
   constructor(props) {
@@ -82,7 +91,7 @@ class JoinMailingList extends Component {
 
   render() {
     const { fields, errors } = this.state;
-    const { mobile, attached } = this.props;
+    const { mobile, attached, mobileWidth, standardWith } = this.props;
 
     return (
       <Mutation mutation={mutation}>
@@ -108,7 +117,10 @@ class JoinMailingList extends Component {
           }
 
           return (
-            <Segment attached={attached}>
+            <Segment
+              attached={attached}
+              style={{ width: mobile ? mobileWidth : standardWith }}
+            >
               <Form>
                 <Form.Group>
                   <Form.Field width="8" error={errors.firstName}>
