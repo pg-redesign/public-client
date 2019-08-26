@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import pollution from "./pollution";
 import remediation from "./remediation";
+import instructors from "./instructors";
 import testimonials from "./testimonials";
 
 export const courseTopicTypeShape = PropTypes.shape({
@@ -25,5 +26,6 @@ export const courseContentTypeShape = PropTypes.shape(courseContentType);
 export default {
   pollution,
   remediation,
+  instructors,
   testimonials,
 };
