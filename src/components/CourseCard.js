@@ -21,7 +21,8 @@ const NameDateAndLocation = props => {
           content="click to view hotel on Google Maps"
           trigger={
             <a href={location.mapUrl} target="_blank" rel="noopener noreferrer">
-              {location.concatenated}&nbsp;
+              <span style={{ color: "#1e70bf" }}>{location.concatenated}</span>
+              &nbsp;
               <Icon name="map marker alternate" color="red" />
             </a>
           }
