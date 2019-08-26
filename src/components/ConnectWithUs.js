@@ -8,8 +8,8 @@ const propTypes = {
 };
 
 const defaultProps = {
-  youtubeURL: "https://youtube.com/channel/",
   linkedinURL: "https://linkedin.com/company/princeton-groundwater",
+  youtubeURL: "https://www.youtube.com/channel/UCBgTZRG6BTMMj5AoKvvXsSw",
 };
 
 const ConnectWithUs = props => {
