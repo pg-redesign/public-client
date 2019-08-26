@@ -32,12 +32,12 @@ const NoCourseMessage = props => (
 );
 
 const NoCourseAvailable = props => {
-  const { mobile, attached, header } = props;
+  const { mobile, mobileWidth, standardWidth, attached, header } = props;
 
   const joinMailingListProps = {
     mobile,
-    mobileWidth: "90%",
-    standardWidth: "40%",
+    mobileWidth,
+    standardWidth,
   };
 
   return (
