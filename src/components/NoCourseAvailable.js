@@ -34,13 +34,19 @@ const NoCourseMessage = props => (
 const NoCourseAvailable = props => {
   const { mobile, attached, header } = props;
 
+  const joinMailingListProps = {
+    mobile,
+    mobileWidth: "90%",
+    standardWidth: "40%",
+  };
+
   return (
     <Grid centered>
       {attached ? (
         // (compact) attaches the message to the subscribe container
         <Grid.Row>
           <NoCourseMessage header={header} attached="top" />
-          <JoinMailingList attached="bottom" mobile={mobile} />
+          <JoinMailingList attached="bottom" {...joinMailingListProps} />
         </Grid.Row>
       ) : (
         // (open) separates the two for more negative space
@@ -49,7 +55,7 @@ const NoCourseAvailable = props => {
             <NoCourseMessage header={header} />
           </Grid.Row>
           <Grid.Row>
-            <JoinMailingList mobile={mobile} />
+            <JoinMailingList {...joinMailingListProps} />
           </Grid.Row>
         </>
       )}
