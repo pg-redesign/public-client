@@ -18,3 +18,8 @@ export const addLineBreaks = content =>
       {section}
     </>
   ));
+
+export const convertToFullName = courseShortName =>
+  courseShortName === "pollution"
+    ? "The Pollution & Hydrology Course"
+    : "The Remediation Course";
