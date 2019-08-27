@@ -41,7 +41,7 @@ const StandardCourseView = props => {
           <ListCard
             icon="star"
             iconColor="yellow"
-            header="What Makes Our Courses Unique"
+            header="Why Our Courses Are Unique"
             items={courseContent.uniqueAspects}
           />
 

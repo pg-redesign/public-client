@@ -3,14 +3,13 @@ import PropTypes from "prop-types";
 import { Header, Divider } from "semantic-ui-react";
 
 import { responsiveWrapper } from "../../wrappers";
-import editableContent from "../../editable-content";
+import { instructors } from "../../editable-content";
 
 import MobileInstructorView from "./MobileInstructorView";
 import StandardInstructorView from "./StandardInstructorView";
 
 const InstructorView = props => {
   const { mobile } = props;
-  const { instructors } = editableContent;
 
   return (
     <div>

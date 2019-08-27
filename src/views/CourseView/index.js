@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import editableContent from "../../editable-content";
+import { courseContent } from "../../editable-content";
 import { courseTypeShape } from "../../utils/prop-types";
 import responsiveWrapper from "../../wrappers/responsiveWrapper";
 import withUpcomingCourses from "../../wrappers/withUpcomingCourses";
@@ -15,7 +15,7 @@ const CourseView = props => {
   const { courseShortName } = match.params;
 
   const courseViewProps = {
-    courseContent: editableContent[courseShortName],
+    courseContent: courseContent[courseShortName],
     courseFullName: convertToFullName(courseShortName),
     availableCourse: data.courses.find(
       course => course.shortName === courseShortName.toUpperCase(),

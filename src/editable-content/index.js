@@ -1,11 +1,7 @@
-// DO NOT EDIT ANYTHING IN HERE
-// only edit pollution, remediation, and testimonal files as needed
+// DO NOT EDIT ANYTHING IN THIS FILE
 import PropTypes from "prop-types";
-
 import pollution from "./pollution";
 import remediation from "./remediation";
-import instructors from "./instructors";
-import testimonials from "./testimonials";
 
 export const courseTopicTypeShape = PropTypes.shape({
   header: PropTypes.string.isRequired,
@@ -23,9 +19,9 @@ export const courseContentType = {
 
 export const courseContentTypeShape = PropTypes.shape(courseContentType);
 
-export default {
+export { default as instructors } from "./instructors";
+export { default as testimonials } from "./testimonials";
+export const courseContent = {
   pollution,
   remediation,
-  instructors,
-  testimonials,
 };

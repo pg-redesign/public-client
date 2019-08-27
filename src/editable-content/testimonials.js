@@ -91,11 +91,6 @@ export default [
       '"I thought the course was a very good review and learning experience across several experience levels within environmental consulting/regulation. I would recommend it to both entry level and experienced consultants."',
   },
   {
-    student: "Marie‐Helene Benoit",
-    company: "IOL (Esso)",
-    message: '"Yes, I would recommend the course."',
-  },
-  {
     student: "Lee Rosberg",
     company: "Stone Environmental",
     message:
@@ -206,11 +201,6 @@ export default [
     company: "AMEC Geomatrix Consultants",
     message:
       '"Excellent. I would recommend it to colleagues across many different knowledge and experience levels. Also the reference section in the notes is almost worth the price of admission."',
-  },
-  {
-    student: "A. Sidebottom",
-    company: "Dow Chemical",
-    message: '"Excellent"',
   },
   {
     student: "Brian Burbeck",
