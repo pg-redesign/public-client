@@ -54,7 +54,7 @@ const MobileCourseView = props => {
       <Message info content={addLineBreaks(courseContent.overview)} />
 
       <CollapsibleContent
-        header="What Makes Our Courses Unique"
+        header="Why Our Courses Are Unique"
         active={collapsibleStates.uniqueAspects}
         toggleContent={toggleContent("uniqueAspects")}
         content={
