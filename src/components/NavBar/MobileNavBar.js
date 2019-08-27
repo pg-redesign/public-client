@@ -1,5 +1,12 @@
 import React, { Component, createRef } from "react";
-import { Ref, Menu, Sidebar, Responsive } from "semantic-ui-react";
+import {
+  Ref,
+  Menu,
+  Sidebar,
+  Responsive,
+  Label,
+  Popup,
+} from "semantic-ui-react";
 
 import NavMenuLink from "./NavMenuLink";
 import navBarPropTypes from "./prop-types";
@@ -22,65 +29,77 @@ import navBarPropTypes from "./prop-types";
  * @param {*} Logo Logo component menu controlling button
  */
 class MobileNavBar extends Component {
-	static propTypes = navBarPropTypes;
+  static propTypes = navBarPropTypes;
 
-	state = {
-		menuOpen: false,
-	};
+  state = {
+    menuOpen: false,
+    disableNavigationNote: false,
+  };
 
-	// for closing the menu if content area is clicked
-	contentRef = createRef();
+  // for closing the menu if content area is clicked
+  contentRef = createRef();
 
-	closeMenu = () => this.setState({ menuOpen: false });
+  closeMenu = () => this.setState({ menuOpen: false });
 
-	toggleMenu = () => this.setState(state => ({ menuOpen: !state.menuOpen }));
+  toggleMenu = () =>
+    this.setState(state => ({
+      menuOpen: !state.menuOpen,
+      disableNavigationNote: true,
+    }));
 
-	render = () => {
-		const { content, children, links, Logo } = this.props;
-		const { menuOpen } = this.state;
+  render = () => {
+    const { menuOpen, disableNavigationNote } = this.state;
+    const { content, children, links, Logo } = this.props;
 
-		return (
-			<Responsive maxWidth={Responsive.onlyTablet.maxWidth}>
-				{/* nav */}
-				<Menu as="nav" size="tiny" widths="1">
-					<Menu.Item>
-						<Logo mobile onClick={this.toggleMenu} />
-					</Menu.Item>
-				</Menu>
+    return (
+      <Responsive maxWidth={Responsive.onlyTablet.maxWidth}>
+        {/* nav */}
+        <Menu as="nav" size="tiny" widths="1">
+          <Menu.Item>
+            <Popup
+              size="tiny"
+              position="right center"
+              header="click for navigation"
+              open={!disableNavigationNote}
+              disabled={disableNavigationNote}
+              trigger={<Logo mobile onClick={this.toggleMenu} />}
+            />
+          </Menu.Item>
+        </Menu>
 
-				<Sidebar.Pushable style={{ marginTop: "-15px" }}>
-					{/* links menu */}
-					<Sidebar
-						as={Menu}
-						vertical
-						direction="top"
-						animation="overlay"
-						// external click target (content area) that closes the menu
-						target={this.contentRef}
-						visible={menuOpen}
-						onHide={this.closeMenu}
-						style={{ textAlign: "center" }}
-					>
-						{links.map(link => (
-							<NavMenuLink
-								key={`navlink-${link.name}`}
-								onNavigate={this.closeMenu}
-								{...link}
-							/>
-						))}
-					</Sidebar>
+        <Sidebar.Pushable style={{ marginTop: "-15px" }}>
+          {/* links menu */}
+          <Sidebar
+            as={Menu}
+            vertical
+            direction="top"
+            animation="overlay"
+            // external click target (content area) that closes the menu
+            target={this.contentRef}
+            visible={menuOpen}
+            onHide={this.closeMenu}
+            style={{ textAlign: "center" }}
+          >
+            {links.map(link => (
+              <NavMenuLink
+                key={`navlink-${link.name}`}
+                onNavigate={this.closeMenu}
+                {...link}
+              />
+            ))}
+          </Sidebar>
 
-					{/* content area (links menu will overlay) */}
-					<Ref innerRef={this.contentRef}>
-						<Sidebar.Pusher
-							content={content || children}
-							style={{ paddingTop: "15px" }}
-						/>
-					</Ref>
-				</Sidebar.Pushable>
-			</Responsive>
-		);
-	};
+          {/* content area (links menu will overlay) */}
+          <Ref innerRef={this.contentRef}>
+            <Sidebar.Pusher
+              content={content || children}
+              style={{ paddingTop: "15px" }}
+            />
+          </Ref>
+        </Sidebar.Pushable>
+      </Responsive>
+    );
+  };
 }
 
 export default MobileNavBar;
