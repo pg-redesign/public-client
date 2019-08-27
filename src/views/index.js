@@ -8,6 +8,7 @@ import siteLinks, { navList } from "./site-links";
 import CourseView from "./CourseView";
 import LandingView from "./LandingView";
 import InstructorView from "./InstructorView";
+import TestimonialView from "./TestimonialView";
 import RegistrationView from "./RegistrationView";
 import StripePaymentView from "./StripePaymentView";
 
@@ -36,6 +37,12 @@ const Views = () => (
         />
 
         <Route exact component={InstructorView} path={siteLinks.INSTRUCTORS} />
+
+        <Route
+          exact
+          component={TestimonialView}
+          path={siteLinks.TESTIMONIALS}
+        />
 
         {/* all other addresses directed to home page */}
         <Route path="/" component={LandingView} />
