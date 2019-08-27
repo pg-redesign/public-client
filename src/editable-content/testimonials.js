@@ -1,20 +1,12 @@
-// script for testimonial parsing
-// use template string with \n at the end of each testimonial (no blank line between)
-// watch for use of quotes within the messages that need to be converted to single quotes
+import PropTypes from "prop-types";
 
-// const fs = require('fs');
+export const testimonialTypeShape = {
+  student: PropTypes.string.isRequired,
+  company: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+};
 
-// const testimonials = `"first testimonial" Student, Company
-// "second testimonial" Student, Company
-// "final testimonial no new line after" Student, Company`;
-
-// const shaped = testimonials.split("\n").reduce((acc, testimonial) => {
-//   const [message] = testimonial.match(/".+"/g);
-//   const [student, company] = testimonial.split(/".+" /g)[1].split(", ");
-//   return [...acc, { student, company, message }];
-// }, []);
-
-// fs.writeFileSync("testimonials.json", JSON.stringify(shaped));
+// -- DO NOT EDIT ABOVE THIS LINE -- //
 
 export default [
   {
@@ -62,7 +54,7 @@ export default [
   },
   {
     student: "Joel Atcainor",
-    company: "US Army Corps of Engineers.",
+    company: "US Army Corps of Engineers",
     message:
       '"Fantastic, and I would highly recommend the course. The class was well worth the time, money and effort to attend, and will pay off in my future work."',
   },
@@ -89,11 +81,6 @@ export default [
     company: "SESCO Group",
     message:
       '"I thought the course was a very good review and learning experience across several experience levels within environmental consulting/regulation. I would recommend it to both entry level and experienced consultants."',
-  },
-  {
-    student: "Marie‐Helene Benoit",
-    company: "IOL (Esso)",
-    message: '"Yes, I would recommend the course."',
   },
   {
     student: "Lee Rosberg",
@@ -208,11 +195,6 @@ export default [
       '"Excellent. I would recommend it to colleagues across many different knowledge and experience levels. Also the reference section in the notes is almost worth the price of admission."',
   },
   {
-    student: "A. Sidebottom",
-    company: "Dow Chemical",
-    message: '"Excellent"',
-  },
-  {
     student: "Brian Burbeck",
     company: "AECOM",
     message:
@@ -237,3 +219,23 @@ export default [
       '"Excellent. An overwhelming comprehensive amount of material. Binder will be a great reference."',
   },
 ];
+
+// -- DO NOT EDIT BELOW THIS LINE -- //
+
+// script for testimonial parsing
+// use template string with \n at the end of each testimonial (no blank line between)
+// watch for use of quotes within the messages that need to be converted to single quotes
+
+// const fs = require('fs');
+
+// const testimonials = `"first testimonial" Student, Company
+// "second testimonial" Student, Company
+// "final testimonial no new line after" Student, Company`;
+
+// const shaped = testimonials.split("\n").reduce((acc, testimonial) => {
+//   const [message] = testimonial.match(/".+"/g);
+//   const [student, company] = testimonial.split(/".+" /g)[1].split(", ");
+//   return [...acc, { student, company, message }];
+// }, []);
+
+// fs.writeFileSync("testimonials.json", JSON.stringify(shaped));

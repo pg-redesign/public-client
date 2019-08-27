@@ -111,7 +111,7 @@ const WhatsIncluded = props => {
           <List.Item content="Digital certificate of completion" />
           <List.Item
             content={`${
-              shortName === "POLLUTION" ? "3.8" : "4.0"
+              shortName === "POLLUTION" ? "3.8" : "4.3"
             } continuing education units (CEU)`}
           />
           <List.Item

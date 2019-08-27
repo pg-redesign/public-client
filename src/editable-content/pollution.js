@@ -19,6 +19,7 @@ const schedule = [
   "Lunch break: 11:30-1 P.M.",
   "Monday evening: 4:45-6 P.M.",
   "Tuesday evening: 4:45-8 P.M.",
+  "Wednesday evening: 4:45-6 P.M.",
   "Thursday evening: 4:45-6:30 P.M.",
   "Friday: 8 A.M. to 1 P.M.",
 ];

@@ -19,7 +19,7 @@ export const navList = linksAsList({
   "Pollution & Hydrology Course": siteLinks.POLLUTION_COURSE,
   "Remediation Course": siteLinks.REMEDIATION_COURSE,
   Instructors: siteLinks.INSTRUCTORS,
-  Testimonials: siteLinks.TESTIMONIALS, // rename as reviews (with star rating) for SEO?
+  Testimonials: siteLinks.TESTIMONIALS,
   // "Contact Us": siteLinks.CONTACT,
 });
 
