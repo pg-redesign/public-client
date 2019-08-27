@@ -3,8 +3,8 @@
   --primary: rgba(2, 164, 236, 1);
   --primary-light: rgba(2, 164, 236, 0.7);
 
-  --brown: rgb(102, 64, 20);
-  --brown-light: rgb(102, 64, 20, 0.8);
+  --brown: rgb(75, 46, 14);
+  --brown-light: rgb(75, 46, 14, 0.8);
 
   --dark-blue: rgba(0, 100, 255, 1);
 }
@@ -16,9 +16,9 @@
     linear-gradient(
         to bottom,
         var(--brown) 0%,
-        var(--brown-light) 20%,
-        var(--primary) 35%,
-        var(--dark-blue) 100%
+        var(--brown-light) 15%,
+        var(--primary) 30%,
+        var(--dark-blue) 70%
       )
       fixed;
 
@@ -34,9 +34,9 @@
     linear-gradient(
         to bottom,
         var(--brown) 0%,
-        var(--brown-light) 25%,
+        var(--brown-light) 20%,
         var(--primary) 45%,
-        var(--dark-blue) 90%
+        var(--dark-blue) 80%
       )
       fixed;
 
