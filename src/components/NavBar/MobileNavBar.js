@@ -58,7 +58,7 @@ class MobileNavBar extends Component {
           <Menu.Item>
             <Popup
               size="tiny"
-              position="right center"
+              position="left center"
               header="click for navigation"
               open={!disableNavigationNote}
               disabled={disableNavigationNote}
