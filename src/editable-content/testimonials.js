@@ -1,20 +1,12 @@
-// script for testimonial parsing
-// use template string with \n at the end of each testimonial (no blank line between)
-// watch for use of quotes within the messages that need to be converted to single quotes
+import PropTypes from "prop-types";
 
-// const fs = require('fs');
+export const testimonialTypeShape = {
+  student: PropTypes.string.isRequired,
+  company: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+};
 
-// const testimonials = `"first testimonial" Student, Company
-// "second testimonial" Student, Company
-// "final testimonial no new line after" Student, Company`;
-
-// const shaped = testimonials.split("\n").reduce((acc, testimonial) => {
-//   const [message] = testimonial.match(/".+"/g);
-//   const [student, company] = testimonial.split(/".+" /g)[1].split(", ");
-//   return [...acc, { student, company, message }];
-// }, []);
-
-// fs.writeFileSync("testimonials.json", JSON.stringify(shaped));
+// -- DO NOT EDIT ABOVE THIS LINE -- //
 
 export default [
   {
@@ -62,7 +54,7 @@ export default [
   },
   {
     student: "Joel Atcainor",
-    company: "US Army Corps of Engineers.",
+    company: "US Army Corps of Engineers",
     message:
       '"Fantastic, and I would highly recommend the course. The class was well worth the time, money and effort to attend, and will pay off in my future work."',
   },
@@ -227,3 +219,23 @@ export default [
       '"Excellent. An overwhelming comprehensive amount of material. Binder will be a great reference."',
   },
 ];
+
+// -- DO NOT EDIT BELOW THIS LINE -- //
+
+// script for testimonial parsing
+// use template string with \n at the end of each testimonial (no blank line between)
+// watch for use of quotes within the messages that need to be converted to single quotes
+
+// const fs = require('fs');
+
+// const testimonials = `"first testimonial" Student, Company
+// "second testimonial" Student, Company
+// "final testimonial no new line after" Student, Company`;
+
+// const shaped = testimonials.split("\n").reduce((acc, testimonial) => {
+//   const [message] = testimonial.match(/".+"/g);
+//   const [student, company] = testimonial.split(/".+" /g)[1].split(", ");
+//   return [...acc, { student, company, message }];
+// }, []);
+
+// fs.writeFileSync("testimonials.json", JSON.stringify(shaped));
