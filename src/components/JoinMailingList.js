@@ -37,14 +37,14 @@ class JoinMailingList extends Component {
   static propTypes = {
     mobile: PropTypes.bool,
     mobileWidth: PropTypes.string,
-    standardWith: PropTypes.string,
+    standardWidth: PropTypes.string,
     data: PropTypes.shape({ schema: PropTypes.object.isRequired }).isRequired,
   };
 
   static defaultProps = {
     mobile: false,
     mobileWidth: "100%",
-    standardWith: "100%",
+    standardWidth: "100%",
   };
 
   constructor(props) {
@@ -60,38 +60,9 @@ class JoinMailingList extends Component {
     };
   }
 
-  handleChange = event => {
-    const { name, value } = event.target;
-
-    this.setState(state => ({
-      fields: { ...state.fields, [name]: value },
-      errors: { ...state.errors, [name]: false },
-    }));
-  };
-
-  handleFormErrors = validationErrors => {
-    const errors = validationErrors.reduce((errors, error) => {
-      const name = error.dataPath.replace(".", "");
-      return { ...errors, [name]: true };
-    }, {});
-
-    this.setState({ errors });
-  };
-
-  handleSubmit = submitMutation => () => {
-    const { fields, formValidator } = this.state;
-
-    const isValid = formValidator(fields);
-    if (!isValid) {
-      return this.handleFormErrors(formValidator.errors);
-    }
-
-    submitMutation({ variables: { mailingListData: fields } });
-  };
-
   render() {
     const { fields, errors } = this.state;
-    const { mobile, attached, mobileWidth, standardWith } = this.props;
+    const { mobile, attached, mobileWidth, standardWidth } = this.props;
 
     return (
       <Mutation mutation={mutation}>
@@ -119,7 +90,7 @@ class JoinMailingList extends Component {
           return (
             <Segment
               attached={attached}
-              style={{ width: mobile ? mobileWidth : standardWith }}
+              style={{ width: mobile ? mobileWidth : standardWidth }}
             >
               <Form>
                 <Form.Group>
@@ -181,6 +152,35 @@ class JoinMailingList extends Component {
       </Mutation>
     );
   }
+
+  handleChange = event => {
+    const { name, value } = event.target;
+
+    this.setState(state => ({
+      fields: { ...state.fields, [name]: value },
+      errors: { ...state.errors, [name]: false },
+    }));
+  };
+
+  handleFormErrors = validationErrors => {
+    const errors = validationErrors.reduce((errors, error) => {
+      const name = error.dataPath.replace(".", "");
+      return { ...errors, [name]: true };
+    }, {});
+
+    this.setState({ errors });
+  };
+
+  handleSubmit = submitMutation => () => {
+    const { fields, formValidator } = this.state;
+
+    const isValid = formValidator(fields);
+    if (!isValid) {
+      return this.handleFormErrors(formValidator.errors);
+    }
+
+    submitMutation({ variables: { mailingListData: fields } });
+  };
 }
 
 JoinMailingList.NewsletterPledge = NewsletterPledge;

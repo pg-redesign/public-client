@@ -102,6 +102,7 @@ const MobileCourseView = props => {
       ) : (
         <NoCourseAvailable
           attached
+          mobileWidth="90%"
           header="Sorry, this course is not open for registration at this time."
         />
       )}
