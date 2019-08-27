@@ -21,20 +21,28 @@ const defaultProps = {
   header: "Sorry, there are no upcoming courses to register for at this time.",
 };
 
-const NoCourseMessage = props => (
-  <Message compact color="blue" attached="top">
-    <Message.Header content={props.header} />
-    <Message.Content style={{ textAlign: "left" }}>
-      Join our mailing list and we will update you as soon as the next course
-      opens for registration.
-    </Message.Content>
-  </Message>
-);
+const NoCourseMessage = props => {
+  const { header, attached, mobile, mobileWidth, standardWidth } = props;
+  return (
+    <Message
+      compact
+      color="blue"
+      attached={attached}
+      style={{ width: mobile ? mobileWidth : standardWidth }}
+    >
+      <Message.Header content={header} />
+      <Message.Content style={{ textAlign: "left" }}>
+        Join our mailing list and we will update you as soon as the next course
+        opens for registration.
+      </Message.Content>
+    </Message>
+  );
+};
 
 const NoCourseAvailable = props => {
   const { mobile, mobileWidth, standardWidth, attached, header } = props;
 
-  const joinMailingListProps = {
+  const widthProps = {
     mobile,
     mobileWidth,
     standardWidth,
@@ -45,8 +53,8 @@ const NoCourseAvailable = props => {
       {attached ? (
         // (compact) attaches the message to the subscribe container
         <Grid.Row>
-          <NoCourseMessage header={header} attached="top" />
-          <JoinMailingList attached="bottom" {...joinMailingListProps} />
+          <NoCourseMessage header={header} attached="top" {...widthProps} />
+          <JoinMailingList attached="bottom" {...widthProps} />
         </Grid.Row>
       ) : (
         // (open) separates the two for more negative space
@@ -55,7 +63,7 @@ const NoCourseAvailable = props => {
             <NoCourseMessage header={header} />
           </Grid.Row>
           <Grid.Row>
-            <JoinMailingList {...joinMailingListProps} />
+            <JoinMailingList {...widthProps} />
           </Grid.Row>
         </>
       )}
