@@ -17,12 +17,11 @@ export const instructorTypeShape = PropTypes.shape(instructorType);
 
 //-- DO NOT CHANGE ANYTHING ABOVE THIS LINE --//
 
-// only change content below
 export default [
   {
     name: "John A. Cherry",
     image: instructorImage("cherry"),
-    courses: ["remediation", "pollution"],
+    courses: ["pollution"],
     profileLink: "https://en.wikipedia.org/wiki/John_A._Cherry",
     bio: [
       "Received his Ph.D. in Hydrogeology from The University of Illinois",
@@ -66,7 +65,7 @@ export default [
   {
     name: "David B. Kaminski",
     image: instructorImage("kaminski"),
-    courses: ["remediation", "pollution"],
+    courses: ["pollution"],
     profileLink: `${linkedinBase}/david-kaminski-19a4751/`,
     bio: [
       "Senior Vice President at QED Environmental Systems",
