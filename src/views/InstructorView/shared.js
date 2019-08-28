@@ -27,11 +27,11 @@ ProfileImage.propTypes = {
 
 export const CourseLabels = props => (
   <Label.Group>
-    {props.courses.map(courseShortName => (
+    {props.courses.map(shortName => (
       <Label
-        content={convertToFullName(courseShortName)}
-        href={`${siteLinks.COURSES}/${courseShortName}`}
-        color={courseShortName === "pollution" ? "blue" : "brown"}
+        content={convertToFullName(shortName)}
+        href={`${siteLinks.COURSES}/${shortName}`}
+        color={shortName === "pollution" ? "blue" : "brown"}
       />
     ))}
   </Label.Group>

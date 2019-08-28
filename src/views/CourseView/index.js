@@ -12,13 +12,13 @@ import StandardCourseView from "./StandardCourseView";
 
 const CourseView = props => {
   const { data, match, mobile } = props;
-  const { courseShortName } = match.params;
+  const { shortName } = match.params;
 
   const courseViewProps = {
-    courseContent: courseContent[courseShortName],
-    courseFullName: convertToFullName(courseShortName),
+    courseContent: courseContent[shortName],
+    courseFullName: convertToFullName(shortName),
     availableCourse: data.courses.find(
-      course => course.shortName === courseShortName.toUpperCase(),
+      course => course.shortName === shortName.toUpperCase(),
     ),
   };
 
@@ -33,7 +33,7 @@ CourseView.propTypes = {
   mobile: PropTypes.bool,
   match: PropTypes.shape({
     params: PropTypes.shape({
-      courseShortName: PropTypes.string.isRequired,
+      shortName: PropTypes.string.isRequired,
     }),
   }),
   data: PropTypes.shape({

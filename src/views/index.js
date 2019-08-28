@@ -33,7 +33,7 @@ const Views = () => (
         <Route
           exact
           component={CourseView}
-          path={`${siteLinks.COURSES}/:courseShortName`}
+          path={`${siteLinks.COURSES}/:shortName`}
         />
 
         <Route exact component={InstructorView} path={siteLinks.INSTRUCTORS} />
