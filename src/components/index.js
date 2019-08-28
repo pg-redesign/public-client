@@ -15,6 +15,7 @@ export { default as IconMessage } from "./IconMessage";
 export { default as QueryHandler } from "./QueryHandler";
 export { default as ConnectWithUs } from "./ConnectWithUs";
 export { default as JoinMailingList } from "./JoinMailingList";
+export { default as UnderConstruction } from "./UnderConstruction";
 export { default as NoCourseAvailable } from "./NoCourseAvailable";
 export { default as CollapsibleContent } from "./CollapsibleContent";
 export { default as SubscribeAndConnect } from "./SubscribeAndConnect";
