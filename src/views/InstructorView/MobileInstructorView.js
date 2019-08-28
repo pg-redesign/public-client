@@ -25,7 +25,7 @@ const InstructorCard = props => {
       <Card.Content
         extra
         textAlign="center"
-        content={<CourseLabels courses={courses} />}
+        content={<CourseLabels name={name} courses={courses} />}
         style={{ paddingBottom: "0px", marginBottom: "0px" }}
       />
 

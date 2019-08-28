@@ -26,7 +26,7 @@ const InstructorContainer = props => {
           <Card.Content
             extra
             textAlign="center"
-            content={<CourseLabels courses={courses} />}
+            content={<CourseLabels name={name} courses={courses} />}
           />
         </Card>
       </Grid.Column>
