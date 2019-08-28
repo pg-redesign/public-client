@@ -29,7 +29,7 @@ const TestimonialView = () => {
 
       <Grid centered>
         {testimonials.map(testimonial => (
-          <Grid.Row>
+          <Grid.Row key={testimonial.student}>
             <Testimonial testimonial={testimonial} />
           </Grid.Row>
         ))}

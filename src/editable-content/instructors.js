@@ -41,10 +41,23 @@ export default [
       "Received his Ph.D. in Chemical Engineering from The University of Massachusetts in Amherst",
       "Co-author of the first peer-reviewed chlorinated solvent remediation paper in 1981",
       "Former professor of Civil and Geological Engineering at Princeton University",
-      "Former professor of Geosciences at The University of Sao Paulo, Brasil",
+      "Former professor of Geosciences at The University of São Paulo, Brasil",
       "Current instructor in the National Ground Water Association’s Modflow course",
       "Adjunct professor in the Hydrogeology Field School course of the Earth and Environmental Sciences Department at The University of Waterloo",
       "Active groundwater consultant to private industry",
+    ],
+  },
+
+  {
+    name: "Rodrigo C. Cunha",
+    image: instructorImage("cunha"),
+    courses: ["brasil"],
+    profileLink: `${linkedinBase}/rodrigo-cunha-33b68511/`,
+    bio: [
+      "Received his Ph.D. in Hydrogeology and M.Sc. in Soil Sciences from the The University of São Paulo, Brasil",
+      "Senior Engineer with over 40 years of experience at The São Paulo State Environmental Protection Agency (CETESB)",
+      "Coordinator of the post-graduation courses in the field of Contaminated Site Management and Remediation at SENAC University in São Paulo, Brasil",
+      "Recognized as one of the most influential regulators in the field having developed regulations for contaminated sites management, investigation and remediation throughout Brasil",
     ],
   },
 
@@ -122,6 +135,22 @@ export default [
   },
 
   {
+    name: "Paulo Negrão",
+    image: instructorImage("negrao"),
+    courses: ["brasil"],
+    profileLink: `${linkedinBase}/paulo-negrao-ph-d-851252/`,
+    bio: [
+      "Received his Ph.D. in Geosciences from the The State University of Campinas, Brasil",
+      "CEO and CTO of Clean Environment Brasil",
+      "Associate professor at The State University of Campinas, Brasil",
+      "Associate professor of graduate students at SENAC University in São Paulo, Brasil",
+      "Over the past 27 years has designed and installed hundreds of groundwater sampling and remediation systems in the U.S., Europe, South America, Asia and the Middle East",
+      "Served as Chairman of the ABNT (Brazilian Standards Association) for groundwater monitoring and sampling",
+      "Presented hundreds of seminars and short-courses for leading industry professional organizations such as PETROBAS and Shell Oil, universities including The University of São Paulo and The State University of Campinas, as well and regulatory agencies including The São Paulo State Environmental Protection Agency (CETESB) and The Brazilian Geological Service (CPRM)",
+    ],
+  },
+
+  {
     name: "Richard J. Rago",
     image: instructorImage("rago"),
     courses: ["remediation"],
@@ -143,8 +172,9 @@ export default [
       "Received his Ph.D. in Environmental Engineering from The University of Sheffield and M.Sc. in Hydrogeology from The University of Reading",
       "Senior Principal Hydrogeologist in Geosyntec Consultants and the Director of Geosyntec’s Environmental Consulting in the UK and Ireland",
       "Adjunct Professor in the Department of Chemical Engineering and Applied Chemistry at The University of Toronto",
-      "Previous Research Fellow at The University of Sheffield and lead of a contaminant hydrogeology research team as Principal Research Scientist with the British Geological Survey",
       "Specializes in the development and application of high-resolution site characterization methods",
+      "Previous Research Fellow at The University of Sheffield",
+      "Previous lead of a contaminant hydrogeology research team as Principal Research Scientist with the British Geological Survey",
       'Co-author of the 2015 ITRC guidance document titled "Integrated DNAPL Site Characterization and Tools Selection."',
       'Contributing author of the 2015 EPRI guidance document "Generic Work Plan to Assess Dense Non-Aqueous Phase Liquid Mobility in the Subsurface at Manufactured Gas Plant Sites"',
     ],

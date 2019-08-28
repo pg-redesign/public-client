@@ -1,12 +1,5 @@
 import React, { Component, createRef } from "react";
-import {
-  Ref,
-  Menu,
-  Sidebar,
-  Responsive,
-  Label,
-  Popup,
-} from "semantic-ui-react";
+import { Ref, Menu, Sidebar, Responsive, Popup } from "semantic-ui-react";
 
 import NavMenuLink from "./NavMenuLink";
 import navBarPropTypes from "./prop-types";
@@ -58,7 +51,7 @@ class MobileNavBar extends Component {
           <Menu.Item>
             <Popup
               size="tiny"
-              position="left center"
+              position="right center"
               header="click for navigation"
               open={!disableNavigationNote}
               disabled={disableNavigationNote}

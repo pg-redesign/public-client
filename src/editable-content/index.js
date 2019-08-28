@@ -1,5 +1,7 @@
 // DO NOT EDIT ANYTHING IN THIS FILE
 import PropTypes from "prop-types";
+
+import brasil from "./brasil";
 import pollution from "./pollution";
 import remediation from "./remediation";
 
@@ -22,6 +24,7 @@ export const courseContentTypeShape = PropTypes.shape(courseContentType);
 export { default as instructors } from "./instructors";
 export { default as testimonials } from "./testimonials";
 export const courseContent = {
+  brasil,
   pollution,
   remediation,
 };

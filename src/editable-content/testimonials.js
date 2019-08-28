@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
 
-export const testimonialTypeShape = {
+export const testimonialType = {
   student: PropTypes.string.isRequired,
   company: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
 };
+
+export const testimonialTypeShape = PropTypes.shape(testimonialType);
 
 // -- DO NOT EDIT ABOVE THIS LINE -- //
 

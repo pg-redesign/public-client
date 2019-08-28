@@ -1,15 +1,43 @@
+/* https://autoprefixer.github.io/ */
+
+/* VARIABLES */
+:root {
+  /* COLORS */
+  --primary: rgba(2, 164, 236, 1);
+  --primary-light: rgba(2, 164, 236, 0.7);
+
+  --brown: rgb(75, 46, 14);
+  --brown-light: rgb(75, 46, 14, 0.8);
+
+  --dark-blue: rgba(0, 100, 255, 1);
+
+  /* MOBILE */
+  --mobile-h1: 2.5rem;
+  --mobile-h2: 2rem;
+  --mobile-h3: 1.5rem;
+
+  /* STANDARD */
+  --standard-h1: 4.75rem;
+  --standard-h2: 3rem;
+  --standard-h3: 2rem;
+}
+
 body {
   min-height: 100vh;
   font-size: 1.1rem;
 
-  display: flex;
-  flex-direction: column;
-}
+  display: -webkit-box;
 
-#root {
-  /* putting texture on root instead of body prevents the flickering on mobile when the url bar is shown / hidden */
-  /* but the background also stops halfway... */
-  /* background: url("media/background-texture.png"); */
+  display: -webkit-flex;
+
+  display: -ms-flexbox;
+
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 h1 {
@@ -21,10 +49,39 @@ h1 {
   text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2) !important;
 }
 
+/* MOBILE */
 @media only screen and (max-width: 1023px) {
-  /* mobile */
   body {
-    background: var(--mobile-background);
+    background: url("media/background-texture.png"),
+      url("media/background-texture.png"),
+      -webkit-gradient(
+          linear,
+          left top,
+          left bottom,
+          from(var(--brown)),
+          color-stop(10%, var(--brown-light)),
+          color-stop(20%, var(--primary)),
+          color-stop(90%, var(--dark-blue))
+        ) fixed;
+    background: url("media/background-texture.png"),
+      url("media/background-texture.png"),
+      -o-linear-gradient(
+          top,
+          var(--brown) 0%,
+          var(--brown-light) 10%,
+          var(--primary) 20%,
+          var(--dark-blue) 90%
+        ) fixed;
+    background: url("media/background-texture.png"),
+      url("media/background-texture.png"),
+      linear-gradient(
+          to bottom,
+          var(--brown) 0%,
+          var(--brown-light) 10%,
+          var(--primary) 20%,
+          var(--dark-blue) 90%
+        )
+        fixed;
   }
 
   h1 {
@@ -40,22 +97,50 @@ h1 {
   }
 }
 
+/* STANDARD */
 @media only screen and (min-width: 1024px) {
-  /* above mobile */
-
   body {
-    background: var(--desktop-background);
+    background: url("media/background-texture.png"),
+      url("media/background-texture.png"),
+      -webkit-gradient(
+          linear,
+          left top,
+          left bottom,
+          from(var(--brown)),
+          color-stop(20%, var(--brown-light)),
+          color-stop(45%, var(--primary)),
+          color-stop(90%, var(--dark-blue))
+        ) fixed;
+    background: url("media/background-texture.png"),
+      url("media/background-texture.png"),
+      -o-linear-gradient(
+          top,
+          var(--brown) 0%,
+          var(--brown-light) 20%,
+          var(--primary) 45%,
+          var(--dark-blue) 90%
+        ) fixed;
+    background: url("media/background-texture.png"),
+      url("media/background-texture.png"),
+      linear-gradient(
+          to bottom,
+          var(--brown) 0%,
+          var(--brown-light) 20%,
+          var(--primary) 45%,
+          var(--dark-blue) 90%
+        )
+        fixed;
   }
 
   h1 {
-    font-size: var(--desktop-h1) !important;
+    font-size: var(--standard-h1) !important;
   }
 
   h2 {
-    font-size: var(--desktop-h2) !important;
+    font-size: var(--standard-h2) !important;
   }
 
   h3 {
-    font-size: var(--desktop-h3) !important;
+    font-size: var(--standard-h3) !important;
   }
 }

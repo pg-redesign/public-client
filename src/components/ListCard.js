@@ -24,6 +24,9 @@ const ListCard = props => {
 };
 
 ListCard.propTypes = {
+  header: PropTypes.string,
+  icon: PropTypes.string,
+  iconColor: PropTypes.string,
   bulleted: PropTypes.bool,
   items: PropTypes.arrayOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.element]),

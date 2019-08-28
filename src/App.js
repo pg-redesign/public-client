@@ -3,7 +3,6 @@ import { ApolloProvider } from "react-apollo";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import "./global.css";
-import "./variables.css";
 
 import Views from "./views";
 import { NavBar } from "./components";

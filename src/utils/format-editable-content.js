@@ -19,7 +19,15 @@ export const addLineBreaks = content =>
     </>
   ));
 
-export const convertToFullName = courseShortName =>
-  courseShortName === "pollution"
-    ? "The Pollution & Hydrology Course"
-    : "The Remediation Course";
+export const convertToFullName = shortName => {
+  switch (shortName) {
+    case "pollution":
+      return "The Pollution & Hydrology Course";
+    case "remediation":
+      return "The Remediation Course";
+    case "brasil":
+      return "Curso de Poluição e Hidrologia";
+    default:
+      return "";
+  }
+};

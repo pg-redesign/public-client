@@ -23,7 +23,6 @@ export const courseType = {
   date: PropTypes.string,
   shortName: PropTypes.string,
   location: courseLocationType,
-  description: PropTypes.arrayOf(PropTypes.string),
 };
 
 export const courseTypeShape = PropTypes.shape(courseType);

@@ -5,6 +5,7 @@ import { Card, Icon, List, Popup, Button, Header } from "semantic-ui-react";
 
 import siteLinks from "../views/site-links";
 import { courseType } from "../utils/prop-types";
+import { courseContent } from "../editable-content";
 
 const NameDateAndLocation = props => {
   const { name, location, date } = props;
@@ -53,7 +54,7 @@ const InfoButton = props => (
     as={Link}
     size="large"
     content="Learn More"
-    to={`${siteLinks.COURSES}/${props.courseShortName.toLowerCase()}`}
+    to={`${siteLinks.COURSES}/${props.shortName.toLowerCase()}`}
   />
 );
 
@@ -64,7 +65,7 @@ const RegistrationAndInfoButtons = props => {
       <Button.Group fluid>
         <RegistrationButton courseId={id} />
         <Button.Or />
-        <InfoButton courseShortName={shortName} />
+        <InfoButton shortName={shortName} />
       </Button.Group>
     </Card.Content>
   );
@@ -76,32 +77,34 @@ RegistrationAndInfoButtons.propTypes = {
 };
 
 const CourseTopicHighlights = props => {
-  const { id, description } = props;
-
-  const descriptionItems = description.map((description, index) => (
-    <List.Item
-      content={description}
-      key={`course-${id}-description-${index}`}
-    />
-  ));
+  const { shortName } = props;
+  const { highlights } = courseContent[shortName.toLowerCase()].courseCard;
 
   return (
     <Card.Content textAlign="left">
       <Card.Description>
         <Header size="small" content="Course Topic Highlights" />
-        <List bulleted items={descriptionItems} />
+        <List
+          bulleted
+          items={highlights.map((highlight, index) => (
+            <List.Item
+              content={highlight}
+              key={`${shortName}-course-highlight-${index}`}
+            />
+          ))}
+        />
       </Card.Description>
     </Card.Content>
   );
 };
 
 CourseTopicHighlights.propTypes = {
-  id: courseType.id.isRequired,
-  description: courseType.description.isRequired,
+  shortName: courseType.shortName.isRequired,
 };
 
 const WhatsIncluded = props => {
   const { shortName } = props;
+  const { includes } = courseContent[shortName.toLowerCase()].courseCard;
 
   return (
     <Card.Content textAlign="left">
@@ -109,25 +112,12 @@ const WhatsIncluded = props => {
         <Header size="small" content="Includes" />
 
         <List bulleted>
-          <List.Item content="Digital certificate of completion" />
-          <List.Item
-            content={`${
-              shortName === "POLLUTION" ? "3.8" : "4.3"
-            } continuing education units (CEU)`}
-          />
-          <List.Item
-            content={
-              // <>
-              //   <strong>1200+ page course binder</strong> with an unmatched
-              //   wealth of information from over 40 years of teaching and
-              //   consulting
-              // </>
-              <>
-                <strong>1200+ page course binder</strong> with an unmatched
-                wealth of information
-              </>
-            }
-          />
+          {includes.map((includedItem, index) => (
+            <List.Item
+              key={`${shortName}-course-includes-${index}`}
+              content={includedItem}
+            />
+          ))}
         </List>
       </Card.Description>
     </Card.Content>
@@ -135,7 +125,7 @@ const WhatsIncluded = props => {
 };
 
 WhatsIncluded.propTypes = {
-  shortName: PropTypes.string.isRequired,
+  shortName: courseType.shortName.isRequired,
 };
 
 const CoursePrice = props => {
