@@ -12,7 +12,6 @@ const courseCardFragment = gql`
     shortName: name(short: true)
     date
     price
-    description
     location {
       mapUrl
       concatenated
