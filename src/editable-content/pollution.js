@@ -1,3 +1,27 @@
+// -- POLLUTION & HYDROLOGY COURSE CARDS (viewed throughout the site) -- //
+const courseCard = {
+  // course name
+  // date range
+  // location with map link
+
+  // "Course Topic Highlights" section
+  highlights: [
+    "Basic to advanced principles in groundwater pollution and hydrology",
+    "Basic to advanced concepts and principles of groundwater flow, fate and transport, and natural attenuation",
+    "Groundwater monitoring and sampling technology",
+    "Conceptual Site Models (CSM) and remediation strategies",
+    "Practical applications of modern groundwater modeling software",
+  ],
+
+  // "Includes" section
+  includes: [
+    "Digital certificate of completion",
+    "3.8 continuing education units (CEU)",
+    "1200+ page course binder with an unmatched wealth of information",
+  ],
+};
+
+// -- BELOW ARE USED ON THE POLLUTION & HYDROLOGY COURSE PAGE ONLY -- //
 const overview = `The Pollution & Hydrology Course is the only one-week course in the US or Europe which comprehensively teaches from theory to practice all aspects of groundwater contamination, hydrology, monitoring, site characterization and remediation.
   
 This course assumes no prior experience. We begin with basic principles before expanding into more advanced topics and application. The course enhances the technical skillset of all its participants from new professionals to those with years of experience.
@@ -186,6 +210,7 @@ export default {
   topics,
   schedule,
   overview,
+  courseCard,
   uniqueAspects,
   whoShouldAttend,
   longDescription,
