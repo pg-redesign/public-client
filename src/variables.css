@@ -7,10 +7,8 @@
   --brown-light: rgb(75, 46, 14, 0.8);
 
   --dark-blue: rgba(0, 100, 255, 1);
-}
 
-/* MOBILE */
-:root {
+  /* MOBILE */
   --mobile-background: url("media/background-texture.png"),
     url("media/background-texture.png"),
     linear-gradient(
@@ -18,17 +16,15 @@
         var(--brown) 0%,
         var(--brown-light) 15%,
         var(--primary) 30%,
-        var(--dark-blue) 70%
+        var(--dark-blue) 90%
       )
       fixed;
 
   --mobile-h1: 2.5rem;
   --mobile-h2: 2rem;
   --mobile-h3: 1.5rem;
-}
 
-/* ABOVE MOBILE (STANDARD) */
-:root {
+  /* STANDARD */
   --desktop-background: url("media/background-texture.png"),
     url("media/background-texture.png"),
     linear-gradient(
@@ -36,7 +32,7 @@
         var(--brown) 0%,
         var(--brown-light) 20%,
         var(--primary) 45%,
-        var(--dark-blue) 80%
+        var(--dark-blue) 90%
       )
       fixed;
 
