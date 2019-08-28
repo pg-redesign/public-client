@@ -51,7 +51,7 @@ export default [
   {
     name: "Rodrigo C. Cunha",
     image: instructorImage("cunha"),
-    courses: [],
+    courses: ["brasil"],
     profileLink: `${linkedinBase}/rodrigo-cunha-33b68511/`,
     bio: [
       "Received his Ph.D. in Hydrogeology and M.Sc. in Soil Sciences from the The University of São Paulo, Brasil",
@@ -137,7 +137,7 @@ export default [
   {
     name: "Paulo Negrão",
     image: instructorImage("negrao"),
-    courses: [],
+    courses: ["brasil"],
     profileLink: `${linkedinBase}/paulo-negrao-ph-d-851252/`,
     bio: [
       "Received his Ph.D. in Geosciences from the The State University of Campinas, Brasil",
