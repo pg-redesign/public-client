@@ -18,13 +18,13 @@ import {
 } from "../../components";
 
 const propTypes = {
+  content: courseContentTypeShape.isRequired,
   availableCourse: courseTypeShape.isRequired,
   courseFullName: PropTypes.string.isRequired,
-  courseContent: courseContentTypeShape.isRequired,
 };
 
 const MobileCourseView = props => {
-  const { courseFullName, courseContent, availableCourse } = props;
+  const { courseFullName, content, availableCourse } = props;
 
   const [collapsibleStates, setCollapsibleStates] = useState({
     topics: false,
@@ -51,7 +51,7 @@ const MobileCourseView = props => {
         className="header-shadow"
       />
 
-      <Message info content={addLineBreaks(courseContent.overview)} />
+      <Message info content={addLineBreaks(content.overview)} />
 
       <CollapsibleContent
         header="Why Our Courses Are Unique"
@@ -61,7 +61,7 @@ const MobileCourseView = props => {
           <ListCard
             icon="star"
             iconColor="yellow"
-            items={courseContent.uniqueAspects}
+            items={content.uniqueAspects}
           />
         }
       />
@@ -70,7 +70,7 @@ const MobileCourseView = props => {
         active={collapsibleStates.whoShouldAttend}
         toggleContent={toggleContent("whoShouldAttend")}
         content={
-          <ListCard icon="checkmark" items={courseContent.whoShouldAttend} />
+          <ListCard icon="checkmark" items={content.whoShouldAttend} />
         }
       />
 
@@ -78,21 +78,21 @@ const MobileCourseView = props => {
         header="Course Schedule"
         active={collapsibleStates.schedule}
         toggleContent={toggleContent("schedule")}
-        content={<ListCard items={courseContent.schedule.map(boldFirstWord)} />}
+        content={<ListCard items={content.schedule.map(boldFirstWord)} />}
       />
 
       <CollapsibleContent
         header="Course Description"
         active={collapsibleStates.longDescription}
         toggleContent={toggleContent("longDescription")}
-        content={addLineBreaks(courseContent.longDescription)}
+        content={addLineBreaks(content.longDescription)}
       />
 
       <CollapsibleContent
         header="Course Topics"
         active={collapsibleStates.topics}
         toggleContent={toggleContent("topics")}
-        content={courseContent.topics.map(topic => (
+        content={content.topics.map(topic => (
           <CourseTopic key={`course-topic-${topic.header}`} topic={topic} />
         ))}
       />
