@@ -5,6 +5,7 @@ import { Card, Icon, List, Popup, Button, Header } from "semantic-ui-react";
 
 import siteLinks from "../views/site-links";
 import { courseType } from "../utils/prop-types";
+import { courseContent } from "../editable-content";
 
 const NameDateAndLocation = props => {
   const { name, location, date } = props;
@@ -20,8 +21,9 @@ const NameDateAndLocation = props => {
           position="bottom center"
           content="click to view hotel on Google Maps"
           trigger={
-            <a href={location.mapURL} target="_blank" rel="noopener noreferrer">
-              {location.concatenated}&nbsp;
+            <a href={location.mapUrl} target="_blank" rel="noopener noreferrer">
+              <span style={{ color: "#1e70bf" }}>{location.concatenated}</span>
+              &nbsp;
               <Icon name="map marker alternate" color="red" />
             </a>
           }
@@ -37,25 +39,33 @@ NameDateAndLocation.propTypes = {
   location: courseType.location.isRequired,
 };
 
+const RegistrationButton = props => (
+  <Button
+    as={Link}
+    size="large"
+    content="Register Now"
+    to={`${siteLinks.REGISTRATION}/${props.courseId}`}
+    style={{ backgroundColor: "var(--dark-blue)", color: "white" }}
+  />
+);
+
+const InfoButton = props => (
+  <Button
+    as={Link}
+    size="large"
+    content="Learn More"
+    to={`${siteLinks.COURSES}/${props.shortName.toLowerCase()}`}
+  />
+);
+
 const RegistrationAndInfoButtons = props => {
   const { id, shortName } = props;
   return (
     <Card.Content extra>
       <Button.Group fluid>
-        <Button
-          as={Link}
-          size="large"
-          content="Register Now"
-          to={`${siteLinks.REGISTRATION}/${id}`}
-          style={{ backgroundColor: "var(--dark-blue)", color: "white" }}
-        />
+        <RegistrationButton courseId={id} />
         <Button.Or />
-        <Button
-          as={Link}
-          size="large"
-          content="Learn More"
-          to={`/${siteLinks.COURSES}/${shortName}`}
-        />
+        <InfoButton shortName={shortName} />
       </Button.Group>
     </Card.Content>
   );
@@ -67,32 +77,34 @@ RegistrationAndInfoButtons.propTypes = {
 };
 
 const CourseTopicHighlights = props => {
-  const { id, description } = props;
-
-  const descriptionItems = description.map((description, index) => (
-    <List.Item
-      content={description}
-      key={`course-${id}-description-${index}`}
-    />
-  ));
+  const { shortName } = props;
+  const { highlights } = courseContent[shortName.toLowerCase()].courseCard;
 
   return (
     <Card.Content textAlign="left">
       <Card.Description>
         <Header size="small" content="Course Topic Highlights" />
-        <List bulleted items={descriptionItems} />
+        <List
+          bulleted
+          items={highlights.map((highlight, index) => (
+            <List.Item
+              content={highlight}
+              key={`${shortName}-course-highlight-${index}`}
+            />
+          ))}
+        />
       </Card.Description>
     </Card.Content>
   );
 };
 
 CourseTopicHighlights.propTypes = {
-  id: courseType.id.isRequired,
-  description: courseType.description.isRequired,
+  shortName: courseType.shortName.isRequired,
 };
 
 const WhatsIncluded = props => {
   const { shortName } = props;
+  const { includes } = courseContent[shortName.toLowerCase()].courseCard;
 
   return (
     <Card.Content textAlign="left">
@@ -100,25 +112,12 @@ const WhatsIncluded = props => {
         <Header size="small" content="Includes" />
 
         <List bulleted>
-          <List.Item content="Digital certificate of completion" />
-          <List.Item
-            content={`${
-              shortName === "pollution" ? "38" : "40"
-            } continuing education units (CEU)`}
-          />
-          <List.Item
-            content={
-              // <>
-              //   <strong>1300+ page course binder</strong> with an unmatched
-              //   wealth of information from over 40 years of teaching and
-              //   consulting
-              // </>
-              <>
-                <strong>1300+ page course binder</strong> with an unmatched
-                wealth of information
-              </>
-            }
-          />
+          {includes.map((includedItem, index) => (
+            <List.Item
+              key={`${shortName}-course-includes-${index}`}
+              content={includedItem}
+            />
+          ))}
         </List>
       </Card.Description>
     </Card.Content>
@@ -126,7 +125,7 @@ const WhatsIncluded = props => {
 };
 
 WhatsIncluded.propTypes = {
-  shortName: PropTypes.string.isRequired,
+  shortName: courseType.shortName.isRequired,
 };
 
 const CoursePrice = props => {
@@ -151,6 +150,7 @@ const CourseCard = props => {
     withTopics,
     withButtons,
     withWhatsIncluded,
+    withRegisterButton,
     ...courseData
   } = props;
 
@@ -170,6 +170,13 @@ const CourseCard = props => {
 
       {/* register / more info buttons section */}
       {withButtons && <RegistrationAndInfoButtons {...courseData} />}
+
+      {/* just registration button */}
+      {withRegisterButton && (
+        <Card.Content extra textAlign="center">
+          <RegistrationButton courseId={courseData.id} />
+        </Card.Content>
+      )}
     </Card>
   );
 };
@@ -181,6 +188,7 @@ CourseCard.propTypes = {
   withTopics: PropTypes.bool,
   withButtons: PropTypes.bool,
   withWhatsIncluded: PropTypes.bool,
+  withRegisterButton: PropTypes.bool,
 };
 
 export default CourseCard;

@@ -10,7 +10,7 @@ const locationType = {
 
 // -- COURSE -- //
 export const courseLocationType = PropTypes.shape({
-  mapURL: PropTypes.string.isRequired,
+  mapUrl: PropTypes.string.isRequired,
   ...locationType,
 });
 
@@ -23,7 +23,6 @@ export const courseType = {
   date: PropTypes.string,
   shortName: PropTypes.string,
   location: courseLocationType,
-  description: PropTypes.arrayOf(PropTypes.string),
 };
 
 export const courseTypeShape = PropTypes.shape(courseType);

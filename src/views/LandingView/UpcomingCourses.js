@@ -15,6 +15,7 @@ const UpcomingCourses = props => {
             as="h2"
             inverted
             textAlign="center"
+            className="header-shadow"
             content="Upcoming Courses"
           />
         </Divider>

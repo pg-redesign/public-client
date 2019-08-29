@@ -10,7 +10,7 @@ import { MutationModal } from "../../components";
 import RegistrationForm from "./RegistrationForm";
 
 const mutation = gql`
-  mutation SubmitRegistrationForm($registrationData: RegistrationInput!) {
+  mutation SubmitRegistrationForm($registrationData: RegistrationData!) {
     student: registerForCourse(registrationData: $registrationData) {
       id
       email

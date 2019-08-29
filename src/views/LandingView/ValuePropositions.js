@@ -12,8 +12,8 @@ const valuePropCardData = (() => {
       headerIcon: <i className="fas fa-graduation-cap fa-2x" {...iconProps} />,
       description: (
         <>
-          The largest groundwater courses in the industry with over{" "}
-          <strong>25,000 graduates</strong>
+          The largest groundwater courses in the industry with{" "}
+          <strong>over 25,000 graduates</strong>
         </>
       ),
     },
@@ -32,7 +32,8 @@ const valuePropCardData = (() => {
       headerIcon: <i className="fas fa-university fa-2x" {...iconProps} />,
       description:
         // "Designed for  Geologists, Engineers, Chemists and Environmental Scientists",
-        "Designed for  Geologists, Engineers, Regulators and Environmental Scientists",
+        // "Designed for  Geologists, Engineers, Regulators and Environmental Scientists",
+        "For  Geologists, Engineers, Regulators, Environmental Scientists and more",
     },
   ];
 })();

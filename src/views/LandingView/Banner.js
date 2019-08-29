@@ -18,7 +18,7 @@ const Banner = props => {
         <Logo.Image
           rounded
           centered
-          size="small"
+          size="tiny"
           style={{
             border: "white 2px double",
             boxShadow: "2px 2px 3px 1px rgba(0,0,0,0.4)",
@@ -32,6 +32,7 @@ const Banner = props => {
         as="h3"
         inverted
         content={bannerPhrase}
+        className="header-shadow"
         style={{ fontStyle: "oblique" }}
       />
     </Container>
