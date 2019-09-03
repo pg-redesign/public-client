@@ -1,5 +1,3 @@
-//-- DO NOT CHANGE ANYTHING BELOW THIS LINE --//
-
 import PropTypes from "prop-types";
 
 const linkedinBase = "https://linkedin.com/in";
@@ -11,16 +9,13 @@ export const instructorType = {
   image: PropTypes.string.isRequired,
   profileLink: PropTypes.string.isRequired,
   bio: PropTypes.arrayOf(PropTypes.string).isRequired,
-  courses: PropTypes.arrayOf(
-    PropTypes.oneOf(["remediation", "pollution", "brasil"]),
-  ).isRequired,
+  courses: PropTypes.arrayOf(PropTypes.oneOf(["remediation", "pollution"]))
+    .isRequired,
 };
 
 export const instructorTypeShape = PropTypes.shape(instructorType);
 
 //-- DO NOT CHANGE ANYTHING ABOVE THIS LINE --//
-
-// options for courses: "pollution", "remediation", "brasil"
 
 export default [
   {
@@ -40,7 +35,7 @@ export default [
   {
     name: "Robert W. Cleary",
     image: instructorImage("cleary"),
-    courses: ["remediation", "pollution", "brasil"],
+    courses: ["remediation", "pollution"],
     profileLink: `${linkedinBase}/bob-cleary-princeton-groundwater/`,
     bio: [
       "Received his Ph.D. in Chemical Engineering from The University of Massachusetts in Amherst",
@@ -128,7 +123,7 @@ export default [
   {
     name: "Douglas G. Larson",
     image: instructorImage("larson"),
-    courses: ["remediation", "pollution", "brasil"],
+    courses: ["remediation", "pollution"],
     profileLink: `${linkedinBase}/douglas-larson-a4a9655/`,
     bio: [
       "Received his Ph.D. in Civil and Environmental Engineering from the Massachusetts Institute of Technology",
@@ -171,7 +166,7 @@ export default [
   {
     name: "Gary P. Wealthall",
     image: instructorImage("wealthall"),
-    courses: ["remediation", "brasil"],
+    courses: ["remediation"],
     profileLink: `${linkedinBase}/dr-gary-wealthall-53351115/`,
     bio: [
       "Received his Ph.D. in Environmental Engineering from The University of Sheffield and M.Sc. in Hydrogeology from The University of Reading",

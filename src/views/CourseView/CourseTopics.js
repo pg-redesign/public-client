@@ -4,7 +4,7 @@ import { Segment, Header } from "semantic-ui-react";
 import {
   courseContentType,
   courseTopicTypeShape,
-} from "../../editable-content/course-content";
+} from "../../editable-content";
 import { CollapsibleContent, ListCard } from "../../components";
 
 export const CourseTopic = props => {

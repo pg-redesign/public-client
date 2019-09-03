@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Grid, Ref, Header, Sticky, Message } from "semantic-ui-react";
 
 import { courseTypeShape } from "../../utils/prop-types";
-import { courseContentTypeShape } from "../../editable-content/course-content";
+import { courseContentTypeShape } from "../../editable-content";
 import {
   boldFirstWord,
   addLineBreaks,

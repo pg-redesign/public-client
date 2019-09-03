@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Grid, Message } from "semantic-ui-react";
 
 import { courseContent } from "../../editable-content";
+import { courseTypeShape } from "../../utils/prop-types";
 import responsiveWrapper from "../../wrappers/responsiveWrapper";
 import withUpcomingCourses from "../../wrappers/withUpcomingCourses";
 import { convertToFullName } from "../../utils/format-editable-content";
@@ -40,7 +42,9 @@ CourseView.propTypes = {
       shortName: PropTypes.string.isRequired,
     }),
   }),
-  ...withUpcomingCourses.consumerPropTypes,
+  data: PropTypes.shape({
+    courses: PropTypes.arrayOf(courseTypeShape),
+  }),
 };
 CourseView.defaultProps = {
   mobile: false,

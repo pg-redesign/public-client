@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Icon, Label } from "semantic-ui-react";
 
 import siteLinks from "../site-links";
@@ -73,11 +72,9 @@ export const CourseLabels = props => {
     <Label.Group>
       {courseLabelData.map(
         labelData =>
-          // nulls are ignored (invalid format)
           labelData && (
             <Label
-              as={Link}
-              to={labelData.courseLink}
+              href={labelData.courseLink}
               color={labelData.labelColor}
               content={labelData.courseName}
               key={`${name}-${labelData.courseName}-label`}

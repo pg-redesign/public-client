@@ -78,9 +78,7 @@ RegistrationAndInfoButtons.propTypes = {
 
 const CourseTopicHighlights = props => {
   const { shortName } = props;
-
-  const content = courseContent[shortName.toLowerCase()];
-  if (!content) return null;
+  const { highlights } = courseContent[shortName.toLowerCase()].courseCard;
 
   return (
     <Card.Content textAlign="left">
@@ -88,7 +86,7 @@ const CourseTopicHighlights = props => {
         <Header size="small" content="Course Topic Highlights" />
         <List
           bulleted
-          items={content.courseCard.highlights.map((highlight, index) => (
+          items={highlights.map((highlight, index) => (
             <List.Item
               content={highlight}
               key={`${shortName}-course-highlight-${index}`}
@@ -106,9 +104,7 @@ CourseTopicHighlights.propTypes = {
 
 const WhatsIncluded = props => {
   const { shortName } = props;
-
-  const content = courseContent[shortName.toLowerCase()];
-  if (!content) return null;
+  const { includes } = courseContent[shortName.toLowerCase()].courseCard;
 
   return (
     <Card.Content textAlign="left">
@@ -116,7 +112,7 @@ const WhatsIncluded = props => {
         <Header size="small" content="Includes" />
 
         <List bulleted>
-          {content.courseCard.includes.map((includedItem, index) => (
+          {includes.map((includedItem, index) => (
             <List.Item
               key={`${shortName}-course-includes-${index}`}
               content={includedItem}
