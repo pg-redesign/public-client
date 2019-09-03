@@ -1,41 +1,8 @@
-// -- POLLUTION & HYDROLOGY COURSE CARDS (viewed throughout the site) -- //
-const courseCard = {
-  // course name
-  // date range
-  // location with map link
-
-  // "Course Topic Highlights" section
-  highlights: [
-    "Basic to advanced principles in groundwater pollution and hydrology",
-    "Basic to advanced concepts and principles of groundwater flow, fate and transport, and natural attenuation",
-    "Groundwater monitoring and sampling technology",
-    "Conceptual Site Models (CSM) and remediation strategies",
-    "Practical applications of modern groundwater modeling software",
-  ],
-
-  // "Includes" section
-  includes: [
-    "Digital certificate of completion",
-    "3.8 continuing education units (CEU)",
-    "1200+ page course binder with an unmatched wealth of information",
-  ],
-};
-
 // -- BELOW ARE USED ON THE POLLUTION & HYDROLOGY COURSE PAGE ONLY -- //
 const overview = `The Pollution & Hydrology Course is the only one-week course in the US or Europe which comprehensively teaches from theory to practice all aspects of groundwater contamination, hydrology, monitoring, site characterization and remediation.
   
 This course assumes no prior experience. We begin with basic principles before expanding into more advanced topics and application. The course enhances the technical skillset of all its participants from new professionals to those with years of experience.
-  `;
-
-const whoShouldAttend = [
-  "Chemists",
-  "Engineers",
-  "Geologists",
-  "Environmental Scientists",
-  "State and Federal Regulators",
-  "Superfund and Industry Site Managers",
-  "Compliance/Regulatory Program Managers",
-];
+`;
 
 const schedule = [
   "Daily: 8-11:30 A.M. and 1-4:30 P.M.",
@@ -46,14 +13,6 @@ const schedule = [
   "Wednesday evening: 4:45-6 P.M.",
   "Thursday evening: 4:45-6:30 P.M.",
   "Friday: 8 A.M. to 1 P.M.",
-];
-
-const uniqueAspects = [
-  "Our courses have been continously updated and refined for over 40 years",
-  "Our instructors have over 300 years of collective academic and consulting experience",
-  "Each course includes its own 1200+ page binder filled with practical notes and unique material",
-  "Our courses have the largest attendance in the industry attracting professionals from around the world",
-  "We have thousands of testimonials and over 90% of our students register by colleague recommendation",
 ];
 
 const longDescription = `The widespread interest in groundwater contamination, characterization and remediation has seen the offering of many 1-3 day topic-specific training courses. There are no other one-week courses covering all aspects of groundwater. The emphasis of this comprehensive course is on acquiring an extensive working knowledge of the concepts, principles and professional practices underlying groundwater contamination, hydrology and remediation.
@@ -206,12 +165,27 @@ const topics = [
   },
 ];
 
+// -- POLLUTION & HYDROLOGY COURSE CARDS (viewed throughout the site) -- //
+const courseCard = {
+  // course name
+  // date range
+  // location with map link
+
+  // do not change, pulled from course topics
+  highlights: topics.map(topic => topic.header),
+
+  // "Includes" section
+  includes: [
+    "Digital certificate of completion",
+    "3.8 continuing education units (CEUs)",
+    "An invaluable 1200+ page course binder with groundwater hydrology, pollution and remediation notes",
+  ],
+};
+
 export default {
   topics,
   schedule,
   overview,
   courseCard,
-  uniqueAspects,
-  whoShouldAttend,
   longDescription,
 };
