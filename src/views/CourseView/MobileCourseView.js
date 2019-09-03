@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Header, Message } from "semantic-ui-react";
 
 import { courseTypeShape } from "../../utils/prop-types";
-import { courseContentTypeShape } from "../../editable-content/course-content";
+import { courseContentTypeShape } from "../../editable-content";
 import {
   boldFirstWord,
   addLineBreaks,
@@ -69,7 +69,9 @@ const MobileCourseView = props => {
         header="Who Should Attend"
         active={collapsibleStates.whoShouldAttend}
         toggleContent={toggleContent("whoShouldAttend")}
-        content={<ListCard icon="checkmark" items={content.whoShouldAttend} />}
+        content={
+          <ListCard icon="checkmark" items={content.whoShouldAttend} />
+        }
       />
 
       <CollapsibleContent

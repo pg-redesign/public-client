@@ -6,11 +6,6 @@
   line-height: 1.4285em;
 }
 
-.ui.inverted.button.active,
-.ui.inverted.button:focus {
-  box-shadow: 0 0 0 4px var(--brown) inset !important;
-}
-
 /* checkbox toggle colors */
 .ui.toggle.checkbox input:focus:checked:hover ~ .box:before,
 .ui.toggle.checkbox input:focus:checked:hover ~ label:before {
