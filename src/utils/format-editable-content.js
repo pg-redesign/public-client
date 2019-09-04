@@ -19,6 +19,23 @@ export const addLineBreaks = content =>
     </>
   ));
 
+// absolute violence for a fucking subscript...
+export const addSubscript = item =>
+  item.split(" ").map(part => {
+    const matches = part.match(/_[a-z0-9]+/gim);
+    if (!matches) return ` ${part}`;
+
+    const [, ...subscriptableContent] = matches[0];
+
+    return (
+      <span>
+        {" "}
+        {part.replace(/_[a-z0-9]+/gim, " ")}
+        <sub>{subscriptableContent}</sub>
+      </span>
+    );
+  });
+
 export const convertToFullName = shortName => {
   switch (shortName) {
     case "pollution":

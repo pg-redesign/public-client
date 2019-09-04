@@ -6,6 +6,7 @@ import {
   courseTopicTypeShape,
 } from "../../editable-content/course-content";
 import { CollapsibleContent, ListCard } from "../../components";
+import { addSubscript } from "../../utils/format-editable-content";
 
 export const CourseTopic = props => {
   const { header, subTopics } = props.topic;
@@ -18,7 +19,14 @@ export const CourseTopic = props => {
       header={header}
       alignHeader="left"
       active={subTopicsVisibility}
-      content={<ListCard items={subTopics} bulleted />}
+      content={
+        <ListCard
+          items={subTopics.map(subTopic =>
+            subTopic.match(/_[a-z0-9]+/gim) ? addSubscript(subTopic) : subTopic,
+          )}
+          bulleted
+        />
+      }
       toggleContent={() => setSubTopicsVisibility(!subTopicsVisibility)}
     />
   );
