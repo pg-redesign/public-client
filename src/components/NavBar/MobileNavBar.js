@@ -68,15 +68,15 @@ class MobileNavBar extends Component {
             direction="top"
             animation="overlay"
             // external click target (content area) that closes the menu
-            target={this.contentRef}
             visible={menuOpen}
             onHide={this.closeMenu}
-            style={{ textAlign: "center" }}
+            target={this.contentRef}
           >
-            {links.map(link => (
+            {links.map((link, index) => (
               <NavMenuLink
-                key={`navlink-${link.name}`}
+                first={index === 0}
                 onNavigate={this.closeMenu}
+                key={`navlink-${link.name}`}
                 {...link}
               />
             ))}
