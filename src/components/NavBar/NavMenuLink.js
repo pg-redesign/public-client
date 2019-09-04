@@ -11,18 +11,18 @@ import { Menu } from "semantic-ui-react";
  * @param {func} props.onNavigate onClick handler
  */
 const NavMenuLink = props => (
-	<Menu.Item
-		as={Link}
-		to={props.path}
-		content={props.name}
-		onClick={props.onNavigate}
-	/>
+  <Menu.Item
+    as={Link}
+    to={props.path}
+    content={props.first ? <b>{props.name}</b> : props.name}
+    onClick={props.onNavigate}
+  />
 );
 
 NavMenuLink.propTypes = {
-	onClick: PropTypes.func,
-	name: PropTypes.string.isRequired,
-	path: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  name: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default NavMenuLink;

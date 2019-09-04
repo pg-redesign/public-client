@@ -11,7 +11,7 @@ IntroVideo.propTypes = {
 };
 
 IntroVideo.defaultProps = {
-  videoId: "6w4Ji-oqiQo",
+  videoId: "5pQL_Zjhyt8",
 };
 
 export default IntroVideo;

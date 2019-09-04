@@ -1,7 +1,7 @@
 import React from "react";
 import { Divider, Comment, Message } from "semantic-ui-react";
 
-import { testimonialTypeShape } from "../../editable-content/testimonials";
+import { testimonialTypeShape } from "../../editable-content/testimonials/";
 
 const Testimonial = props => {
   const { student, company, message } = props.testimonial;

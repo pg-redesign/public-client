@@ -1,13 +1,7 @@
 // -- BELOW ARE USED ON THE POLLUTION & HYDROLOGY COURSE PAGE ONLY -- //
-const overview = `The objective of the course is to comprehensively teach remediation from basic to
-advanced geohydrology and transport principles, to the key field techniques to collect 3D
-hydrogeochemical data through choosing appropriate remediation strategies and systems
-based on chemical, geological and biological site conditions and regulatory requirements.
+const overview = `The objective of the course is to comprehensively teach remediation including basic to advanced geohydrology and transport principles, key field techniques, collecting 3D hydrogeochemical data, choosing appropriate remediation strategies and systems based on chemical, geological and biological site conditions and regulatory requirements.
 
-Unlike the Pollution and Hydrology Course where no experience is necessary, this course
-assumes some technical background and experience in groundwater hydrology and
-contamination problems. Those who have taken The Pollution and Hydrology Course
-(see its description on this site) will be well prepared as this is The Next Step
+Unlike the Pollution and Hydrology Course where no experience is necessary, this advanced course assumes some technical background and experience in groundwater hydrology and contamination assessment and resolution. However, those who have already taken our Pollution and Hydrology Course will be well prepared for the rigorous exploration of groundwater remediation found in this course.
 `;
 
 const schedule = [
@@ -22,8 +16,7 @@ const schedule = [
   "Friday optional computer session: 12:30-5:30 P.M.",
 ];
 
-const longDescription = `The course uniquely integrates the topics of heterogeneous geohydrology,
-aquifer/source/plume characterization in 3D, remediation technologies/strategies/designs and computer modeling software. Remediation as an introductory general topic is covered very well in the Pollution and Hydrology Course, but in this course there is much more additional material, including comprehensive indoor air vapor intrusion material, and more technical details on all remediation technologies and contaminant phenomena.
+const longDescription = `The course uniquely integrates the topics of heterogeneous geohydrology, aquifer/source/plume characterization in 3D, remediation technologies/strategies/designs and computer modeling software. Remediation as an introductory general topic is covered very well in the Pollution and Hydrology Course, but in this course there is much more additional material, including comprehensive indoor air vapor intrusion material, and more technical details on all remediation technologies and contaminant phenomena.
 
 For example, the theory and outcomes behind migration of DNAPLs in heterogeneous unconsolidated deposits and fractured hard rock, how to conduct pilot tests for air sparging and soil vapor extraction as well as many more quantitative calculations involving, indoor air vapor intrusion, air sparging, soil vapor extraction, in situ chemical oxidation, and bioremediation.
 
@@ -44,7 +37,7 @@ const topics = [
       "Maximum Hydraulic Gradient Direction (Hydrology) vs. Maximum Permeability Direction (Geology) And The Resultant Anisotropic Contaminant Flow Directions In Plan And Cross-Section Views",
       "Effects of Water Levels In Monitoring Wells And Piezometers Under Non-Horizontal conditions",
       "Mobile/ZOC (Zone Of Capture) vs. ZOI (Zone Of Influence) Around A Pump And Treat Remediation Well In Plan View Under A Regional Gradient",
-      "Different Capture Zones (Containment Volumes) Of A Pump And Treat Remediation Well In Cross-Section Under Different Vertical Anisotropy Ratios (K_H /K_V)",
+      "Different Capture Zones (Containment Volumes) Of A Pump And Treat Remediation Well In Cross-Section Under Different Vertical Anisotropy Ratios K_H and K_V",
       "Impacts Of The Heterogeneous Distribution of Hydraulic Conductivity And Associate Seepage Velocities And Dispersion In Contaminated Aquifers",
       "Flow Concentration In Natural Aquifers And The Impact On Mass Flux Calculations And Targeted Remediation",
       "Horizontal vs. Non-Horizontal Flow Conditions",
@@ -64,7 +57,7 @@ const topics = [
       "Advantages And Limitations of Numerical Models",
       "Natural Attenuation: Advection, Dispersion, Biotic and Abiotic Degradation And Sorption",
       "Mobile, Immobile And Storage Porosities And Forward/Back Diffusion",
-      "Applications Of K_D, K_OC, K_OW, And f_OC",
+      "Applications Of K_D K_OC K_OW and f_OC",
       "Applications Of The Retardation Factor",
       "ARCADIS’ Stratographic Mass Flux Method For Targeted Remediation",
     ],
