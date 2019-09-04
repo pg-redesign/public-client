@@ -14,10 +14,10 @@ const linksAsList = links =>
   Object.entries(links).map(([name, path]) => ({ name, path }));
 
 export const navList = linksAsList({
+  "REGISTER NOW!": siteLinks.REGISTRATION,
   Home: siteLinks.LANDING,
-  "Register Now": siteLinks.REGISTRATION,
-  "Pollution & Hydrology Course": siteLinks.POLLUTION_COURSE,
-  "Remediation Course": siteLinks.REMEDIATION_COURSE,
+  "The Pollution & Hydrology Course": siteLinks.POLLUTION_COURSE,
+  "The Remediation Course": siteLinks.REMEDIATION_COURSE,
   Instructors: siteLinks.INSTRUCTORS,
   Testimonials: siteLinks.TESTIMONIALS,
   // "Contact Us": siteLinks.CONTACT,
