@@ -41,10 +41,13 @@ const sharedContent = {
 };
 
 export default {
-  brasil: {
-    ...sharedContent,
-    ...brasilContent,
-  },
+  // TODO: uncomment when complete
+  // brasil: {
+  //   ...sharedContent,
+  //   ...brasilContent,
+  // },
+  brasil: null,
+  
   pollution: {
     ...sharedContent,
     ...pollutionContent,

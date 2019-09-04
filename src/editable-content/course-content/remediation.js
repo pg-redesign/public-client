@@ -1,13 +1,7 @@
 // -- BELOW ARE USED ON THE POLLUTION & HYDROLOGY COURSE PAGE ONLY -- //
-const overview = `The objective of the course is to comprehensively teach remediation from basic to
-advanced geohydrology and transport principles, to the key field techniques to collect 3D
-hydrogeochemical data through choosing appropriate remediation strategies and systems
-based on chemical, geological and biological site conditions and regulatory requirements.
+const overview = `The objective of the course is to comprehensively teach remediation including basic to advanced geohydrology and transport principles, key field techniques, collecting 3D hydrogeochemical data, choosing appropriate remediation strategies and systems based on chemical, geological and biological site conditions and regulatory requirements.
 
-Unlike the Pollution and Hydrology Course where no experience is necessary, this course
-assumes some technical background and experience in groundwater hydrology and
-contamination problems. Those who have taken The Pollution and Hydrology Course
-(see its description on this site) will be well prepared as this is The Next Step
+Unlike the Pollution and Hydrology Course where no experience is necessary, this advanced course assumes some technical background and experience in groundwater hydrology and contamination assessment and resolution. However, those who have already taken our Pollution and Hydrology Course will be well prepared for the rigorous exploration of groundwater remediation found in this course.
 `;
 
 const schedule = [
