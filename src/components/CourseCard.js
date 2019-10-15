@@ -12,7 +12,11 @@ const NameDateAndLocation = props => {
 
   return (
     <Card.Content textAlign="left">
-      <Card.Header textAlign="center" content={name} />
+      <Card.Header
+        content={name}
+        textAlign="center"
+        style={{ fontSize: "1.23em" }}
+      />
       <Card.Meta textAlign="center">
         {date}
         <br />
