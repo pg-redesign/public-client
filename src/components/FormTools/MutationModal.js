@@ -6,7 +6,12 @@ import { responsiveWrapper } from "../../wrappers";
 import { ErrorMessage, LoadingMessage, SuccessMessage } from "../IconMessage";
 
 const shapeError = error => {
-  const message = error.message.replace("GraphQL error: ", "").trim();
+  const cleanedMessage = error.message.replace("GraphQL error: ", "").trim();
+  const message =
+    cleanedMessage === "Internal Server Error"
+      ? "Something went wrong. Our team has been alerted and is working on a solution."
+      : cleanedMessage;
+
   return { errors: error.graphQLErrors, message };
 };
 
