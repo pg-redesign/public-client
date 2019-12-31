@@ -24,20 +24,6 @@ export const instructorTypeShape = PropTypes.shape(instructorType);
 
 export default [
   {
-    name: "John A. Cherry",
-    image: instructorImage("cherry"),
-    courses: ["pollution"],
-    profileLink: "https://en.wikipedia.org/wiki/John_A._Cherry",
-    bio: [
-      "Received his Ph.D. in Hydrogeology from The University of Illinois",
-      "Distinguished Emeritus Professor at The University of Waterloo where his research focuses on field studies of the migration and fate of DNAPLs in groundwater and remediation",
-      "Adjunct Professor at The University of Guelph",
-      'Co-author of the textbook "Ground Water" with R.A. Freeze',
-      'Co-editor and co-author of several chapters in the book "Dense Chlorinated Solvents and Other DNAPLs in Groundwater"',
-    ],
-  },
-
-  {
     name: "Robert W. Cleary",
     image: instructorImage("cleary"),
     courses: ["remediation", "pollution", "brasil"],
@@ -50,6 +36,20 @@ export default [
       "Current instructor in the National Ground Water Association’s Modflow course",
       "Adjunct professor in the Hydrogeology Field School course of the Earth and Environmental Sciences Department at The University of Waterloo",
       "Active groundwater consultant to private industry",
+    ],
+  },
+
+  {
+    name: "John A. Cherry",
+    image: instructorImage("cherry"),
+    courses: ["pollution"],
+    profileLink: "https://en.wikipedia.org/wiki/John_A._Cherry",
+    bio: [
+      "Received his Ph.D. in Hydrogeology from The University of Illinois",
+      "Distinguished Emeritus Professor at The University of Waterloo where his research focuses on field studies of the migration and fate of DNAPLs in groundwater and remediation",
+      "Adjunct Professor at The University of Guelph",
+      'Co-author of the textbook "Ground Water" with R.A. Freeze',
+      'Co-editor and co-author of several chapters in the book "Dense Chlorinated Solvents and Other DNAPLs in Groundwater"',
     ],
   },
 
