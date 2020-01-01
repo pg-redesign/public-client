@@ -1,7 +1,13 @@
 import { ApolloClient, HttpLink, InMemoryCache } from "apollo-boost";
 
+const { NODE_ENV, REACT_APP_API_HOST } = process.env;
+
+const uri = `${
+  NODE_ENV === "development" ? "http://" : "https://"
+}${REACT_APP_API_HOST}/graphql`;
+
+const link = new HttpLink({ uri });
 const cache = new InMemoryCache();
-const link = new HttpLink({ uri: process.env.REACT_APP_API_URI });
 
 export default new ApolloClient({
   link,

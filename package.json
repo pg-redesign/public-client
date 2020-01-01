@@ -2,15 +2,21 @@
   "name": "pg-public-client",
   "version": "1.0.0",
   "private": true,
+  "environment": {
+    "REACT_APP_API_HOST": "API host - http for dev (must include port), https for prod",
+    "REACT_APP_STRIPE_PUB_KEY": "Stripe public key for payment processing",
+    "REACT_APP_PAYLOAD_PUBLIC_KEY": "public key for verification of JWT payloads issued by the API"
+  },
   "dependencies": {
     "ajv": "^6.10.0",
     "apollo-boost": "^0.3.1",
     "graphql": "^14.2.1",
+    "jsonwebtoken": "^8.5.1",
     "react": "^16.8.6",
     "react-apollo": "^2.5.5",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "3.0.0",
+    "react-scripts": "^3.3.0",
     "react-stripe-elements": "^3.0.0",
     "semantic-ui-react": "^0.87.1"
   },

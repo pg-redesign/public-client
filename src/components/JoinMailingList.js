@@ -179,7 +179,9 @@ class JoinMailingList extends Component {
       return this.handleFormErrors(formValidator.errors);
     }
 
-    submitMutation({ variables: { mailingListData: fields } });
+    submitMutation({ variables: { mailingListData: fields } }).catch(
+      console.error,
+    );
   };
 }
 

@@ -38,7 +38,10 @@ const propTypes = {
  *  - loading: loading -> { header, body, extra } applied to <LoadingMessage>
  */
 const MutationModal = props => {
-  const { mobile, loading, error, data, messageProps } = props;
+  const { mobile, called, loading, error, data, messageProps } = props;
+
+  // if mutation hasnt been called yet do not render anything
+  if (!called) return null;
 
   const baseMessageProps = { width: "100%", size: mobile ? "small" : "large" };
 

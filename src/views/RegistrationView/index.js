@@ -53,7 +53,7 @@ class RegistrationView extends Component {
     const { courseId, paymentOption } = registrationData;
 
     this.setState({ courseId, paymentOption }, () =>
-      submitMutation({ variables: { registrationData } }),
+      submitMutation({ variables: { registrationData } }).catch(console.error),
     );
   };
 

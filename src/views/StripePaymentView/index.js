@@ -4,12 +4,22 @@ import { gql } from "apollo-boost";
 import { Mutation } from "react-apollo";
 import { Redirect } from "react-router-dom";
 
-import { withStripeProvider } from "../../wrappers";
-import { idType, studentTypeShape } from "../../utils/prop-types";
+import {
+  withHandledQuery,
+  withUpcomingCourses,
+  withStripeProvider,
+} from "../../wrappers";
+import {
+  idType,
+  courseTypeShape,
+  studentTypeShape,
+} from "../../utils/prop-types";
+import { extractRegistrationData } from "./utils";
 
 import { MutationModal } from "../../components";
 import StripePaymentForm from "./StripePaymentForm";
 
+// either location.state or match.params.registrationCode is required
 const propTypes = {
   location: PropTypes.shape({
     state: PropTypes.shape({
@@ -17,7 +27,29 @@ const propTypes = {
       student: studentTypeShape.isRequired,
     }),
   }),
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      // link path param of API signed JWT with course and student data
+      registrationCode: PropTypes.string,
+    }),
+  }),
+  data: PropTypes.shape({
+    schema: PropTypes.object.isRequired,
+    courses: PropTypes.arrayOf(courseTypeShape).isRequired,
+  }),
 };
+
+const query = gql`
+  ${withUpcomingCourses.courseCardFragment}
+
+  query StripePaymentForm {
+    schema: getFormSchema(form: STRIPE_PAYMENT)
+
+    courses: getCourses {
+      ...CourseCardData
+    }
+  }
+`;
 
 const mutation = gql`
   mutation SubmitStripePayment($paymentData: StripePaymentData!) {
@@ -43,34 +75,33 @@ const modalMessageProps = {
 
     return {
       header: "Payment complete!",
-      body: `A receipt has been sent to ${email}.`,
-      extra: "(you can close this window)",
+      body: `A confirmation receipt has been sent to ${email}.`,
+      extra: "(you may exit the site)",
     };
   },
 };
 
 const StripePayment = props => {
-  const { state } = props.location;
+  const registrationData = extractRegistrationData(props);
 
-  if (!state) {
-    // TODO: handle directly being linked to payment page (from email invoice)
-    // send paymentId as qs / path param?
-    return <Redirect to="/" />;
+  if (!registrationData || !registrationData.course) {
+    return <Redirect to="/" />; // invalid or missing data
   }
 
-  const { student, courseId } = state;
+  const { course, student } = registrationData;
 
   return (
     <Mutation mutation={mutation}>
       {(submitPayment, mutationState) => (
         <>
-          {/* activated when mutation is sent */}
+          {/* modal is activated when mutation is executed */}
           <MutationModal {...mutationState} messageProps={modalMessageProps} />
           <StripePaymentForm
             {...props}
+            course={course}
             student={student}
-            courseId={courseId}
             submitPayment={submitPayment}
+            formSchema={props.data.schema}
           />
         </>
       )}
@@ -80,4 +111,4 @@ const StripePayment = props => {
 
 StripePayment.propTypes = propTypes;
 
-export default withStripeProvider(StripePayment);
+export default withStripeProvider(withHandledQuery(StripePayment, query));

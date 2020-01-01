@@ -39,7 +39,7 @@ const PaymentSelect = props => {
           <Button
             fluid
             {...baseProps("INVOICE")}
-            content="Alternative Payment Options"
+            content="Email Me Other Options"
           />
         </Grid.Column>
       </Grid>

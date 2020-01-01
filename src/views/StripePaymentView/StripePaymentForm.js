@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AJV from "ajv";
-import { gql } from "apollo-boost";
 import { Form, Icon, Input, Button, Header, Divider } from "semantic-ui-react";
 
-import { idType, studentTypeShape } from "../../utils/prop-types";
-import { withHandledQuery, withUpcomingCourses } from "../../wrappers";
+import { courseTypeShape, studentTypeShape } from "../../utils/prop-types";
 
 import StripeCardInput from "./StripeCardInput";
 import MobileStripePayment from "./MobileStripePayment";
@@ -15,40 +13,26 @@ import { IconMessage, ErrorMessage, LabelOrError } from "../../components";
 // SUIR input spacing, use for consistent spacing with nearby elements
 export const INPUT_SPACING = "14px";
 
-const query = gql`
-  ${withUpcomingCourses.courseCardFragment}
-
-  query StripePaymentForm {
-    schema: getFormSchema(form: STRIPE_PAYMENT)
-
-    courses: getCourses {
-      ...CourseCardData
-    }
-  }
-`;
-
 class StripePaymentForm extends Component {
   static propTypes = {
-    courseId: idType.isRequired,
-    student: studentTypeShape.isRequired,
+    course: courseTypeShape.isRequired,
     stripe: PropTypes.object.isRequired,
+    student: studentTypeShape.isRequired,
+    formSchema: PropTypes.object.isRequired,
     submitPayment: PropTypes.func.isRequired,
-    data: PropTypes.shape({
-      schema: PropTypes.object.isRequired,
-    }),
   };
 
   constructor(props) {
     super(props);
 
-    const { student, data } = props;
+    const { student, formSchema } = props;
 
     const ajv = new AJV({ allErrors: true });
 
     // pre-populate form with student data
     this.state = {
       errors: {},
-      formValidator: ajv.compile(data.schema),
+      formValidator: ajv.compile(formSchema),
       fields: {
         lastName: student.lastName || "",
         receiptEmail: student.email || "",
@@ -58,9 +42,7 @@ class StripePaymentForm extends Component {
   }
 
   render() {
-    const { courseId, data } = this.props;
-
-    const [course] = data.courses.filter(course => course.id === courseId);
+    const { course } = this.props;
 
     return (
       <div>
@@ -123,7 +105,7 @@ class StripePaymentForm extends Component {
 
   handleSubmit = async () => {
     const { fields, formValidator } = this.state;
-    const { courseId, student, stripe, submitPayment } = this.props;
+    const { stripe, course, student, submitPayment } = this.props;
 
     const isValid = formValidator(fields);
     if (!isValid) {
@@ -142,13 +124,13 @@ class StripePaymentForm extends Component {
     }
 
     const paymentData = {
-      courseId,
       receiptEmail,
+      courseId: course.id,
       studentId: student.id,
       tokenId: stripeResponse.token.id,
     };
 
-    submitPayment({ variables: { paymentData } });
+    submitPayment({ variables: { paymentData } }).catch(console.error);
   };
 
   labelOrError = (fieldName, labelText) => (
@@ -238,4 +220,4 @@ class StripePaymentForm extends Component {
   );
 }
 
-export default withHandledQuery(StripePaymentForm, query);
+export default StripePaymentForm;

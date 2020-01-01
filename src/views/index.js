@@ -26,8 +26,8 @@ const Views = () => (
 
         <Route
           exact
-          path={siteLinks.CREDIT_PAYMENT}
           component={StripePaymentView}
+          path={`${siteLinks.CREDIT_PAYMENT}/:registrationCode?`}
         />
 
         <Route
