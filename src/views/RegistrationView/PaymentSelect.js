@@ -23,18 +23,24 @@ const PaymentSelect = props => {
     onClick: handleClick(value),
   });
 
-  const columnProps = { mobile: 8, tablet: 8, computer: 8 };
+  const columnProps = { mobile: 16, tablet: 8, computer: 8 };
 
   return (
     <Responsive>
-      <Grid centered>
+      <Grid centered container>
         <Grid.Column {...columnProps}>
-          <Button fluid {...baseProps("CREDIT")} content="Pay by Credit" />
+          <Button
+            fluid
+            {...baseProps("CREDIT")}
+            content="Credit Card Payment"
+          />
         </Grid.Column>
         <Grid.Column {...columnProps}>
-          {/* TODO: display "Send Invoice", add note about alternative payment
-          types */}
-          <Button fluid {...baseProps("INVOICE")} content="Bill by Invoice" />
+          <Button
+            fluid
+            {...baseProps("INVOICE")}
+            content="Email Me Other Options"
+          />
         </Grid.Column>
       </Grid>
     </Responsive>

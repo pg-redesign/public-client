@@ -6,7 +6,12 @@ import { responsiveWrapper } from "../../wrappers";
 import { ErrorMessage, LoadingMessage, SuccessMessage } from "../IconMessage";
 
 const shapeError = error => {
-  const message = error.message.replace("GraphQL error: ", "").trim();
+  const cleanedMessage = error.message.replace("GraphQL error: ", "").trim();
+  const message =
+    cleanedMessage === "Internal Server Error"
+      ? "Something went wrong. Our team has been alerted and is working on a solution."
+      : cleanedMessage;
+
   return { errors: error.graphQLErrors, message };
 };
 
@@ -33,7 +38,10 @@ const propTypes = {
  *  - loading: loading -> { header, body, extra } applied to <LoadingMessage>
  */
 const MutationModal = props => {
-  const { mobile, loading, error, data, messageProps } = props;
+  const { mobile, called, loading, error, data, messageProps } = props;
+
+  // if mutation hasnt been called yet do not render anything
+  if (!called) return null;
 
   const baseMessageProps = { width: "100%", size: mobile ? "small" : "large" };
 
