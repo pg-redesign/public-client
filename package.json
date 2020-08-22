@@ -16,7 +16,7 @@
     "react-apollo": "^2.5.5",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "^3.3.0",
+    "react-scripts": "^3.4.3",
     "react-stripe-elements": "^3.0.0",
     "semantic-ui-react": "^0.87.1"
   },
@@ -42,6 +42,6 @@
     ]
   },
   "devDependencies": {
-    "serve": "^11.0.1"
+    "serve": "^11.3.2"
   }
 }
