@@ -11,7 +11,7 @@ const withStripeProvider = Consumer => props => {
   const StripeForm = injectStripe(Consumer);
 
   return (
-    <StripeProvider apiKey={process.env.REACT_APP_STRIPE_PUB_KEY}>
+    <StripeProvider apiKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}>
       <Elements>
         <StripeForm {...props} />
       </Elements>

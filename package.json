@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "environment": {
-    "REACT_APP_API_HOST": "API host - http for dev (must include port), https for prod",
-    "REACT_APP_STRIPE_PUB_KEY": "Stripe public key for payment processing",
+    "NOTE": "create within .env.local file (.env file is NOT IGNORED in VCS)",
+    "REACT_APP_API_HOST": "API host - must include port for dev env (localhost:8008), just public hostname / IP for prod",
+    "REACT_APP_STRIPE_PUBLIC_KEY": "public (client) key for Stripe payment processing",
     "REACT_APP_PAYLOAD_PUBLIC_KEY": "public key for verification of JWT payloads issued by the API"
   },
   "dependencies": {
