@@ -31,7 +31,7 @@ export const extractRegistrationData = props => {
       algorithms: ["RS256"],
       issuer: process.env.REACT_APP_API_HOST,
     });
-    console.log({ courseId, studentId, email });
+
     return {
       student: { id: studentId, email },
       course: getCourseById(courseId, courses),
