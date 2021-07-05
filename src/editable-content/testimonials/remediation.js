@@ -1,4 +1,4 @@
-export default [
+const remediationTestimonials = [
   {
     student: "Joseph Marsh",
     company: "US Army Corp. of Engineers",
@@ -349,3 +349,5 @@ export default [
     message: '"Excellent 10/10. Would recommend to anyone in the industry."',
   },
 ];
+
+export default remediationTestimonials;

@@ -140,7 +140,7 @@ const courseCard = {
   // location with map link
 
   // do not change, pulled from course topics
-  highlights: topics.map(topic => topic.header),
+  highlights: topics.map((topic) => topic.header),
 
   // "Includes" section
   includes: [
@@ -150,10 +150,14 @@ const courseCard = {
   ],
 };
 
-export default {
+// -- !! DO NOT EDIT BELOW !! -- //
+
+const remediationContent = {
   topics,
   schedule,
   overview,
   courseCard,
   longDescription,
 };
+
+export default remediationContent;

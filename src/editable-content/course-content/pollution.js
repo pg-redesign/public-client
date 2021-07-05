@@ -172,7 +172,7 @@ const courseCard = {
   // location with map link
 
   // do not change, pulled from course topics
-  highlights: topics.map(topic => topic.header),
+  highlights: topics.map((topic) => topic.header),
 
   // "Includes" section
   includes: [
@@ -182,10 +182,30 @@ const courseCard = {
   ],
 };
 
-export default {
+// -- !! DO NOT EDIT BELOW !! -- //
+
+const pollutionContent = {
   topics,
   schedule,
   overview,
   courseCard,
   longDescription,
 };
+
+export default pollutionContent;
+
+/**
+ * adapta nokto
+ * dracula at night
+ * moonlight // II
+ * neon night
+ * nightmare
+ * outrun electric
+ * phantom
+ * spearmint contrast (rainglow)
+ * super contrast (rainglow)
+ * synthax
+ * tonic contrast (rainglow)
+ * warlock contrast (rainglow)
+ *
+ */

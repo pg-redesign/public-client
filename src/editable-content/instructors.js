@@ -1,10 +1,11 @@
-//-- DO NOT CHANGE ANYTHING BELOW THIS LINE --//
+//-- DO NOT CHANGE ANYTHING BETWEEN THESE LINES --//
 
 import PropTypes from "prop-types";
 
 const linkedinBase = "https://linkedin.com/in";
 
-const instructorImage = name => require(`../media/instructors/${name}.jpg`);
+const instructorImage = (name) =>
+  require(`../media/instructors/${name}.jpg`).default;
 
 export const instructorType = {
   name: PropTypes.string.isRequired,
@@ -12,23 +13,26 @@ export const instructorType = {
   profileLink: PropTypes.string.isRequired,
   bio: PropTypes.arrayOf(PropTypes.string).isRequired,
   courses: PropTypes.arrayOf(
-    PropTypes.oneOf(["remediation", "pollution", "brasil"]),
+    PropTypes.oneOf(["remediation", "pollution", "brasil"])
   ).isRequired,
 };
 
 export const instructorTypeShape = PropTypes.shape(instructorType);
 
-//-- DO NOT CHANGE ANYTHING ABOVE THIS LINE --//
+//-- DO NOT CHANGE ANYTHING BETWEEN THESE LINES --//
 
-// options for courses: "pollution", "remediation", "brasil"
+// -- ONLY EDIT BELOW THIS LINE -- //
 
-export default [
+// names availabkle for the "courses" field: "pollution", "remediation", "brasil"
+
+const instructorProfiles = [
   {
-    name: "Robert W. Cleary",
-    image: instructorImage("cleary"),
-    courses: ["remediation", "pollution", "brasil"],
-    profileLink: `${linkedinBase}/bob-cleary-princeton-groundwater/`,
+    name: "Robert W. Cleary", // full name
+    image: instructorImage("cleary"), // lowercase last name (should match the media/instructors/ image file name)
+    courses: ["remediation", "pollution", "brasil"], // <-- courses field, see options above
+    profileLink: `${linkedinBase}/bob-cleary-princeton-groundwater/`, // full profile URL, this is a shorthand for linkedin only
     bio: [
+      // each line is a bullet point (must be between the brackets [] and comma-separated)
       "Received his Ph.D. in Chemical Engineering from The University of Massachusetts in Amherst",
       "Co-author of the first peer-reviewed chlorinated solvent remediation paper in 1981",
       "Former professor of Civil and Geological Engineering at Princeton University",
@@ -37,6 +41,7 @@ export default [
       "Adjunct professor in the Hydrogeology Field School course of the Earth and Environmental Sciences Department at The University of Waterloo",
       "Active groundwater consultant to private industry",
     ],
+    // do not add anything else after the comma above
   },
 
   {
@@ -185,3 +190,5 @@ export default [
     ],
   },
 ];
+
+export default instructorProfiles;

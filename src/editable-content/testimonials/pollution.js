@@ -1,4 +1,4 @@
-export default [
+const pollutionTestimonials = [
   {
     student: "Yen-Vy Van",
     company: "Maul Foster and Alongi, Inc.",
@@ -287,3 +287,5 @@ export default [
       '"Excellent. An overwhelming comprehensive amount of material. Binder will be a great reference."',
   },
 ];
+
+export default pollutionTestimonials;

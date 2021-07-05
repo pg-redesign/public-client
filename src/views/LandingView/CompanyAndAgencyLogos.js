@@ -35,7 +35,7 @@ const logos = [
   "SNC-LAVALIN.png",
 ];
 
-const CompanyAndAgencyLogos = props => {
+const CompanyAndAgencyLogos = (props) => {
   const { mobile } = props;
 
   return (
@@ -43,7 +43,7 @@ const CompanyAndAgencyLogos = props => {
       {logos.map((source, index) => (
         <Image
           rounded
-          src={require(`../../media/company-logos/${source}`)}
+          src={require(`../../media/company-logos/${source}`).default}
           key={`attendee-logos-${index}`}
           style={{
             filter: "opacity(1) drop-shadow(2px 3px 1px rgba(0,0,0,0.4))",

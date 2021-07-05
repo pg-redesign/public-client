@@ -9,10 +9,10 @@ import { Image, Button } from "semantic-ui-react";
  * @param {string} props.logoImage loaded image file
  * @param {*} props.style boxShadow fitting "mini" size
  */
-export const LogoImage = props => {
-	const { logoImage, ...otherProps } = props;
+export const LogoImage = (props) => {
+  const { logoImage, ...otherProps } = props;
 
-	return <Image {...otherProps} src={logoImage} />;
+  return <Image {...otherProps} src={logoImage} />;
 };
 
 LogoImage.propTypes = {
@@ -21,8 +21,8 @@ LogoImage.propTypes = {
 
 LogoImage.defaultProps = {
   size: "mini",
-  logoImage: require("../media/logo.jpg"),
-	style: { boxShadow: "2px 2px 3px 1px rgba(0,0,0,0.4)" },
+  logoImage: require("../media/logo.jpg").default,
+  style: { boxShadow: "2px 2px 3px 1px rgba(0,0,0,0.4)" },
 };
 
 /**
@@ -34,27 +34,27 @@ LogoImage.defaultProps = {
  * @param {string} props.logoImage loaded image file
  * @param {*} props.content <LogoImage>
  */
-export const LogoButton = props => {
-	const { logoImage, ...buttonProps } = props;
+export const LogoButton = (props) => {
+  const { logoImage, ...buttonProps } = props;
 
-	return (
-		<Button {...buttonProps}>
-			<LogoImage logoImage={logoImage} />
-		</Button>
-	);
+  return (
+    <Button {...buttonProps}>
+      <LogoImage logoImage={logoImage} />
+    </Button>
+  );
 };
 
 // TODO: why doesnt <Button {...props} content/children={LogoImage} /> work?
 // only if content={<LogoImage />} or as explicit child
 
 LogoButton.propTypes = {
-	onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 LogoButton.defaultProps = {
-	size: "mini",
-	compact: true,
-	borderless: "true",
+  size: "mini",
+  compact: true,
+  borderless: "true",
 };
 
 /**
@@ -62,25 +62,25 @@ LogoButton.defaultProps = {
  * - spreads all props
  * @param {*} props
  * @param props.mobile true: <LogoButton>, false: <LogoImage>
- * @param props.logoImage loaded image file, default: require("src/media/logo.jpg")
+ * @param props.logoImage loaded image file, default: require("src/media/logo.jpg").default
  */
-const Logo = props => {
-	const { mobile, ...componentProps } = props;
+const Logo = (props) => {
+  const { mobile, ...componentProps } = props;
 
-	return mobile ? (
-		<LogoButton {...componentProps} />
-	) : (
-		<LogoImage {...componentProps} />
-	);
+  return mobile ? (
+    <LogoButton {...componentProps} />
+  ) : (
+    <LogoImage {...componentProps} />
+  );
 };
 
 Logo.propTypes = {
-	mobile: PropTypes.bool,
-	logoImage: PropTypes.string.isRequired,
+  mobile: PropTypes.bool,
+  logoImage: PropTypes.string.isRequired,
 };
 
 Logo.defaultProps = {
-  logoImage: require("../media/logo.jpg"),
+  logoImage: require("../media/logo.jpg").default,
 };
 
 Logo.Image = LogoImage;
